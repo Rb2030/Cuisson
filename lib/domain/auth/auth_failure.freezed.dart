@@ -23,8 +23,8 @@ class _$AuthFailureTearOff {
   }
 
 // ignore: unused_element
-  EmailAlreadyInUSe emailAlreadyInUse() {
-    return const EmailAlreadyInUSe();
+  EmailAlreadyInUse emailAlreadyInUse() {
+    return const EmailAlreadyInUse();
   }
 
 // ignore: unused_element
@@ -56,7 +56,7 @@ mixin _$AuthFailure {
   Result map<Result extends Object>({
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
-    @required Result emailAlreadyInUse(EmailAlreadyInUSe value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
@@ -65,7 +65,7 @@ mixin _$AuthFailure {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
-    Result emailAlreadyInUse(EmailAlreadyInUSe value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
@@ -155,7 +155,7 @@ class _$CancelledByUser implements CancelledByUser {
   Result map<Result extends Object>({
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
-    @required Result emailAlreadyInUse(EmailAlreadyInUSe value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
@@ -172,7 +172,7 @@ class _$CancelledByUser implements CancelledByUser {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
-    Result emailAlreadyInUse(EmailAlreadyInUSe value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
@@ -257,7 +257,7 @@ class _$ServerError implements ServerError {
   Result map<Result extends Object>({
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
-    @required Result emailAlreadyInUse(EmailAlreadyInUSe value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
@@ -274,7 +274,7 @@ class _$ServerError implements ServerError {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
-    Result emailAlreadyInUse(EmailAlreadyInUSe value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
@@ -291,25 +291,25 @@ abstract class ServerError implements AuthFailure {
   const factory ServerError() = _$ServerError;
 }
 
-abstract class $EmailAlreadyInUSeCopyWith<$Res> {
-  factory $EmailAlreadyInUSeCopyWith(
-          EmailAlreadyInUSe value, $Res Function(EmailAlreadyInUSe) then) =
-      _$EmailAlreadyInUSeCopyWithImpl<$Res>;
+abstract class $EmailAlreadyInUseCopyWith<$Res> {
+  factory $EmailAlreadyInUseCopyWith(
+          EmailAlreadyInUse value, $Res Function(EmailAlreadyInUse) then) =
+      _$EmailAlreadyInUseCopyWithImpl<$Res>;
 }
 
-class _$EmailAlreadyInUSeCopyWithImpl<$Res>
+class _$EmailAlreadyInUseCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
-    implements $EmailAlreadyInUSeCopyWith<$Res> {
-  _$EmailAlreadyInUSeCopyWithImpl(
-      EmailAlreadyInUSe _value, $Res Function(EmailAlreadyInUSe) _then)
-      : super(_value, (v) => _then(v as EmailAlreadyInUSe));
+    implements $EmailAlreadyInUseCopyWith<$Res> {
+  _$EmailAlreadyInUseCopyWithImpl(
+      EmailAlreadyInUse _value, $Res Function(EmailAlreadyInUse) _then)
+      : super(_value, (v) => _then(v as EmailAlreadyInUse));
 
   @override
-  EmailAlreadyInUSe get _value => super._value as EmailAlreadyInUSe;
+  EmailAlreadyInUse get _value => super._value as EmailAlreadyInUse;
 }
 
-class _$EmailAlreadyInUSe implements EmailAlreadyInUSe {
-  const _$EmailAlreadyInUSe();
+class _$EmailAlreadyInUse implements EmailAlreadyInUse {
+  const _$EmailAlreadyInUse();
 
   @override
   String toString() {
@@ -318,7 +318,7 @@ class _$EmailAlreadyInUSe implements EmailAlreadyInUSe {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is EmailAlreadyInUSe);
+    return identical(this, other) || (other is EmailAlreadyInUse);
   }
 
   @override
@@ -360,7 +360,7 @@ class _$EmailAlreadyInUSe implements EmailAlreadyInUSe {
   Result map<Result extends Object>({
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
-    @required Result emailAlreadyInUse(EmailAlreadyInUSe value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
@@ -377,7 +377,7 @@ class _$EmailAlreadyInUSe implements EmailAlreadyInUSe {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
-    Result emailAlreadyInUse(EmailAlreadyInUSe value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     @required Result orElse(),
@@ -390,8 +390,8 @@ class _$EmailAlreadyInUSe implements EmailAlreadyInUSe {
   }
 }
 
-abstract class EmailAlreadyInUSe implements AuthFailure {
-  const factory EmailAlreadyInUSe() = _$EmailAlreadyInUSe;
+abstract class EmailAlreadyInUse implements AuthFailure {
+  const factory EmailAlreadyInUse() = _$EmailAlreadyInUse;
 }
 
 abstract class $InvalidEmailAndPasswordCombinationCopyWith<$Res> {
@@ -468,7 +468,7 @@ class _$InvalidEmailAndPasswordCombination
   Result map<Result extends Object>({
     @required Result cancelledByUser(CancelledByUser value),
     @required Result serverError(ServerError value),
-    @required Result emailAlreadyInUse(EmailAlreadyInUSe value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
     @required
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
@@ -485,7 +485,7 @@ class _$InvalidEmailAndPasswordCombination
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(CancelledByUser value),
     Result serverError(ServerError value),
-    Result emailAlreadyInUse(EmailAlreadyInUSe value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     @required Result orElse(),

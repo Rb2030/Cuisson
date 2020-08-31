@@ -1,7 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+
 import 'auth_failure.dart';
 import 'value_objects.dart';
-import 'package:dartz/dartz.dart';
 
 //FirebaseAuth, GoogleSignIn
 

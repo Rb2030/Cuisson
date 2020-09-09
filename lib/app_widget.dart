@@ -9,7 +9,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     const double screenHeight = 300;
     const double screenWidth = 200;
-    ThemeData themeData;
+    ThemeData themeData = appThemeData.values.first;
     return BlocProvider(
       create: (context) => ThemeCubit(),
       child: BlocConsumer<ThemeCubit, ThemeState>(listener: (context, ThemeState state) {

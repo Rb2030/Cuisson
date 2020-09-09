@@ -9,35 +9,33 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     const double screenHeight = 300;
     const double screenWidth = 200;
-    ThemeData themeData = appThemeData.values.first;
     return BlocProvider(
       create: (context) => ThemeCubit(),
-      child: BlocConsumer<ThemeCubit, ThemeState>(listener: (context, ThemeState state) {
-        themeData = state.themeChanged == true
-            ? appThemeData.values.last
-            : appThemeData.values.first;
-      }, builder: (context, state) {
-        return MaterialApp(
-          title: 'Material App',
-          theme: themeData,
-          //     home: SignInPage(),
-          home: Scaffold(
-            appBar: PreferredSize(
-                preferredSize: const Size.fromHeight(65.0), child: AppBar()),
-            body: ConstrainedBox(
-              constraints: const BoxConstraints(
-                  minHeight: screenHeight, minWidth: screenWidth),
-              child: TrialButton(),
-            ),
-          ),
-        );
-      }),
+      child: BlocConsumer<ThemeCubit, ThemeState>(
+          listener: (context, ThemeState state) {},
+          builder: (context, state) {
+            state.themeData ??= appThemeData.values.first; // This is the same as -- if (state.themeData == null) state.themeData = appThemeData.values.first;
+            return MaterialApp(
+              title: 'Material App',
+              theme: state.themeData,
+              //     home: SignInPage(),
+              home: Scaffold(
+                appBar: PreferredSize(
+                    preferredSize: const Size.fromHeight(65.0),
+                    child: AppBar()),
+                body: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                      minHeight: screenHeight, minWidth: screenWidth),
+                  child: TrialButton(),
+                ),
+              ),
+            );
+          }),
     );
   }
 }
 
 class TrialButton extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Container(

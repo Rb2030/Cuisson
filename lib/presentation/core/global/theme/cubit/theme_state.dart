@@ -2,7 +2,7 @@ part of 'theme_cubit.dart';
 
 class ThemeState {
   bool themeChanged;
-  final ThemeData themeData;
+  ThemeData themeData;
   ThemeState({this.themeChanged, this.themeData});
 
   @override

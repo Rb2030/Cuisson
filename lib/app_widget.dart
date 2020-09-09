@@ -14,10 +14,9 @@ class AppWidget extends StatelessWidget {
       child: BlocConsumer<ThemeCubit, ThemeState>(
           listener: (context, ThemeState state) {},
           builder: (context, state) {
-            state.themeData ??= appThemeData.values.first; // This is the same as -- if (state.themeData == null) state.themeData = appThemeData.values.first;
             return MaterialApp(
               title: 'Material App',
-              theme: state.themeData,
+              theme: state.themeData ??= appThemeData.values.first, // This is the same as -- if (state.themeData == null) state.themeData = appThemeData.values.first;
               //     home: SignInPage(),
               home: Scaffold(
                 appBar: PreferredSize(

@@ -1,10 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 enum AppTheme { light, dark }
 
 final appThemeData = {
-  AppTheme.light:
-      ThemeData(brightness: Brightness.light, primaryColor: Colors.white),
-  AppTheme.dark:
-      ThemeData(brightness: Brightness.dark, primaryColor: Colors.black)
+  
+  // Light Mode
+  AppTheme.light: ThemeData(
+      brightness: Brightness.light,
+      primaryColor: Colors.white,
+      accentColor: Colors.black,
+      backgroundColor: Colors.white,
+      canvasColor: Colors.white,
+      cursorColor: Colors.black,
+      textSelectionHandleColor: Colors.black,
+      textTheme: textTheme().apply(displayColor: Colors.black, bodyColor: Colors.black)),
+
+  // Dark Mode
+  AppTheme.dark: ThemeData(
+      brightness: Brightness.dark,
+      primaryColor: Colors.black,
+      accentColor: Colors.white,
+      backgroundColor: Colors.black,
+      canvasColor: Colors.black,
+      cursorColor: Colors.white,
+      textSelectionHandleColor: Colors.white,
+      textTheme: textTheme().apply(displayColor: Colors.white, bodyColor: Colors.white))
 };
+
+TextTheme textTheme() {
+  return TextTheme(
+    headline1: GoogleFonts.cormorantGaramond(
+        fontSize: 111, fontWeight: FontWeight.w300, letterSpacing: -1.5),
+    headline2: GoogleFonts.cormorantGaramond(
+        fontSize: 69, fontWeight: FontWeight.w300, letterSpacing: -0.5),
+    headline3: GoogleFonts.cormorantGaramond(
+        fontSize: 55, fontWeight: FontWeight.w400),
+    headline4: GoogleFonts.cormorantGaramond(
+        fontSize: 39, fontWeight: FontWeight.w400, letterSpacing: 0.25),
+    headline5: GoogleFonts.cormorantGaramond(
+        fontSize: 28, fontWeight: FontWeight.w400),
+    headline6: GoogleFonts.cormorantGaramond(
+        fontSize: 23, fontWeight: FontWeight.w500, letterSpacing: 0.15),
+    subtitle1: GoogleFonts.cormorantGaramond(
+        fontSize: 18, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+    subtitle2: GoogleFonts.cormorantGaramond(
+        fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: 0.1),
+    bodyText1: GoogleFonts.beVietnam(
+        fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.5),
+    bodyText2: GoogleFonts.beVietnam(
+        fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.25),
+    button: GoogleFonts.beVietnam(
+        fontSize: 12, fontWeight: FontWeight.w500, letterSpacing: 1.25),
+    caption: GoogleFonts.beVietnam(
+        fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 0.4),
+    overline: GoogleFonts.beVietnam(
+        fontSize: 8, fontWeight: FontWeight.w400, letterSpacing: 1.5),
+  );
+}

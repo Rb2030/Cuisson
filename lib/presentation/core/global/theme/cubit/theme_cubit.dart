@@ -15,6 +15,6 @@ class ThemeCubit extends Cubit<ThemeState> {
     final newTheme = themeChanged == false
         ? appThemeData.values.first
         : appThemeData.values.last;
-    emit(ThemeState(themeData: newTheme, themeChanged: themeChanged));
+    emit(ThemeState(themeData: newTheme));
   }
 }

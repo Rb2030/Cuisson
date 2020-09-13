@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 enum AppTheme { light, dark }
 
 final appThemeData = {
-  
+
   // Light Mode
   AppTheme.light: ThemeData(
       brightness: Brightness.light,
@@ -13,6 +13,7 @@ final appThemeData = {
       backgroundColor: Colors.white,
       canvasColor: Colors.white,
       cursorColor: Colors.black,
+      buttonColor: Colors.black,
       textSelectionHandleColor: Colors.black,
       textTheme: textTheme().apply(displayColor: Colors.black, bodyColor: Colors.black)),
 
@@ -24,6 +25,7 @@ final appThemeData = {
       backgroundColor: Colors.black,
       canvasColor: Colors.black,
       cursorColor: Colors.white,
+      buttonColor: Colors.white,
       textSelectionHandleColor: Colors.white,
       textTheme: textTheme().apply(displayColor: Colors.white, bodyColor: Colors.white))
 };

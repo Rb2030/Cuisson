@@ -11,14 +11,13 @@ class TrialButton extends StatelessWidget {
         width: 100,
         height: 50,
         child: RaisedButton(
-          color: Colors.yellow,
           textColor: Colors.white,
           onPressed: () {
             debugPrint("button pressed");
             final themeCubit = context.bloc<ThemeCubit>();
             themeCubit.changeTheme();
           },
-          child: const Text('PRESS'),
+          child: Text('PRESS', style: Theme.of(context).textTheme.headline1),
         ),
       ),
     );

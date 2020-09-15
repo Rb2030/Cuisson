@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class TrialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: BlocProvider.of<ThemeCubit>(context),
+    return CubitProvider.value(
+      value: CubitProvider.of<ThemeCubit>(context),
       child: Container(
         width: 100,
         height: 50,

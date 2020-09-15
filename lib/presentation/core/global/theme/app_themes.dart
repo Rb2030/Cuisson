@@ -14,6 +14,7 @@ final appThemeData = {
       canvasColor: Colors.white,
       cursorColor: Colors.black,
       buttonColor: Colors.black,
+      iconTheme: const IconThemeData(color: Colors.black),
       textSelectionHandleColor: Colors.black,
       textTheme: textTheme().apply(displayColor: Colors.black, bodyColor: Colors.black)),
 
@@ -26,6 +27,7 @@ final appThemeData = {
       canvasColor: Colors.black,
       cursorColor: Colors.white,
       buttonColor: Colors.white,
+      iconTheme: const IconThemeData(color: Colors.white),
       textSelectionHandleColor: Colors.white,
       textTheme: textTheme().apply(displayColor: Colors.white, bodyColor: Colors.white))
 };

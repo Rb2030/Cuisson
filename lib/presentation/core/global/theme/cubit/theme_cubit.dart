@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:cubit/cubit.dart';
 import 'package:flutter/material.dart';
 
 import '../app_themes.dart';

@@ -1,12 +1,12 @@
-import 'package:Cuisson/presentation/core/global/helpers/shared_preferences/shared_preferences_helper.dart';
-import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
-import 'package:Cuisson/presentation/core/global/theme/cubit/theme_bloc.dart';
-import 'package:Cuisson/presentation/core/global/theme/cubit/theme_event.dart';
-import 'package:Cuisson/presentation/core/global/constants/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import '../constants/constants.dart';
+import '../helpers/shared_preferences/shared_preferences_helper.dart';
+import '../theme/app_themes.dart';
+import '../theme/bloc/theme_bloc.dart';
+import '../theme/bloc/theme_event.dart';
 
 class TrialButton extends StatefulWidget {
   @override
@@ -23,12 +23,11 @@ class _TrialButtonState extends State<TrialButton> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeBloc, ThemeState>(builder: (context, state) {
-      final bool _isSwitched = state is ThemeStateChangedDark;
-      return FutureBuilder<String>(
+    return FutureBuilder<String>(
           future: getAppThemeFromSharedPreferences(Constants.appTheme),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             appTheme = snapshot.data == Constants.appThemeDark;
+            final bool _isSwitched = BlocProvider.of<ThemeBloc>(context).state is ThemeStateChangedDark;
             return CupertinoSwitch(
               value: _isSwitched ||
                   appTheme, // This is the same as if appTheme is not null or light then value is true (switch is on) else false (it's off)
@@ -44,6 +43,5 @@ class _TrialButtonState extends State<TrialButton> {
               },
             );
           });
-    });
   }
 }

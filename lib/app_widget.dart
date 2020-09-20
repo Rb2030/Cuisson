@@ -1,14 +1,12 @@
-import 'package:Cuisson/presentation/core/global/helpers/shared_preferences/shared_preferences_helper.dart';
-import 'package:Cuisson/presentation/core/global/widgets/cuisson_app_bar.dart';
-import 'package:Cuisson/presentation/core/global/widgets/trial_button.dart';
+import 'package:Cuisson/presentation/core/global/constants/constants.dart';
+import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
+import 'package:Cuisson/presentation/core/global/theme/bloc/theme_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/services.dart';
-import 'package:Cuisson/presentation/core/global/constants/constants.dart';
 
-import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
-import 'package:Cuisson/presentation/core/global/theme/cubit/theme_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'presentation/core/global/helpers/shared_preferences/shared_preferences_helper.dart';
+import 'presentation/core/global/widgets/cuisson_app_bar.dart';
+import 'presentation/core/global/widgets/trial_button.dart';
 
 class AppWidget extends StatefulWidget {
   @override

@@ -1,12 +1,13 @@
-import 'package:Cuisson/presentation/core/global/constants/constants.dart';
-import 'package:Cuisson/presentation/core/global/helpers/platform_helper.dart';
-import 'package:Cuisson/presentation/core/global/helpers/shared_preferences/shared_preferences_helper.dart';
-import 'package:Cuisson/presentation/core/global/theme/cubit/theme_bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:Cuisson/presentation/core/global/helpers/ui_helpers.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../constants/constants.dart';
+import '../helpers/platform_helper.dart';
+import '../helpers/shared_preferences/shared_preferences_helper.dart';
+import '../theme/bloc/theme_bloc.dart';
 
 class CuissonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool

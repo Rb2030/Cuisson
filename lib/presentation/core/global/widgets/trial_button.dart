@@ -33,7 +33,6 @@ class _TrialButtonState extends State<TrialButton> {
               value: _isSwitched ||
                   appTheme, // This is the same as if appTheme is not null or light then value is true (switch is on) else false (it's off)
               onChanged: (bool value) {
-                debugPrint("button pressed");
                 final newAppTheme = value ? AppTheme.dark : AppTheme.light;
                 BlocProvider.of<ThemeBloc>(context)
                     .add(ThemeEventChanged(newTheme: newAppTheme));

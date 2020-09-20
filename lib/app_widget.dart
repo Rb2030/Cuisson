@@ -28,21 +28,12 @@ class _AppWidgetState extends State<AppWidget> {
     return BlocProvider<ThemeBloc>(
       create: (context) => ThemeBloc(),
       child: BlocBuilder<ThemeBloc, ThemeState>(builder: (context, state) {
-        final colour =
-            state is ThemeStateChangedLight || state is ThemeStateInitial
-                ? Colors.black
-                : Colors.white;
-        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-          systemNavigationBarColor: colour, // navigation bar color
-          statusBarColor: colour, // status bar color
-        ));
         return FutureBuilder<String>(
             future: getAppThemeFromSharedPreferences(Constants.appTheme),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               appTheme = snapshot.data == Constants.appThemeDark
                   ? appThemeData.values.last
                   : appThemeData.values.first;
-              debugPrint('wooooooooooo $snapshot.data');
               return MaterialApp(
                 title: 'Material App',
                 theme: state is ThemeStateChangedLight
@@ -50,7 +41,7 @@ class _AppWidgetState extends State<AppWidget> {
                     : appTheme, // This is the same as -- if (state.themeData == null) state.themeData = appThemeData.values.first;
                 //     home: SignInPage(),
                 home: Scaffold(
-                  appBar: AppBar(),
+                  appBar: const CuissonAppBar(mainMenuDisplayed: true),
                   body: TrialButton(),
                 ),
               );

@@ -8,7 +8,7 @@ import '../theme/app_themes.dart';
 import '../theme/bloc/theme_bloc.dart';
 import '../theme/bloc/theme_event.dart';
 
-class TrialButton extends StatefulWidget {
+class TrialButton extends StatefulWidget { // could be stateless
   @override
   _TrialButtonState createState() => _TrialButtonState();
 }
@@ -29,8 +29,7 @@ class _TrialButtonState extends State<TrialButton> {
             appTheme = snapshot.data == Constants.appThemeDark;
             final bool _isSwitched = BlocProvider.of<ThemeBloc>(context).state is ThemeStateChangedDark;
             return CupertinoSwitch(
-              value: _isSwitched ||
-                  appTheme, // This is the same as if appTheme is not null or light then value is true (switch is on) else false (it's off)
+              value: _isSwitched || appTheme,
               onChanged: (bool value) {
                 final newAppTheme = value ? AppTheme.dark : AppTheme.light;
                 BlocProvider.of<ThemeBloc>(context)

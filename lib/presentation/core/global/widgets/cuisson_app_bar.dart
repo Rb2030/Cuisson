@@ -32,10 +32,10 @@ class CuissonAppBar extends StatelessWidget implements PreferredSizeWidget {
     final TargetPlatform platform = PlatformHelper.platformType(context);
     final Widget backButtonOrSpacer = (platform == TargetPlatform.android)
         ? UIHelper.horizontalSpace(UIHelper.iconSize)
-        : const Icon(CupertinoIcons.back, size: UIHelper.iconSize);
+        : const Icon(CupertinoIcons.back, size: UIHelper.iconSize); //These icons will have to be wrapped in Gesture recognisers to navigate to their respective routes
 
     final Widget showSettingsCog = mainMenuDisplayed == true
-        ? const Icon(Icons.settings_outlined, size: UIHelper.iconSize)
+        ? const Icon(Icons.settings_outlined, size: UIHelper.iconSize) //These icons will have to be wrapped in Gesture recognisers to navigate to their respective routes
         : backButtonOrSpacer;
 
     return BlocBuilder<ThemeBloc, ThemeState>(builder: (context, state) {
@@ -49,10 +49,6 @@ class CuissonAppBar extends StatelessWidget implements PreferredSizeWidget {
                       appTheme
                   ? Brightness.light
                   : Brightness.dark;
-          // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-          //   systemNavigationBarColor: colour, // navigation bar color
-          //   statusBarColor: colour,
-          // ));
           return AnnotatedRegion<SystemUiOverlayStyle>(
             value: SystemUiOverlayStyle(
               //statusBarColor: colour,
@@ -70,10 +66,10 @@ class CuissonAppBar extends StatelessWidget implements PreferredSizeWidget {
                       showSettingsCog,
                       const Spacer(),
                       const Icon(Icons.shopping_cart_outlined,
-                          size: UIHelper.iconSize),
+                          size: UIHelper.iconSize),  //These icons will have to be wrapped in Gesture recognisers to navigate to their respective routes
                       UIHelper.horizontalSpace(UIHelper.horizontalSpaceTiny),
                       const Icon(Icons.person_outlined,
-                          size: UIHelper.iconSize),
+                          size: UIHelper.iconSize),  //These icons will have to be wrapped in Gesture recognisers to navigate to their respective routes
                     ],
                   ),
                 ],

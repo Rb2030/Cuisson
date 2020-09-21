@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'presentation/core/global/helpers/shared_preferences/shared_preferences_helper.dart';
 import 'presentation/core/global/widgets/cuisson_app_bar.dart';
-import 'presentation/core/global/widgets/trial_button.dart';
+import 'presentation/core/global/widgets/theme_switch.dart';
 
 class AppWidget extends StatefulWidget {
   @override

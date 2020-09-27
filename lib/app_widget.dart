@@ -1,10 +1,10 @@
+import 'package:Cuisson/application/core/global/shared_preferences/shared_preferences_helper.dart';
 import 'package:Cuisson/presentation/core/global/constants/constants.dart';
 import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 import 'package:Cuisson/presentation/core/global/theme/bloc/theme_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'presentation/core/global/helpers/shared_preferences/shared_preferences_helper.dart';
 import 'presentation/core/global/widgets/cuisson_app_bar.dart';
 import 'presentation/core/global/widgets/theme_switch.dart';
 
@@ -23,7 +23,7 @@ class _AppWidgetState extends State<AppWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ThemeBloc>(
+    return BlocProvider<ThemeBloc>(  // Should probably use a blocProvider with getIt in here
       create: (context) => ThemeBloc(),
       child: BlocBuilder<ThemeBloc, ThemeState>(builder: (context, state) {
         return FutureBuilder<String>(

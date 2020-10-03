@@ -1,4 +1,5 @@
 import 'package:Cuisson/application/core/global/shared_preferences/shared_preferences_helper.dart';
+import 'package:Cuisson/presentation/auth/pages/sign_in_page.dart';
 import 'package:Cuisson/presentation/core/global/constants/constants.dart';
 import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 import 'package:Cuisson/presentation/core/global/theme/bloc/theme_bloc.dart';
@@ -36,12 +37,8 @@ class _AppWidgetState extends State<AppWidget> {
                 title: 'Material App',
                 theme: state is ThemeStateChangedLight
                     ? appThemeData.values.first
-                    : appTheme, // This is the same as -- if (state.themeData == null) state.themeData = appThemeData.values.first;
-                //     home: SignInPage(),
-                home: Scaffold(
-                  appBar: const CuissonAppBar(mainMenuDisplayed: true),
-                  body: TrialButton(),
-                ),
+                    : appTheme,
+                home: SignInPage(),
               );
             });
       }),

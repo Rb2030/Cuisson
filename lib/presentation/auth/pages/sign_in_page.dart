@@ -3,7 +3,7 @@ import 'package:Cuisson/presentation/auth/widgets/sign_in_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../injection/injection.dart';
+import '../../../injection.dart';
 
 class SignInPage extends StatelessWidget {
   @override

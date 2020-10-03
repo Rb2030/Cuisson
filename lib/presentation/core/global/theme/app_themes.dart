@@ -1,10 +1,10 @@
+import 'package:Cuisson/presentation/core/global/helpers/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 enum AppTheme { light, dark }
 
 final appThemeData = {
-
   // Light Mode
   AppTheme.light: ThemeData(
       brightness: Brightness.light,
@@ -14,9 +14,32 @@ final appThemeData = {
       canvasColor: Colors.white,
       cursorColor: Colors.black,
       buttonColor: Colors.black,
+      buttonTheme: ButtonThemeData(
+          padding: const EdgeInsets.all(UIHelper.buttonPadding),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(UIHelper.buttonCornerRadius),
+              side: const BorderSide(color: Colors.black)),
+          minWidth: UIHelper.buttonMinWidth,
+          height: UIHelper.buttonMinHeight,
+          buttonColor: Colors.black,
+          disabledColor: Colors.grey),
       iconTheme: const IconThemeData(color: Colors.black),
+      inputDecorationTheme: InputDecorationTheme(
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: UIHelper.textFieldPadding),
+          focusedBorder: OutlineInputBorder(
+              borderRadius:
+                  BorderRadius.circular(UIHelper.textFieldBorderRadius),
+              borderSide: const BorderSide(
+                  color: Colors.black,
+                  width: UIHelper.textFieldBorderWidthFocused)),
+          enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: Colors.black,
+                  width: UIHelper.textFieldBorderWidthEnabled))),
       textSelectionHandleColor: Colors.black,
-      textTheme: textTheme().apply(displayColor: Colors.black, bodyColor: Colors.black)),
+      textTheme: textTheme(buttonTextColor: Colors.black)
+          .apply(displayColor: Colors.black, bodyColor: Colors.black)),
 
   // Dark Mode
   AppTheme.dark: ThemeData(
@@ -27,12 +50,35 @@ final appThemeData = {
       canvasColor: Colors.black,
       cursorColor: Colors.white,
       buttonColor: Colors.white,
+      buttonTheme: ButtonThemeData(
+          padding: const EdgeInsets.all(UIHelper.buttonPadding),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(UIHelper.buttonCornerRadius),
+              side: const BorderSide(color: Colors.white)),
+          minWidth: UIHelper.buttonMinWidth,
+          height: UIHelper.buttonMinHeight,
+          buttonColor: Colors.white,
+          disabledColor: Colors.grey),
       iconTheme: const IconThemeData(color: Colors.white),
+      inputDecorationTheme: InputDecorationTheme(
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: UIHelper.textFieldPadding),
+          focusedBorder: OutlineInputBorder(
+              borderRadius:
+                  BorderRadius.circular(UIHelper.textFieldBorderRadius),
+              borderSide: const BorderSide(
+                  color: Colors.white,
+                  width: UIHelper.textFieldBorderWidthFocused)),
+          enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: Colors.white,
+                  width: UIHelper.textFieldBorderWidthEnabled))),
       textSelectionHandleColor: Colors.white,
-      textTheme: textTheme().apply(displayColor: Colors.white, bodyColor: Colors.white))
+      textTheme: textTheme(buttonTextColor: Colors.white)
+          .apply(displayColor: Colors.white, bodyColor: Colors.white))
 };
 
-TextTheme textTheme() {
+TextTheme textTheme({Color buttonTextColor}) {
   return TextTheme(
     headline1: GoogleFonts.cormorantGaramond(
         fontSize: 111, fontWeight: FontWeight.w300, letterSpacing: -1.5),
@@ -55,7 +101,10 @@ TextTheme textTheme() {
     bodyText2: GoogleFonts.beVietnam(
         fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.25),
     button: GoogleFonts.beVietnam(
-        fontSize: 12, fontWeight: FontWeight.w500, letterSpacing: 1.25),
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 1.25,
+        color: buttonTextColor),
     caption: GoogleFonts.beVietnam(
         fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 0.4),
     overline: GoogleFonts.beVietnam(

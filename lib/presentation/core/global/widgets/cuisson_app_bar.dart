@@ -5,13 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../constants/constants.dart';
 import '../../../../application/core/global/helpers/platform_helper.dart';
+import '../constants/constants.dart';
 import '../theme/bloc/theme_bloc.dart';
 
 class CuissonAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final bool
-      mainMenuDisplayed; // If MainMenuDisplayed is set to true then SettingsCog, Basket & Profile are shown, else just the SettingsCog is shown
+  final bool mainMenuDisplayed; // If MainMenuDisplayed is set to true then SettingsCog, Basket & Profile are shown, else just the SettingsCog is shown
   final Function settingsCogTapped;
   final Function backButtonTapped;
   final Function basketTapped;
@@ -31,7 +30,7 @@ class CuissonAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final TargetPlatform platform = PlatformHelper.platformType(context);
     final Widget backButtonOrSpacer = (platform == TargetPlatform.android)
-        ? UIHelper.horizontalSpace(UIHelper.iconSize)
+        ? const SizedBox(width: UIHelper.iconSize)
         : const Icon(CupertinoIcons.back, size: UIHelper.iconSize); //These icons will have to be wrapped in Gesture recognisers to navigate to their respective routes
 
     final Widget showSettingsCog = mainMenuDisplayed == true
@@ -58,7 +57,7 @@ class CuissonAppBar extends StatelessWidget implements PreferredSizeWidget {
               minimum: const EdgeInsets.all(UIHelper.safeAreaPadding),
               child: Column(
                 children: <Widget>[
-                  UIHelper.verticalSmallSpace(),
+                  const SizedBox(height: UIHelper.spaceSmall),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     // ignore: prefer_const_literals_to_create_immutables
@@ -67,7 +66,7 @@ class CuissonAppBar extends StatelessWidget implements PreferredSizeWidget {
                       const Spacer(),
                       const Icon(Icons.shopping_cart_outlined,
                           size: UIHelper.iconSize),  //These icons will have to be wrapped in Gesture recognisers to navigate to their respective routes
-                      UIHelper.horizontalSpace(UIHelper.horizontalSpaceTiny),
+                    const SizedBox(width: UIHelper.spaceTiny),
                       const Icon(Icons.person_outlined,
                           size: UIHelper.iconSize),  //These icons will have to be wrapped in Gesture recognisers to navigate to their respective routes
                     ],

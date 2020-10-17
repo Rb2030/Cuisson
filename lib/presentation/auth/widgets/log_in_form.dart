@@ -17,15 +17,40 @@ class _LogInFormState extends State<LogInForm> {
   Widget build(BuildContext context) {
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
-
+        state.authFailureOrSuccessOption.fold(
+          () {},
+          (either) => either.fold((failure) {
+            return AlertDialog(
+              title: Text(failure.map(
+                cancelledByUser: (_) => Constants.cancelledByUser, 
+                serverError: (_) => Constants.serverError, 
+                emailAlreadyInUse: (_) => Constants.emailAlreadyInUse, 
+                invalidEmailAndPasswordCombination: (_) => Constants.invalidUsernameAndPasswordCombo
+              ),
+            ),
+            content: const Text(Constants.dialogueMessage),
+            actions: <Widget >[
+              RaisedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text(Constants.ok),              
+              )
+            ],
+            );
+          }, 
+          (success) => {
+            // Navigate to main menu after successful log in
+          }),
+        );
       },
       builder: (context, state) {
         return Align(
-          child: Container(
+          child: SizedBox(
             width: UIHelper.screenWidth(context) / 1.7,
             child: Form(
        //       autovalidate: state.showErrorMessages, // Deprecated
-              autovalidateMode: AutovalidateMode.always,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
                   return ListView(
@@ -59,7 +84,7 @@ class _LogInFormState extends State<LogInForm> {
                           obscureText: true,
                           decoration: const InputDecoration()
                               .copyWith(hintText: Constants.password),
-                          onChanged: (value) => context.bloc<SignInFormBloc>().add(SignInFormEvent.emailChanged(value)),
+                          onChanged: (value) => context.bloc<SignInFormBloc>().add(SignInFormEvent.passwordChanged(value)),
                           validator: (_) => context.bloc<SignInFormBloc>().state.password.value.fold(
                                               (leftFailure) => leftFailure.maybeMap(invalidPassword: (_) => Constants.invalidPassword,
                                                 orElse: () => null),

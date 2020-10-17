@@ -1,5 +1,6 @@
 import 'package:Cuisson/application/core/global/shared_preferences/shared_preferences_helper.dart';
 import 'package:Cuisson/presentation/core/global/helpers/ui_helpers.dart';
+import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,12 +40,12 @@ class CuissonAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return BlocBuilder<ThemeBloc, ThemeState>(builder: (context, state) {
       bool appTheme;
-      return FutureBuilder<String>(
+      return FutureBuilder<AppTheme>(
         future: getAppThemeFromSharedPreferences(Constants.appTheme),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           appTheme = snapshot.data == Constants.appThemeLight;
           final Brightness level =
-              (state is ThemeStateChangedLight || state is ThemeStateInitial) &&
+              (state.appTheme == AppTheme.light) &&
                       appTheme
                   ? Brightness.light
                   : Brightness.dark;

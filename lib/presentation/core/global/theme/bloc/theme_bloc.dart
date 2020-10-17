@@ -1,31 +1,30 @@
-import 'theme_event.dart';
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+
+import 'package:Cuisson/application/core/global/shared_preferences/shared_preferences_helper.dart';
+import 'package:Cuisson/presentation/core/global/constants/constants.dart';
+
 import '../app_themes.dart';
 
+part 'theme_event.dart';
+part 'theme_bloc.freezed.dart';
 part 'theme_state.dart';
 
+@injectable
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  ThemeBloc() : super(const ThemeStateInitial(themeData: AppTheme.light));
+  ThemeBloc() : super(ThemeState.initial());
+
+  ThemeState get intialState => ThemeState.initial();
 
   @override
-  Stream<ThemeState> mapEventToState(ThemeEvent event) async* {
-    try {
-      if (event is ThemeEventChanged) {
-        yield* _themeChanged(event);
-      }
-    } catch (_) {
-      yield const ThemeStateChangeError(
-          errorMessage: 'Sorry you cannot change your theme at this time.');
-    }
-  }
-
-  Stream<ThemeState> _themeChanged(ThemeEventChanged eventChanged) async* {
-    if (eventChanged.newTheme == AppTheme.dark) {
-      yield ThemeStateChangedDark(themeData: eventChanged.newTheme);
-    } else {
-      yield ThemeStateChangedLight(themeData: eventChanged.newTheme);
-    }
+  Stream<ThemeState> mapEventToState(
+    ThemeEvent event,
+  ) async* {
+    yield* event.map(themeChanged: (e) async* {
+      yield state.copyWith(appTheme: e.appTheme);
+      debugPrint('App theme changed $e');
+    });
   }
 }

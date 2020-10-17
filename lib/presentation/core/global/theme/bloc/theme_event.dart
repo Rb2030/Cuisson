@@ -1,29 +1,6 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+part of 'theme_bloc.dart';
 
-import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
-
-@immutable
-abstract class ThemeEvent extends Equatable {
-  const ThemeEvent();
-
-}
-
-class ThemeEventChanged extends ThemeEvent {
-  final AppTheme newTheme;
-  const ThemeEventChanged({@required this.newTheme}) : assert(newTheme !=null);
-
-  @override
-  List<Object> get props => [newTheme];
-
-  @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
-  
-    return o is ThemeEventChanged &&
-      o.newTheme == newTheme;
-  }
-
-  @override
-  int get hashCode => newTheme.hashCode;
+@freezed
+abstract class ThemeEvent with _$ThemeEvent {
+  const factory ThemeEvent.themeChanged(AppTheme appTheme) = ThemeChanged;
 }

@@ -10,9 +10,11 @@ class Constants extends InheritedWidget {
   /// Shared Preferences / User Defaults Constants
   /// ----------------------------------------------------------
 
-// General App Titles etc
+// General
 
   static const String cuisson = 'CUISSON';
+  static const String serverError = 'Server error';
+  static const String ok = 'OK';
 
 // Login Screen
 
@@ -23,6 +25,11 @@ class Constants extends InheritedWidget {
   static const String forgottenLoginDetails = 'Forgotten login details?';
   static const String invalidEmail = 'Invalid email';
   static const String invalidPassword = 'Invalid password';
+  static const String cancelledByUser = 'Cancelled by user';
+  static const String emailAlreadyInUse = 'Email already in use';
+  static const String invalidUsernameAndPasswordCombo =
+      'Invalid username and password combination';
+  static const String dialogueMessage = 'Please try again';
 
 // AppTheme Keys
 

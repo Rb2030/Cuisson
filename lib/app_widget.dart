@@ -26,38 +26,24 @@ class _AppWidgetState extends State<AppWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Firebase.initializeApp(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Center(child: Text('ERROR WTH FIREBASE AUTHORIZATION'));
-        }
-        if (snapshot.connectionState == ConnectionState.done) {
-          return BlocBuilder<ThemeBloc, ThemeState>(
-            builder: (context, state) {
-              return FutureBuilder<String>(
-                  future: getAppThemeFromSharedPreferences(Constants.appTheme),
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    appTheme = snapshot.data == Constants.appThemeDark
-                        ? appThemeData.values.last
-                        : appThemeData.values.first;
-                    return keyboardDismisser(
-                      context: context,
-                      child: MaterialApp(
-                        title: 'Material App',
-                        theme: state is ThemeStateChangedLight
-                            ? appThemeData.values.first
-                            : appTheme,
-                        home: LogInPage(),
-                      ),
-                    );
-                  }
-              );
-            }
-          );
-        }
-        return Container(color: Colors.red, child: const Text('THIS NEEDS TO BE A LOADING SPINNER'));
-      },
-    );
+    return BlocConsumer<ThemeBloc, ThemeState>(listener: (context, state) {
+      debugPrint('WOOOOOOOO APPTHEME CHANGED $state');
+    }, builder: (context, state) {
+      return FutureBuilder<AppTheme>(
+          future: getAppThemeFromSharedPreferences(Constants.appTheme),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            appTheme = snapshot.data == Constants.appThemeDark
+                ? appThemeData.values.last
+                : appThemeData.values.first;
+            return keyboardDismisser(
+              context: context,
+              child: MaterialApp(
+                title: 'Material App',
+                theme: appTheme,
+                home: LogInPage(),// TrialButton(),
+              ),
+            );
+          });
+    });
   }
 }

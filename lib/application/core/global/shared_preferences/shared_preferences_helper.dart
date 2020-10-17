@@ -1,26 +1,32 @@
 import 'dart:async';
+import 'package:Cuisson/presentation/core/global/constants/constants.dart';
+import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-  /// ----------------------------------------------------------
-  /// Method that retrieves the user language code
-  /// ----------------------------------------------------------
+/// ----------------------------------------------------------
+/// Method that retrieves the user language code
+/// ----------------------------------------------------------
 
-Future<String> getAppThemeFromSharedPreferences(String key) async {
+Future<AppTheme> getAppThemeFromSharedPreferences(String key) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final theme = prefs.getString(key) ?? '';
 
-    return prefs.getString(key) ?? '';
+  if (theme == Constants.appThemeLight || theme == '') {
+    return AppTheme.light;
+  } else {
+    return AppTheme.dark;
   }
+}
 
-  /// ----------------------------------------------------------
-  /// Method that saves the user language code
-  /// ----------------------------------------------------------
-  Future<bool> setAppThemeToSharedPreferences(String key, String value) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+/// ----------------------------------------------------------
+/// Method that saves the user language code
+/// ----------------------------------------------------------
+Future<bool> setAppThemeToSharedPreferences(String key, String value) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    return prefs.setString(key, value);
-  }
-
+  return prefs.setString(key, value);
+}
 
 // class StorageUtil {
 //   static StorageUtil _storageUtil;

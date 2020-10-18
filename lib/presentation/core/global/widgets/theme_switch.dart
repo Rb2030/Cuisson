@@ -1,3 +1,4 @@
+import 'package:Cuisson/application/core/global/constants/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Cuisson/application/core/global/shared_preferences/shared_preferences_helper.dart';
 import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 
-import '../constants/constants.dart';
 import '../theme/app_themes.dart';
 import '../theme/bloc/theme_bloc.dart';
 

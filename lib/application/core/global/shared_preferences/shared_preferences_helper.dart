@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:Cuisson/presentation/core/global/constants/constants.dart';
+import 'package:Cuisson/application/core/global/constants/constants.dart';
 import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

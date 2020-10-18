@@ -2,7 +2,7 @@ import 'package:Cuisson/domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
 
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
-  const pattern = '@';
+  const pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   final RegExp regExp = RegExp(pattern);
 
   if (input.length >= 6 && regExp.hasMatch(input)) {

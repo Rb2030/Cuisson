@@ -25,6 +25,7 @@ final appThemeData = {
           disabledColor: Colors.grey),
       iconTheme: const IconThemeData(color: Colors.black),
       inputDecorationTheme: InputDecorationTheme(
+        errorStyle: TextStyle(color: Colors.black),
           contentPadding:
               const EdgeInsets.symmetric(vertical: UIHelper.textFieldPadding, horizontal: UIHelper.textFieldPadding),
           focusedBorder: OutlineInputBorder(

@@ -25,9 +25,10 @@ final appThemeData = {
           disabledColor: Colors.grey),
       iconTheme: const IconThemeData(color: Colors.black),
       inputDecorationTheme: InputDecorationTheme(
-        errorStyle: TextStyle(color: Colors.black),
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: UIHelper.textFieldPadding, horizontal: UIHelper.textFieldPadding),
+          errorStyle: const TextStyle(color: Colors.black),
+          contentPadding: const EdgeInsets.symmetric(
+              vertical: UIHelper.textFieldPadding,
+              horizontal: UIHelper.textFieldPadding),
           focusedBorder: OutlineInputBorder(
               borderRadius:
                   BorderRadius.circular(UIHelper.textFieldBorderRadius),
@@ -62,8 +63,10 @@ final appThemeData = {
           disabledColor: Colors.grey),
       iconTheme: const IconThemeData(color: Colors.white),
       inputDecorationTheme: InputDecorationTheme(
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: UIHelper.textFieldPadding, horizontal: UIHelper.textFieldPadding),
+          errorStyle: const TextStyle(color: Colors.white),
+          contentPadding: const EdgeInsets.symmetric(
+              vertical: UIHelper.textFieldPadding,
+              horizontal: UIHelper.textFieldPadding),
           focusedBorder: OutlineInputBorder(
               borderRadius:
                   BorderRadius.circular(UIHelper.textFieldBorderRadius),
@@ -87,24 +90,28 @@ TextTheme textTheme() {
         fontSize: 69, fontWeight: FontWeight.w300, letterSpacing: -0.5),
     headline3: GoogleFonts.cormorantGaramond(
         fontSize: 55, fontWeight: FontWeight.w400),
-    headline4: GoogleFonts.cormorantGaramond( // Used for the Cuisson title
-        fontSize: 39, fontWeight: FontWeight.w600, letterSpacing: 0.25),
+    headline4: GoogleFonts.cormorantGaramond(
+        // Used for the Cuisson title
+        fontSize: 39,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.25),
     headline5: GoogleFonts.cormorantGaramond(
         fontSize: 28, fontWeight: FontWeight.w400),
     headline6: GoogleFonts.cormorantGaramond(
         fontSize: 23, fontWeight: FontWeight.w500, letterSpacing: 0.15),
     subtitle1: GoogleFonts.beVietnam(
         fontSize: 18, fontWeight: FontWeight.w400, letterSpacing: 0.15),
-    subtitle2: GoogleFonts.beVietnam( // Used for inside textFields
-        fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: 0.1),
+    subtitle2: GoogleFonts.beVietnam(
+        // Used for inside textFields
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.1),
     bodyText1: GoogleFonts.beVietnam(
         fontSize: 18, fontWeight: FontWeight.w400, letterSpacing: 0.5),
     bodyText2: GoogleFonts.beVietnam(
         fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.1),
     button: GoogleFonts.beVietnam(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        letterSpacing: 1.25),
+        fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 1.25),
     caption: GoogleFonts.beVietnam(
         fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 0.4),
     overline: GoogleFonts.beVietnam(

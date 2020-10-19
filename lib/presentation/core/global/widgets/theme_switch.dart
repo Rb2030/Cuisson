@@ -17,7 +17,6 @@ class ThemeSwitch extends StatefulWidget {
 }
 
 class _ThemeSwitchState extends State<ThemeSwitch> {
-
   @override
   void initState() {
     super.initState();
@@ -31,12 +30,11 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
         if (value) {
           setAppThemeToSharedPreferences(
               Constants.appTheme, Constants.appThemeDark);
-          globals.darkModeEnabled = true;
         } else {
           setAppThemeToSharedPreferences(
               Constants.appTheme, Constants.appThemeLight);
-          globals.darkModeEnabled = false;
         }
+        globals.darkModeEnabled = value;
         final newAppTheme = globals.darkModeEnabled ? AppTheme.dark : AppTheme.light;
         context.bloc<ThemeBloc>().add(ThemeEvent.themeChanged(newAppTheme));
       },

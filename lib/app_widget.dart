@@ -39,7 +39,6 @@ class _AppWidgetState extends State<AppWidget> {
                 create: (context) => getIt<ThemeBloc>(),
                 child: BlocConsumer<ThemeBloc, ThemeState>(
                     listener: (context, state) {
-                  debugPrint('WOOOOOOOO APPTHEME CHANGED $state');
                 }, builder: (context, state) {
                   appTheme = state.appTheme == AppTheme.dark
                       ? appThemeData.values.last

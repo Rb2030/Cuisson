@@ -26,7 +26,6 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   ) async* {
     yield* event.map(themeChanged: (e) async* {
       yield state.copyWith(appTheme: e.appTheme);
-      debugPrint('App theme changed $e');
     });
   }
 }

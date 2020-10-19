@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:Cuisson/application/core/global/constants/constants.dart';
 import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:Cuisson/application/core/global/globals/globals.dart'
+    as globals;
 
 /// ----------------------------------------------------------
 /// Method that retrieves the user language code
@@ -13,8 +15,10 @@ Future<AppTheme> getAppThemeFromSharedPreferences(String key) async {
   final theme = prefs.getString(key) ?? '';
 
   if (theme == Constants.appThemeLight || theme == '') {
+ //   globals.darkModeEnabled = false;
     return AppTheme.light;
   } else {
+ //   globals.darkModeEnabled = true;
     return AppTheme.dark;
   }
 }
@@ -24,6 +28,7 @@ Future<AppTheme> getAppThemeFromSharedPreferences(String key) async {
 /// ----------------------------------------------------------
 Future<bool> setAppThemeToSharedPreferences(String key, String value) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  //value == Constants.appThemeLight ? globals.darkModeEnabled = false : globals.darkModeEnabled = true;
 
   return prefs.setString(key, value);
 }

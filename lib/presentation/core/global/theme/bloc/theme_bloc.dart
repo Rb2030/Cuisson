@@ -3,6 +3,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:Cuisson/application/core/global/globals/globals.dart'
+    as globals;
 
 import 'package:Cuisson/application/core/global/shared_preferences/shared_preferences_helper.dart';
 

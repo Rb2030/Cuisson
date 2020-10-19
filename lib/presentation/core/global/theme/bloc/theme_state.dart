@@ -1,10 +1,11 @@
 part of 'theme_bloc.dart';
 
 AppTheme getTheme() {
-  AppTheme sharedPrefTheme = AppTheme.light;
-  getAppThemeFromSharedPreferences(Constants.appTheme)
-      .then((value) => sharedPrefTheme = value);
-  return sharedPrefTheme;
+ if (globals.darkModeEnabled) {
+   return AppTheme.dark;
+ } else {
+   return AppTheme.light;
+ }
 }
 
 @freezed

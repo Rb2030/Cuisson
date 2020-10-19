@@ -5,18 +5,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:Cuisson/application/core/global/shared_preferences/shared_preferences_helper.dart';
 import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
+import 'package:Cuisson/application/core/global/globals/globals.dart'
+    as globals;
 
 import '../theme/app_themes.dart';
 import '../theme/bloc/theme_bloc.dart';
 
-class TrialButton extends StatefulWidget {
-  // could be stateless
+class ThemeSwitch extends StatefulWidget {
   @override
-  _TrialButtonState createState() => _TrialButtonState();
+  _ThemeSwitchState createState() => _ThemeSwitchState();
 }
 
-class _TrialButtonState extends State<TrialButton> {
-  bool appTheme;
+class _ThemeSwitchState extends State<ThemeSwitch> {
 
   @override
   void initState() {
@@ -25,27 +25,21 @@ class _TrialButtonState extends State<TrialButton> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<AppTheme>(
-        future: getAppThemeFromSharedPreferences(Constants.appTheme),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          appTheme = snapshot.data == Constants.appThemeDark;
-          final bool _isSwitched =
-              BlocProvider.of<ThemeBloc>(context).state.appTheme ==
-                  AppTheme.dark; // is ThemeStateChangedDark;
-          return CupertinoSwitch(
-            value: _isSwitched || appTheme,
-            onChanged: (bool value) {
-              final newAppTheme = value ? AppTheme.dark : AppTheme.light;
-              context
-                  .bloc<ThemeBloc>()
-                  .add(ThemeEvent.themeChanged(newAppTheme));
-              value
-                  ? setAppThemeToSharedPreferences(
-                      Constants.appTheme, Constants.appThemeDark)
-                  : setAppThemeToSharedPreferences(
-                      Constants.appTheme, Constants.appThemeLight);
-            },
-          );
-        });
+    return CupertinoSwitch(
+      value: globals.darkModeEnabled,
+      onChanged: (bool value) {
+        if (value) {
+          setAppThemeToSharedPreferences(
+              Constants.appTheme, Constants.appThemeDark);
+          globals.darkModeEnabled = true;
+        } else {
+          setAppThemeToSharedPreferences(
+              Constants.appTheme, Constants.appThemeLight);
+          globals.darkModeEnabled = false;
+        }
+        final newAppTheme = globals.darkModeEnabled ? AppTheme.dark : AppTheme.light;
+        context.bloc<ThemeBloc>().add(ThemeEvent.themeChanged(newAppTheme));
+      },
+    );
   }
 }

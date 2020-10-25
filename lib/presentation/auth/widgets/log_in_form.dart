@@ -151,11 +151,8 @@ class _LogInFormState extends State<LogInForm> {
                             child: Row(
                               children: [
                                 const Spacer(),
-                                Text(Constants.register,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText1
-                                        .copyWith(color: Colors.grey)),
+                                const Text(Constants.register,
+                                    ),
                                 const Spacer(),
                               ],
                             ),

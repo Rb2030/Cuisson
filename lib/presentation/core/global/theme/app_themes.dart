@@ -7,6 +7,7 @@ enum AppTheme { light, dark }
 final appThemeData = {
   // Light Mode
   AppTheme.light: ThemeData(
+      primaryColorLight: Colors.white,
       brightness: Brightness.light,
       primaryColor: Colors.white,
       accentColor: Colors.black,
@@ -22,6 +23,7 @@ final appThemeData = {
           minWidth: UIHelper.buttonMinWidth,
           height: UIHelper.buttonMinHeight,
           buttonColor: Colors.black,
+         // colorScheme: ColorScheme(secondary: Colors.black), /// -------------- Need to check this to see if the text on white buttons is black
           disabledColor: Colors.grey),
       iconTheme: const IconThemeData(color: Colors.black),
       inputDecorationTheme: InputDecorationTheme(
@@ -60,6 +62,9 @@ final appThemeData = {
           minWidth: UIHelper.buttonMinWidth,
           height: UIHelper.buttonMinHeight,
           buttonColor: Colors.white,
+          textTheme: ButtonTextTheme.accent,
+          // ignore: missing_required_param
+       //   colorScheme: ColorScheme(secondary: Colors.black), /// -------------- Need to check this to see if the text on white buttons is black
           disabledColor: Colors.grey),
       iconTheme: const IconThemeData(color: Colors.white),
       inputDecorationTheme: InputDecorationTheme(

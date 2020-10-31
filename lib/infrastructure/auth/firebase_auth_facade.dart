@@ -1,5 +1,6 @@
 import 'package:Cuisson/domain/auth/auth_failure.dart';
 import 'package:Cuisson/domain/auth/i_auth_facade.dart';
+import 'package:Cuisson/domain/auth/user.dart';
 import 'package:dartz/dartz.dart';
 import 'package:Cuisson/domain/auth/value_objects.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,9 +8,9 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+import './firebase_user_mapper.dart';
 
 @LazySingleton(as: IAuthFacade)
-
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
@@ -18,6 +19,10 @@ class FirebaseAuthFacade implements IAuthFacade {
     this._firebaseAuth,
     this._googleSignIn,
   );
+
+  @override
+  Future<Option<CurrentUser>> getSignedInUser() async =>
+      optionOf(_firebaseAuth.currentUser?.toDomain());
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -77,5 +82,11 @@ class FirebaseAuthFacade implements IAuthFacade {
     } on PlatformException catch (_) {
       return left(const AuthFailure.serverError());
     }
+  }
+
+  @override
+  Future<void> signOut() async {
+    await _firebaseAuth.signOut();
+    // here I would sign out of google too if I was using it
   }
 }

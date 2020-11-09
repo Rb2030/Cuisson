@@ -48,7 +48,7 @@ class _LogInFormState extends State<LogInForm> {
         );
       },
       builder: (context, state) {
-        globals.isUnfocused
+        globals.isUnfocused || bottomButtonEnabled == true
             ? bottomButtonEnabled = true
             : bottomButtonEnabled = false;
         return Scaffold(

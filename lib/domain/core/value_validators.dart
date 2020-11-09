@@ -8,7 +8,7 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   if (input.length >= 6 && regExp.hasMatch(input)) {
     return right(input);
   } else {
-    return left(ValueFailure.invalidEmail(failedValue: input));
+    return left(ValueFailure.auth(AuthValueFailure.invalidEmail(failedValue: input)));
   }
 }
 
@@ -20,6 +20,16 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
   if (input.length >= 6 && regExp.hasMatch(input)) {
     return right(input);
   } else {
-    return left(ValueFailure.invalidPassword(failedValue: input));
+    return left(ValueFailure.auth(AuthValueFailure.invalidPassword(failedValue: input)));
   }
 }
+
+// Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
+
+//   if (input.isNotEmpty) {
+//     return right(input);
+//   } else {
+//     return left(ValueFailure.auth(/*For a future ValueFailure type*/));
+//   }
+// }
+

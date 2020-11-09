@@ -92,9 +92,9 @@ class _LogInFormState extends State<LogInForm> {
                                 .value
                                 .fold(
                                   (leftFailure) => leftFailure.maybeMap(
-                                      invalidEmail: (_) =>
-                                          Constants.invalidEmail,
-                                      orElse: () => null),
+                                      auth:  (_) => Constants.invalidEmail,
+                                      orElse: () => null
+                                  ),
                                   (rightSuccess) => null,
                                 ),
                             onTap: () {
@@ -118,8 +118,7 @@ class _LogInFormState extends State<LogInForm> {
                                 .value
                                 .fold(
                                   (leftFailure) => leftFailure.maybeMap(
-                                      invalidPassword: (_) =>
-                                          Constants.invalidPassword,
+                                      auth: (_) => Constants.invalidPassword,
                                       orElse: () => null),
                                   (rightSuccess) => null,
                                 ),
@@ -157,7 +156,10 @@ class _LogInFormState extends State<LogInForm> {
                               ],
                             ),
                           ),
-                          //         SizedBox(height: constraints.maxHeight / bottomSpace),
+                          if (state.isSubmitting)...[
+                            const SizedBox(height: 8),
+                            const LinearProgressIndicator(),
+                          ]
                         ],
                       );
                     },

@@ -4,6 +4,7 @@ import 'package:Cuisson/presentation/core/global/helpers/ui_helpers.dart';
 import 'package:Cuisson/application/core/global/globals/globals.dart'
     as globals;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LogInForm extends StatefulWidget {
@@ -97,6 +98,7 @@ class _LogInFormState extends State<LogInForm> {
                                   ),
                                   (rightSuccess) => null,
                                 ),
+                                inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s\b|\b\s"))],
                             onTap: () {
                               bottomButtonEnabled = false;
                               globals.isUnfocused = false;
@@ -122,6 +124,7 @@ class _LogInFormState extends State<LogInForm> {
                                       orElse: () => null),
                                   (rightSuccess) => null,
                                 ),
+                            inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s\b|\b\s"))],
                             onTap: () {
                               bottomButtonEnabled = false;
                               globals.isUnfocused = false;

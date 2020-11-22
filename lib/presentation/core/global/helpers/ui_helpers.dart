@@ -20,7 +20,7 @@ class UIHelper {
   static const double textFieldBorderWidthEnabled = 1.2;
   static const double textFieldBorderWidthFocused = 4;
   static const double textFieldBorderRadius = 6;
-  static const double textFieldPadding = 10;
+  static const double textFieldPadding = 4;
   static const double textFieldHeight = 50;
 
   /// Button
@@ -33,20 +33,20 @@ class UIHelper {
   /// Screen Height
 
   static double screenHeightWithOutSafeArea(BuildContext context) {
-    var padding = MediaQuery.of(context).padding;
-    double height = MediaQuery.of(context).size.height;
+    final padding = MediaQuery.of(context).padding;
+    final height = MediaQuery.of(context).size.height;
     return height - padding.top - padding.bottom;
   }
 
   static double screenHeightWithOutStatusBar(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    var padding = MediaQuery.of(context).padding;
+    final height = MediaQuery.of(context).size.height;
+    final padding = MediaQuery.of(context).padding;
     return height - padding.top;
   }
 
   static double screenHeightWithOutStatusBarAndToolBar(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    var padding = MediaQuery.of(context).padding;
+    final height = MediaQuery.of(context).size.height;
+    final padding = MediaQuery.of(context).padding;
     return height - padding.top - kToolbarHeight;
   }
 

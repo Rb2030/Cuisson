@@ -36,7 +36,7 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
         }
         globals.darkModeEnabled = value;
         final newAppTheme = globals.darkModeEnabled ? AppTheme.dark : AppTheme.light;
-        context.bloc<ThemeBloc>().add(ThemeEvent.themeChanged(newAppTheme));
+        context.read<ThemeBloc>().add(ThemeEvent.themeChanged(newAppTheme));
       },
     );
   }

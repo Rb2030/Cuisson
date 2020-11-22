@@ -30,22 +30,22 @@ mixin _$ThemeEvent {
   AppTheme get appTheme;
 
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result themeChanged(AppTheme appTheme),
+  TResult when<TResult extends Object>({
+    @required TResult themeChanged(AppTheme appTheme),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result themeChanged(AppTheme appTheme),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult themeChanged(AppTheme appTheme),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result themeChanged(ThemeChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult themeChanged(ThemeChanged value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result themeChanged(ThemeChanged value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult themeChanged(ThemeChanged value),
+    @required TResult orElse(),
   });
 
   $ThemeEventCopyWith<ThemeEvent> get copyWith;
@@ -138,8 +138,8 @@ class _$ThemeChanged implements ThemeChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result themeChanged(AppTheme appTheme),
+  TResult when<TResult extends Object>({
+    @required TResult themeChanged(AppTheme appTheme),
   }) {
     assert(themeChanged != null);
     return themeChanged(appTheme);
@@ -147,9 +147,9 @@ class _$ThemeChanged implements ThemeChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result themeChanged(AppTheme appTheme),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult themeChanged(AppTheme appTheme),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (themeChanged != null) {
@@ -160,8 +160,8 @@ class _$ThemeChanged implements ThemeChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result themeChanged(ThemeChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult themeChanged(ThemeChanged value),
   }) {
     assert(themeChanged != null);
     return themeChanged(this);
@@ -169,9 +169,9 @@ class _$ThemeChanged implements ThemeChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result themeChanged(ThemeChanged value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult themeChanged(ThemeChanged value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (themeChanged != null) {

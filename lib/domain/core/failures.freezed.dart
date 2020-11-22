@@ -14,7 +14,7 @@ class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
 // ignore: unused_element
-  _Auth<T> auth<T>(AuthOrRegValueFailure<T> f, {String failedValue}) {
+  _Auth<T> authOrReg<T>(AuthOrRegValueFailure<T> f, {String failedValue}) {
     return _Auth<T>(
       f,
       failedValue: failedValue,
@@ -32,22 +32,22 @@ mixin _$ValueFailure<T> {
   String get failedValue;
 
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result auth(AuthOrRegValueFailure<T> f, String failedValue),
+  TResult when<TResult extends Object>({
+    @required TResult authOrReg(AuthOrRegValueFailure<T> f, String failedValue),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result auth(AuthOrRegValueFailure<T> f, String failedValue),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult authOrReg(AuthOrRegValueFailure<T> f, String failedValue),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result auth(_Auth<T> value),
+  TResult map<TResult extends Object>({
+    @required TResult authOrReg(_Auth<T> value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result auth(_Auth<T> value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult authOrReg(_Auth<T> value),
+    @required TResult orElse(),
   });
 
   $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith;
@@ -140,14 +140,14 @@ class _$_Auth<T> with DiagnosticableTreeMixin implements _Auth<T> {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ValueFailure<$T>.auth(f: $f, failedValue: $failedValue)';
+    return 'ValueFailure<$T>.authOrReg(f: $f, failedValue: $failedValue)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ValueFailure<$T>.auth'))
+      ..add(DiagnosticsProperty('type', 'ValueFailure<$T>.authOrReg'))
       ..add(DiagnosticsProperty('f', f))
       ..add(DiagnosticsProperty('failedValue', failedValue));
   }
@@ -175,44 +175,44 @@ class _$_Auth<T> with DiagnosticableTreeMixin implements _Auth<T> {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result auth(AuthOrRegValueFailure<T> f, String failedValue),
+  TResult when<TResult extends Object>({
+    @required TResult authOrReg(AuthOrRegValueFailure<T> f, String failedValue),
   }) {
-    assert(auth != null);
-    return auth(f, failedValue);
+    assert(authOrReg != null);
+    return authOrReg(f, failedValue);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result auth(AuthOrRegValueFailure<T> f, String failedValue),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult authOrReg(AuthOrRegValueFailure<T> f, String failedValue),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (auth != null) {
-      return auth(f, failedValue);
+    if (authOrReg != null) {
+      return authOrReg(f, failedValue);
     }
     return orElse();
   }
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result auth(_Auth<T> value),
+  TResult map<TResult extends Object>({
+    @required TResult authOrReg(_Auth<T> value),
   }) {
-    assert(auth != null);
-    return auth(this);
+    assert(authOrReg != null);
+    return authOrReg(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result auth(_Auth<T> value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult authOrReg(_Auth<T> value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (auth != null) {
-      return auth(this);
+    if (authOrReg != null) {
+      return authOrReg(this);
     }
     return orElse();
   }
@@ -242,6 +242,20 @@ class _$AuthOrRegValueFailureTearOff {
   }
 
 // ignore: unused_element
+  ExceedingLength<T> exceedingLength<T>({@required T failedValue}) {
+    return ExceedingLength<T>(
+      failedValue: failedValue,
+    );
+  }
+
+// ignore: unused_element
+  EmptyField<T> emptyField<T>({@required T failedValue}) {
+    return EmptyField<T>(
+      failedValue: failedValue,
+    );
+  }
+
+// ignore: unused_element
   InvalidPassword<T> invalidPassword<T>({@required T failedValue}) {
     return InvalidPassword<T>(
       failedValue: failedValue,
@@ -265,30 +279,38 @@ mixin _$AuthOrRegValueFailure<T> {
   T get failedValue;
 
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result invalidEmail(T failedValue),
-    @required Result invalidPassword(T failedValue),
-    @required Result invalidUsername(T failedValue),
+  TResult when<TResult extends Object>({
+    @required TResult invalidEmail(T failedValue),
+    @required TResult exceedingLength(T failedValue),
+    @required TResult emptyField(T failedValue),
+    @required TResult invalidPassword(T failedValue),
+    @required TResult invalidUsername(T failedValue),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result invalidEmail(T failedValue),
-    Result invalidPassword(T failedValue),
-    Result invalidUsername(T failedValue),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult invalidEmail(T failedValue),
+    TResult exceedingLength(T failedValue),
+    TResult emptyField(T failedValue),
+    TResult invalidPassword(T failedValue),
+    TResult invalidUsername(T failedValue),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result invalidEmail(InvalidEmail<T> value),
-    @required Result invalidPassword(InvalidPassword<T> value),
-    @required Result invalidUsername(InvalidUsername<T> value),
+  TResult map<TResult extends Object>({
+    @required TResult invalidEmail(InvalidEmail<T> value),
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult emptyField(EmptyField<T> value),
+    @required TResult invalidPassword(InvalidPassword<T> value),
+    @required TResult invalidUsername(InvalidUsername<T> value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result invalidEmail(InvalidEmail<T> value),
-    Result invalidPassword(InvalidPassword<T> value),
-    Result invalidUsername(InvalidUsername<T> value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult invalidEmail(InvalidEmail<T> value),
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult emptyField(EmptyField<T> value),
+    TResult invalidPassword(InvalidPassword<T> value),
+    TResult invalidUsername(InvalidUsername<T> value),
+    @required TResult orElse(),
   });
 
   $AuthOrRegValueFailureCopyWith<T, AuthOrRegValueFailure<T>> get copyWith;
@@ -397,12 +419,16 @@ class _$InvalidEmail<T>
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result invalidEmail(T failedValue),
-    @required Result invalidPassword(T failedValue),
-    @required Result invalidUsername(T failedValue),
+  TResult when<TResult extends Object>({
+    @required TResult invalidEmail(T failedValue),
+    @required TResult exceedingLength(T failedValue),
+    @required TResult emptyField(T failedValue),
+    @required TResult invalidPassword(T failedValue),
+    @required TResult invalidUsername(T failedValue),
   }) {
     assert(invalidEmail != null);
+    assert(exceedingLength != null);
+    assert(emptyField != null);
     assert(invalidPassword != null);
     assert(invalidUsername != null);
     return invalidEmail(failedValue);
@@ -410,11 +436,13 @@ class _$InvalidEmail<T>
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result invalidEmail(T failedValue),
-    Result invalidPassword(T failedValue),
-    Result invalidUsername(T failedValue),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult invalidEmail(T failedValue),
+    TResult exceedingLength(T failedValue),
+    TResult emptyField(T failedValue),
+    TResult invalidPassword(T failedValue),
+    TResult invalidUsername(T failedValue),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (invalidEmail != null) {
@@ -425,12 +453,16 @@ class _$InvalidEmail<T>
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result invalidEmail(InvalidEmail<T> value),
-    @required Result invalidPassword(InvalidPassword<T> value),
-    @required Result invalidUsername(InvalidUsername<T> value),
+  TResult map<TResult extends Object>({
+    @required TResult invalidEmail(InvalidEmail<T> value),
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult emptyField(EmptyField<T> value),
+    @required TResult invalidPassword(InvalidPassword<T> value),
+    @required TResult invalidUsername(InvalidUsername<T> value),
   }) {
     assert(invalidEmail != null);
+    assert(exceedingLength != null);
+    assert(emptyField != null);
     assert(invalidPassword != null);
     assert(invalidUsername != null);
     return invalidEmail(this);
@@ -438,11 +470,13 @@ class _$InvalidEmail<T>
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result invalidEmail(InvalidEmail<T> value),
-    Result invalidPassword(InvalidPassword<T> value),
-    Result invalidUsername(InvalidUsername<T> value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult invalidEmail(InvalidEmail<T> value),
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult emptyField(EmptyField<T> value),
+    TResult invalidPassword(InvalidPassword<T> value),
+    TResult invalidUsername(InvalidUsername<T> value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (invalidEmail != null) {
@@ -459,6 +493,306 @@ abstract class InvalidEmail<T> implements AuthOrRegValueFailure<T> {
   T get failedValue;
   @override
   $InvalidEmailCopyWith<T, InvalidEmail<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $ExceedingLengthCopyWith<T, $Res>
+    implements $AuthOrRegValueFailureCopyWith<T, $Res> {
+  factory $ExceedingLengthCopyWith(
+          ExceedingLength<T> value, $Res Function(ExceedingLength<T>) then) =
+      _$ExceedingLengthCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$ExceedingLengthCopyWithImpl<T, $Res>
+    extends _$AuthOrRegValueFailureCopyWithImpl<T, $Res>
+    implements $ExceedingLengthCopyWith<T, $Res> {
+  _$ExceedingLengthCopyWithImpl(
+      ExceedingLength<T> _value, $Res Function(ExceedingLength<T>) _then)
+      : super(_value, (v) => _then(v as ExceedingLength<T>));
+
+  @override
+  ExceedingLength<T> get _value => super._value as ExceedingLength<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(ExceedingLength<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+    ));
+  }
+}
+
+/// @nodoc
+class _$ExceedingLength<T>
+    with DiagnosticableTreeMixin
+    implements ExceedingLength<T> {
+  const _$ExceedingLength({@required this.failedValue})
+      : assert(failedValue != null);
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthOrRegValueFailure<$T>.exceedingLength(failedValue: $failedValue)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'AuthOrRegValueFailure<$T>.exceedingLength'))
+      ..add(DiagnosticsProperty('failedValue', failedValue));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ExceedingLength<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @override
+  $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith =>
+      _$ExceedingLengthCopyWithImpl<T, ExceedingLength<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult invalidEmail(T failedValue),
+    @required TResult exceedingLength(T failedValue),
+    @required TResult emptyField(T failedValue),
+    @required TResult invalidPassword(T failedValue),
+    @required TResult invalidUsername(T failedValue),
+  }) {
+    assert(invalidEmail != null);
+    assert(exceedingLength != null);
+    assert(emptyField != null);
+    assert(invalidPassword != null);
+    assert(invalidUsername != null);
+    return exceedingLength(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult invalidEmail(T failedValue),
+    TResult exceedingLength(T failedValue),
+    TResult emptyField(T failedValue),
+    TResult invalidPassword(T failedValue),
+    TResult invalidUsername(T failedValue),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (exceedingLength != null) {
+      return exceedingLength(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult invalidEmail(InvalidEmail<T> value),
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult emptyField(EmptyField<T> value),
+    @required TResult invalidPassword(InvalidPassword<T> value),
+    @required TResult invalidUsername(InvalidUsername<T> value),
+  }) {
+    assert(invalidEmail != null);
+    assert(exceedingLength != null);
+    assert(emptyField != null);
+    assert(invalidPassword != null);
+    assert(invalidUsername != null);
+    return exceedingLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult invalidEmail(InvalidEmail<T> value),
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult emptyField(EmptyField<T> value),
+    TResult invalidPassword(InvalidPassword<T> value),
+    TResult invalidUsername(InvalidUsername<T> value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (exceedingLength != null) {
+      return exceedingLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ExceedingLength<T> implements AuthOrRegValueFailure<T> {
+  const factory ExceedingLength({@required T failedValue}) =
+      _$ExceedingLength<T>;
+
+  @override
+  T get failedValue;
+  @override
+  $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $EmptyFieldCopyWith<T, $Res>
+    implements $AuthOrRegValueFailureCopyWith<T, $Res> {
+  factory $EmptyFieldCopyWith(
+          EmptyField<T> value, $Res Function(EmptyField<T>) then) =
+      _$EmptyFieldCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$EmptyFieldCopyWithImpl<T, $Res>
+    extends _$AuthOrRegValueFailureCopyWithImpl<T, $Res>
+    implements $EmptyFieldCopyWith<T, $Res> {
+  _$EmptyFieldCopyWithImpl(
+      EmptyField<T> _value, $Res Function(EmptyField<T>) _then)
+      : super(_value, (v) => _then(v as EmptyField<T>));
+
+  @override
+  EmptyField<T> get _value => super._value as EmptyField<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(EmptyField<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+    ));
+  }
+}
+
+/// @nodoc
+class _$EmptyField<T> with DiagnosticableTreeMixin implements EmptyField<T> {
+  const _$EmptyField({@required this.failedValue})
+      : assert(failedValue != null);
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthOrRegValueFailure<$T>.emptyField(failedValue: $failedValue)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthOrRegValueFailure<$T>.emptyField'))
+      ..add(DiagnosticsProperty('failedValue', failedValue));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is EmptyField<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @override
+  $EmptyFieldCopyWith<T, EmptyField<T>> get copyWith =>
+      _$EmptyFieldCopyWithImpl<T, EmptyField<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult invalidEmail(T failedValue),
+    @required TResult exceedingLength(T failedValue),
+    @required TResult emptyField(T failedValue),
+    @required TResult invalidPassword(T failedValue),
+    @required TResult invalidUsername(T failedValue),
+  }) {
+    assert(invalidEmail != null);
+    assert(exceedingLength != null);
+    assert(emptyField != null);
+    assert(invalidPassword != null);
+    assert(invalidUsername != null);
+    return emptyField(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult invalidEmail(T failedValue),
+    TResult exceedingLength(T failedValue),
+    TResult emptyField(T failedValue),
+    TResult invalidPassword(T failedValue),
+    TResult invalidUsername(T failedValue),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (emptyField != null) {
+      return emptyField(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult invalidEmail(InvalidEmail<T> value),
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult emptyField(EmptyField<T> value),
+    @required TResult invalidPassword(InvalidPassword<T> value),
+    @required TResult invalidUsername(InvalidUsername<T> value),
+  }) {
+    assert(invalidEmail != null);
+    assert(exceedingLength != null);
+    assert(emptyField != null);
+    assert(invalidPassword != null);
+    assert(invalidUsername != null);
+    return emptyField(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult invalidEmail(InvalidEmail<T> value),
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult emptyField(EmptyField<T> value),
+    TResult invalidPassword(InvalidPassword<T> value),
+    TResult invalidUsername(InvalidUsername<T> value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (emptyField != null) {
+      return emptyField(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EmptyField<T> implements AuthOrRegValueFailure<T> {
+  const factory EmptyField({@required T failedValue}) = _$EmptyField<T>;
+
+  @override
+  T get failedValue;
+  @override
+  $EmptyFieldCopyWith<T, EmptyField<T>> get copyWith;
 }
 
 /// @nodoc
@@ -536,12 +870,16 @@ class _$InvalidPassword<T>
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result invalidEmail(T failedValue),
-    @required Result invalidPassword(T failedValue),
-    @required Result invalidUsername(T failedValue),
+  TResult when<TResult extends Object>({
+    @required TResult invalidEmail(T failedValue),
+    @required TResult exceedingLength(T failedValue),
+    @required TResult emptyField(T failedValue),
+    @required TResult invalidPassword(T failedValue),
+    @required TResult invalidUsername(T failedValue),
   }) {
     assert(invalidEmail != null);
+    assert(exceedingLength != null);
+    assert(emptyField != null);
     assert(invalidPassword != null);
     assert(invalidUsername != null);
     return invalidPassword(failedValue);
@@ -549,11 +887,13 @@ class _$InvalidPassword<T>
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result invalidEmail(T failedValue),
-    Result invalidPassword(T failedValue),
-    Result invalidUsername(T failedValue),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult invalidEmail(T failedValue),
+    TResult exceedingLength(T failedValue),
+    TResult emptyField(T failedValue),
+    TResult invalidPassword(T failedValue),
+    TResult invalidUsername(T failedValue),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (invalidPassword != null) {
@@ -564,12 +904,16 @@ class _$InvalidPassword<T>
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result invalidEmail(InvalidEmail<T> value),
-    @required Result invalidPassword(InvalidPassword<T> value),
-    @required Result invalidUsername(InvalidUsername<T> value),
+  TResult map<TResult extends Object>({
+    @required TResult invalidEmail(InvalidEmail<T> value),
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult emptyField(EmptyField<T> value),
+    @required TResult invalidPassword(InvalidPassword<T> value),
+    @required TResult invalidUsername(InvalidUsername<T> value),
   }) {
     assert(invalidEmail != null);
+    assert(exceedingLength != null);
+    assert(emptyField != null);
     assert(invalidPassword != null);
     assert(invalidUsername != null);
     return invalidPassword(this);
@@ -577,11 +921,13 @@ class _$InvalidPassword<T>
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result invalidEmail(InvalidEmail<T> value),
-    Result invalidPassword(InvalidPassword<T> value),
-    Result invalidUsername(InvalidUsername<T> value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult invalidEmail(InvalidEmail<T> value),
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult emptyField(EmptyField<T> value),
+    TResult invalidPassword(InvalidPassword<T> value),
+    TResult invalidUsername(InvalidUsername<T> value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (invalidPassword != null) {
@@ -676,12 +1022,16 @@ class _$InvalidUsername<T>
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result invalidEmail(T failedValue),
-    @required Result invalidPassword(T failedValue),
-    @required Result invalidUsername(T failedValue),
+  TResult when<TResult extends Object>({
+    @required TResult invalidEmail(T failedValue),
+    @required TResult exceedingLength(T failedValue),
+    @required TResult emptyField(T failedValue),
+    @required TResult invalidPassword(T failedValue),
+    @required TResult invalidUsername(T failedValue),
   }) {
     assert(invalidEmail != null);
+    assert(exceedingLength != null);
+    assert(emptyField != null);
     assert(invalidPassword != null);
     assert(invalidUsername != null);
     return invalidUsername(failedValue);
@@ -689,11 +1039,13 @@ class _$InvalidUsername<T>
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result invalidEmail(T failedValue),
-    Result invalidPassword(T failedValue),
-    Result invalidUsername(T failedValue),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult invalidEmail(T failedValue),
+    TResult exceedingLength(T failedValue),
+    TResult emptyField(T failedValue),
+    TResult invalidPassword(T failedValue),
+    TResult invalidUsername(T failedValue),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (invalidUsername != null) {
@@ -704,12 +1056,16 @@ class _$InvalidUsername<T>
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result invalidEmail(InvalidEmail<T> value),
-    @required Result invalidPassword(InvalidPassword<T> value),
-    @required Result invalidUsername(InvalidUsername<T> value),
+  TResult map<TResult extends Object>({
+    @required TResult invalidEmail(InvalidEmail<T> value),
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult emptyField(EmptyField<T> value),
+    @required TResult invalidPassword(InvalidPassword<T> value),
+    @required TResult invalidUsername(InvalidUsername<T> value),
   }) {
     assert(invalidEmail != null);
+    assert(exceedingLength != null);
+    assert(emptyField != null);
     assert(invalidPassword != null);
     assert(invalidUsername != null);
     return invalidUsername(this);
@@ -717,11 +1073,13 @@ class _$InvalidUsername<T>
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result invalidEmail(InvalidEmail<T> value),
-    Result invalidPassword(InvalidPassword<T> value),
-    Result invalidUsername(InvalidUsername<T> value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult invalidEmail(InvalidEmail<T> value),
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult emptyField(EmptyField<T> value),
+    TResult invalidPassword(InvalidPassword<T> value),
+    TResult invalidUsername(InvalidUsername<T> value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (invalidUsername != null) {

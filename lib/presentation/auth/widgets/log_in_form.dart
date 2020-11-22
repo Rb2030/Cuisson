@@ -84,16 +84,16 @@ class _LogInFormState extends State<LogInForm> {
                             decoration: const InputDecoration()
                                 .copyWith(hintText: Constants.email),
                             onChanged: (value) => context
-                                .bloc<SignInFormBloc>()
+                                .read<SignInFormBloc>()
                                 .add(SignInFormEvent.emailChanged(value)),
                             validator: (_) => context
-                                .bloc<SignInFormBloc>()
+                                .read<SignInFormBloc>()
                                 .state
                                 .emailAddress
                                 .value
                                 .fold(
                                   (leftFailure) => leftFailure.maybeMap(
-                                      auth:  (_) => Constants.invalidEmail,
+                                      authOrReg:  (_) => Constants.invalidEmail,
                                       orElse: () => null
                                   ),
                                   (rightSuccess) => null,
@@ -111,16 +111,16 @@ class _LogInFormState extends State<LogInForm> {
                             decoration: const InputDecoration()
                                 .copyWith(hintText: Constants.password),
                             onChanged: (value) => context
-                                .bloc<SignInFormBloc>()
+                                .read<SignInFormBloc>()
                                 .add(SignInFormEvent.passwordChanged(value)),
                             validator: (_) => context
-                                .bloc<SignInFormBloc>()
+                                .read<SignInFormBloc>()
                                 .state
                                 .password
                                 .value
                                 .fold(
                                   (leftFailure) => leftFailure.maybeMap(
-                                      auth: (_) => Constants.invalidPassword,
+                                      authOrReg: (_) => Constants.invalidPassword,
                                       orElse: () => null),
                                   (rightSuccess) => null,
                                 ),
@@ -151,17 +151,17 @@ class _LogInFormState extends State<LogInForm> {
                               debugPrint('Register pressed');
                             },
                             child: Row(
-                              children: [
-                                const Spacer(),
-                                const Text(Constants.register,
+                              children: const <Widget>[
+                                Spacer(),
+                                Text(Constants.register,
                                     ),
-                                const Spacer(),
+                                Spacer(),
                               ],
                             ),
                           ),
                           if (state.isSubmitting)...[
-                            const SizedBox(height: 8),
-                            const LinearProgressIndicator(),
+                            const SizedBox(height: UIHelper.spaceSmall),
+                            const LinearProgressIndicator(backgroundColor: Colors.black),
                           ]
                         ],
                       );

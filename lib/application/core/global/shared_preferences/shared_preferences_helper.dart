@@ -2,11 +2,9 @@ import 'dart:async';
 import 'package:Cuisson/application/core/global/constants/constants.dart';
 import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:Cuisson/application/core/global/globals/globals.dart'
-    as globals;
 
 /// ----------------------------------------------------------
-/// Method that retrieves the user language code
+/// Method that retrieves the app theme
 /// ----------------------------------------------------------
 
 Future<AppTheme> getAppThemeFromSharedPreferences(String key) async {
@@ -22,7 +20,7 @@ Future<AppTheme> getAppThemeFromSharedPreferences(String key) async {
 }
 
 /// ----------------------------------------------------------
-/// Method that saves the user language code
+/// Method that saves the app theme
 /// ----------------------------------------------------------
 
 Future<bool> setAppThemeToSharedPreferences(String key, String value) async {

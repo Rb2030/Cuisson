@@ -1,14 +1,12 @@
 //import 'package:flutter/foundation.dart';
-import 'dart:ffi';
-
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'failures.freezed.dart';
 
 @freezed
 abstract class ValueFailure<T> with _$ValueFailure<T> {
-  const factory ValueFailure.auth(AuthOrRegValueFailure<T> f, {String failedValue}) = _Auth<T>;
-  //const factory ValueFailure.auth(ProfileValueFailure<T> f) = _Auth<T>;
+  const factory ValueFailure.authOrReg(AuthOrRegValueFailure<T> f, {String failedValue}) = _Auth<T>;
+  //const factory ValueFailure.profile(ProfileValueFailure<T> f) = _Auth<T>;
 }
 
 
@@ -16,7 +14,13 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
 abstract class AuthOrRegValueFailure<T> with _$AuthOrRegValueFailure<T> {
   const factory AuthOrRegValueFailure.invalidEmail({
     @required T failedValue,
-  }) = InvalidEmail<T>;
+  }) = InvalidEmail<T>; 
+  const factory AuthOrRegValueFailure.exceedingLength({
+    @required T failedValue, 
+  }) = ExceedingLength<T>;
+  const factory AuthOrRegValueFailure.emptyField({
+    @required T failedValue,
+  }) = EmptyField<T>; 
   const factory AuthOrRegValueFailure.invalidPassword({
     @required T failedValue,
   }) = InvalidPassword<T>;

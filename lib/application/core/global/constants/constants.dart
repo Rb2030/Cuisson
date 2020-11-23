@@ -15,20 +15,23 @@ class Constants extends InheritedWidget {
   static const String cuisson = 'CUISSON';
   static const String serverError = 'Server error';
   static const String ok = 'OK';
+  static const String next = 'Next';
 
-// Login Screen
+// Sign In Screen
 
   static const String email = 'Email';
   static const String password = 'Password';
-  static const String login = 'Login';
+  static const String username = 'Username';
+  static const String signIn = 'Sign In';
+  static const String logIn = 'Log In';
   static const String register = 'Register';
-  static const String forgottenLoginDetails = 'Forgotten login details?';
-  static const String invalidEmail = 'Invalid email';
-  static const String invalidPassword = 'Invalid password';
+  static const String forgottenSigninDetails = 'Forgotten sign In details?';
+  static const String invalidEmail = 'Invalid Email';
+  static const String invalidPassword = 'Invalid Password';
+    static const String invalidUsername = 'Invalid Username';
   static const String cancelledByUser = 'Cancelled by user';
   static const String emailAlreadyInUse = 'Email already in use';
-  static const String invalidUsernameAndPasswordCombo =
-      'Invalid username and password combination';
+  static const String invalidUsernameAndPasswordCombo = 'Invalid username and password combination';
   static const String dialogueMessage = 'Please try again';
 
 // AppTheme Keys

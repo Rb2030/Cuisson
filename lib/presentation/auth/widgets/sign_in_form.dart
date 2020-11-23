@@ -3,16 +3,18 @@ import 'package:Cuisson/application/core/global/constants/constants.dart';
 import 'package:Cuisson/presentation/core/global/helpers/ui_helpers.dart';
 import 'package:Cuisson/application/core/global/globals/globals.dart'
     as globals;
+import 'package:Cuisson/presentation/routes/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LogInForm extends StatefulWidget {
+class SignInForm extends StatefulWidget {
   @override
-  _LogInFormState createState() => _LogInFormState();
+  _SignInFormState createState() => _SignInFormState();
 }
 
-class _LogInFormState extends State<LogInForm> {
+class _SignInFormState extends State<SignInForm> {
   final ScrollController listScrollController = ScrollController();
   bool bottomButtonEnabled = true;
 
@@ -26,11 +28,13 @@ class _LogInFormState extends State<LogInForm> {
             return AlertDialog(
               title: Text(
                 failure.map(
-                    cancelledByUser: (_) => Constants.cancelledByUser,
-                    serverError: (_) => Constants.serverError,
-                    emailAlreadyInUse: (_) => Constants.emailAlreadyInUse,
-                    invalidEmailAndPasswordCombination: (_) =>
-                        Constants.invalidUsernameAndPasswordCombo),
+                  cancelledByUser: (_) => Constants.cancelledByUser,
+                  serverError: (_) => Constants.serverError,
+                  emailAlreadyInUse: (_) => Constants.emailAlreadyInUse,
+                  invalidEmailAndPasswordCombination: (_) =>
+                      Constants.invalidUsernameAndPasswordCombo,
+                  usernameAlreadyInUse: (_) => null,
+                ),
               ),
               content: const Text(Constants.dialogueMessage),
               actions: <Widget>[
@@ -44,7 +48,7 @@ class _LogInFormState extends State<LogInForm> {
             );
           },
               (success) => {
-                    // TODO: Navigate to main menu after successful log in
+                    // TODO: Navigate to main menu after successful log in ------------------------ Move to Main Menu screen
                   }),
         );
       },
@@ -93,12 +97,14 @@ class _LogInFormState extends State<LogInForm> {
                                 .value
                                 .fold(
                                   (leftFailure) => leftFailure.maybeMap(
-                                      authOrReg:  (_) => Constants.invalidEmail,
-                                      orElse: () => null
-                                  ),
+                                      authOrReg: (_) => Constants.invalidEmail,
+                                      orElse: () => null),
                                   (rightSuccess) => null,
                                 ),
-                                inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s\b|\b\s"))],
+                            inputFormatters: [
+                              FilteringTextInputFormatter.deny(
+                                  RegExp(r"\s\b|\b\s"))
+                            ],
                             onTap: () {
                               bottomButtonEnabled = false;
                               globals.isUnfocused = false;
@@ -120,11 +126,15 @@ class _LogInFormState extends State<LogInForm> {
                                 .value
                                 .fold(
                                   (leftFailure) => leftFailure.maybeMap(
-                                      authOrReg: (_) => Constants.invalidPassword,
+                                      authOrReg: (_) =>
+                                          Constants.invalidPassword,
                                       orElse: () => null),
                                   (rightSuccess) => null,
                                 ),
-                            inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s\b|\b\s"))],
+                            inputFormatters: [
+                              FilteringTextInputFormatter.deny(
+                                  RegExp(r"\s\b|\b\s"))
+                            ],
                             onTap: () {
                               bottomButtonEnabled = false;
                               globals.isUnfocused = false;
@@ -136,11 +146,11 @@ class _LogInFormState extends State<LogInForm> {
                               const Spacer(),
                               RaisedButton(
                                 onPressed: () {
-                                  debugPrint('Login pressed');
+                                  debugPrint('Sign in pressed');
                                   bottomButtonEnabled = true;
                                 },
                                 textColor: Colors.white,
-                                child: Text(Constants.login.toUpperCase()),
+                                child: Text(Constants.signIn.toUpperCase()),
                               ),
                               const Spacer(),
                             ],
@@ -148,20 +158,22 @@ class _LogInFormState extends State<LogInForm> {
                           const SizedBox(height: UIHelper.spaceMedium),
                           GestureDetector(
                             onTap: () {
-                              debugPrint('Register pressed');
+                              ExtendedNavigator.of(context).replace(Routes.registerPage);
+                              debugPrint(
+                                  'Register pressed'); ///// ---------------------------------------- Move to Register Page!!!!!!
                             },
                             child: Row(
                               children: const <Widget>[
                                 Spacer(),
-                                Text(Constants.register,
-                                    ),
+                                Text(Constants.register),
                                 Spacer(),
                               ],
                             ),
                           ),
-                          if (state.isSubmitting)...[
+                          if (state.isSubmitting) ...[
                             const SizedBox(height: UIHelper.spaceSmall),
-                            const LinearProgressIndicator(backgroundColor: Colors.black),
+                            const LinearProgressIndicator(
+                                backgroundColor: Colors.black),
                           ]
                         ],
                       );
@@ -174,18 +186,19 @@ class _LogInFormState extends State<LogInForm> {
               const Spacer(),
               SizedBox(width: UIHelper.screenWidth(context) / 13.5),
               Visibility(
-                      visible: bottomButtonEnabled,
-                      child: GestureDetector(
-                        onTap: () {
-                          if (bottomButtonEnabled) {
-                            debugPrint('Forgotten Deets pressed');
-                          }
-                        },
-                        child: Text(Constants.forgottenLoginDetails,
-                            style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center),
-                      ),
-                    ),
-                    const Spacer()
+                visible: bottomButtonEnabled,
+                child: GestureDetector(
+                  onTap: () {
+                    if (bottomButtonEnabled) {
+                      debugPrint('Forgotten Deets pressed');
+                    }
+                  },
+                  child: Text(Constants.forgottenSigninDetails,
+                      style: Theme.of(context).textTheme.bodyText1,
+                      textAlign: TextAlign.center),
+                ),
+              ),
+              const Spacer()
             ],
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

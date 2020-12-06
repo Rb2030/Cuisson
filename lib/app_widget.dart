@@ -1,15 +1,14 @@
 // Flutter imports:
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Cuisson/application/core/global/globals/globals.dart'
     as globals;
-import 'package:Cuisson/presentation/routes/router.gr.dart'
-    as app_router;
 
 // Project imports:
+import 'package:Cuisson/presentation/routes/router.gr.dart';
 import 'package:Cuisson/application/core/global/shared_preferences/shared_preferences_helper.dart';
 import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 import 'package:Cuisson/presentation/core/global/theme/bloc/theme_bloc.dart';
@@ -42,7 +41,9 @@ class _AppWidgetState extends State<AppWidget> {
             return MultiBlocProvider(
                 providers: [
                   BlocProvider(create: (context) => getIt<ThemeBloc>()),
-                  BlocProvider(create: (context) => getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested())),
+                  BlocProvider(
+                      create: (context) => getIt<AuthBloc>()
+                        ..add(const AuthEvent.authCheckRequested())),
                 ],
                 child: BlocConsumer<ThemeBloc, ThemeState>(
                     listener: (context, state) {},
@@ -53,12 +54,11 @@ class _AppWidgetState extends State<AppWidget> {
                       return keyboardDismisser(
                         context: context,
                         child: MaterialApp(
-                          title: 'Material App',
-                          theme: appTheme,
-                          builder: ExtendedNavigator.builder(
-                              router: app_router.Router()
-                          ),
-                        //  home: LogInPage(),
+                            title: 'Material App',
+                            builder: ExtendedNavigator.builder(
+                                router: AppRouter(),
+                           //     initialRoute: Routes.splashPage //TODO:- Find out if this needed as it is listed as the initialRoute in the AppRouter
+                            ),
                         ),
                       );
                     }));

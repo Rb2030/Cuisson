@@ -4,7 +4,6 @@ import 'package:auto_route/auto_route_annotations.dart';
 import 'package:Cuisson/presentation/auth/pages/sign_in_page.dart';
 
 @MaterialAutoRouter(
-  generateNavigationHelperExtension: true,
     routes: <AutoRoute>[
       MaterialRoute(page: SplashPage, initial: true),
       MaterialRoute(page: SignInPage),
@@ -16,5 +15,4 @@ import 'package:Cuisson/presentation/auth/pages/sign_in_page.dart';
       // MaterialRoute(page: MainMenuChefsAndRestaurants),
     ],
 )
-
-class $Router {}
+class $AppRouter {}

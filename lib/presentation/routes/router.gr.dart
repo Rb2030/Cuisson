@@ -24,7 +24,7 @@ class Routes {
   };
 }
 
-class Router extends RouterBase {
+class AppRouter extends RouterBase {
   @override
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
@@ -54,16 +54,4 @@ class Router extends RouterBase {
       );
     },
   };
-}
-
-/// ************************************************************************
-/// Navigation helper methods extension
-/// *************************************************************************
-
-extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
-  Future<dynamic> pushSplashPage() => push<dynamic>(Routes.splashPage);
-
-  Future<dynamic> pushSignInPage() => push<dynamic>(Routes.signInPage);
-
-  Future<dynamic> pushRegisterPage() => push<dynamic>(Routes.registerPage);
 }

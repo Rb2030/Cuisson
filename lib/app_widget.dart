@@ -54,10 +54,11 @@ class _AppWidgetState extends State<AppWidget> {
                       return keyboardDismisser(
                         context: context,
                         child: MaterialApp(
+                          home: Container(),
                             title: 'Material App',
                             builder: ExtendedNavigator.builder(
                                 router: AppRouter(),
-                           //     initialRoute: Routes.splashPage //TODO:- Find out if this needed as it is listed as the initialRoute in the AppRouter
+                                initialRoute: Routes.splashPage //TODO:- Find out if this needed as it is listed as the initialRoute in the AppRouter
                             ),
                         ),
                       );

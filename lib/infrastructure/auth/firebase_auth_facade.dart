@@ -44,9 +44,13 @@ class FirebaseAuthFacade implements IAuthFacade {
     }
   }
 
-    @override
-  Future<Either<AuthFailure, Unit>> uniqueUsernameCheck({Username username}) {
-    // TODO: implement uniqueUsernameCheck
+  @override
+  Future<Either<AuthFailure, Unit>> uniqueUsernameCheck(
+      {@required Username username}) async {
+    final usernameString = username.getOrCrash();
+    // try {
+    //   await 
+    // }
     throw UnimplementedError(); //TODO:---------------------------------------------------------------- Need to check Firebase for unique username id.
   }
 
@@ -62,7 +66,8 @@ class FirebaseAuthFacade implements IAuthFacade {
           email: emailAddressString, password: passwordString);
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'error-wrong-password' || e.code == 'error-user-not-found') {
+      if (e.code == 'error-wrong-password' ||
+          e.code == 'error-user-not-found') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
       } else {
         return left(const AuthFailure.serverError());

@@ -58,6 +58,7 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
           registerCall,
       Future<Either<AuthFailure, Unit>> Function({@required Username username})
           uniqueUsernameCall) async* {
+            
     Either<AuthFailure, Unit> registrationFailureOrSuccess;
     Either<AuthFailure, Unit> uniqueUsernameCheck;
 

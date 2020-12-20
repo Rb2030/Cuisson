@@ -29,6 +29,11 @@ class _$AuthFailureTearOff {
   }
 
 // ignore: unused_element
+  UsernameAlreadyInUse usernameAlreadyInUse() {
+    return const UsernameAlreadyInUse();
+  }
+
+// ignore: unused_element
   InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
     return const InvalidEmailAndPasswordCombination();
   }
@@ -45,6 +50,7 @@ mixin _$AuthFailure {
     @required TResult cancelledByUser(),
     @required TResult serverError(),
     @required TResult emailAlreadyInUse(),
+    @required TResult usernameAlreadyInUse(),
     @required TResult invalidEmailAndPasswordCombination(),
   });
   @optionalTypeArgs
@@ -52,6 +58,7 @@ mixin _$AuthFailure {
     TResult cancelledByUser(),
     TResult serverError(),
     TResult emailAlreadyInUse(),
+    TResult usernameAlreadyInUse(),
     TResult invalidEmailAndPasswordCombination(),
     @required TResult orElse(),
   });
@@ -60,6 +67,7 @@ mixin _$AuthFailure {
     @required TResult cancelledByUser(CancelledByUser value),
     @required TResult serverError(ServerError value),
     @required TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    @required TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
     @required
         TResult invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
@@ -69,6 +77,7 @@ mixin _$AuthFailure {
     TResult cancelledByUser(CancelledByUser value),
     TResult serverError(ServerError value),
     TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
     TResult invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     @required TResult orElse(),
@@ -133,11 +142,13 @@ class _$CancelledByUser implements CancelledByUser {
     @required TResult cancelledByUser(),
     @required TResult serverError(),
     @required TResult emailAlreadyInUse(),
+    @required TResult usernameAlreadyInUse(),
     @required TResult invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
+    assert(usernameAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     return cancelledByUser();
   }
@@ -148,6 +159,7 @@ class _$CancelledByUser implements CancelledByUser {
     TResult cancelledByUser(),
     TResult serverError(),
     TResult emailAlreadyInUse(),
+    TResult usernameAlreadyInUse(),
     TResult invalidEmailAndPasswordCombination(),
     @required TResult orElse(),
   }) {
@@ -164,6 +176,7 @@ class _$CancelledByUser implements CancelledByUser {
     @required TResult cancelledByUser(CancelledByUser value),
     @required TResult serverError(ServerError value),
     @required TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    @required TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
     @required
         TResult invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
@@ -171,6 +184,7 @@ class _$CancelledByUser implements CancelledByUser {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
+    assert(usernameAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     return cancelledByUser(this);
   }
@@ -181,6 +195,7 @@ class _$CancelledByUser implements CancelledByUser {
     TResult cancelledByUser(CancelledByUser value),
     TResult serverError(ServerError value),
     TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
     TResult invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     @required TResult orElse(),
@@ -238,11 +253,13 @@ class _$ServerError implements ServerError {
     @required TResult cancelledByUser(),
     @required TResult serverError(),
     @required TResult emailAlreadyInUse(),
+    @required TResult usernameAlreadyInUse(),
     @required TResult invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
+    assert(usernameAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     return serverError();
   }
@@ -253,6 +270,7 @@ class _$ServerError implements ServerError {
     TResult cancelledByUser(),
     TResult serverError(),
     TResult emailAlreadyInUse(),
+    TResult usernameAlreadyInUse(),
     TResult invalidEmailAndPasswordCombination(),
     @required TResult orElse(),
   }) {
@@ -269,6 +287,7 @@ class _$ServerError implements ServerError {
     @required TResult cancelledByUser(CancelledByUser value),
     @required TResult serverError(ServerError value),
     @required TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    @required TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
     @required
         TResult invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
@@ -276,6 +295,7 @@ class _$ServerError implements ServerError {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
+    assert(usernameAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     return serverError(this);
   }
@@ -286,6 +306,7 @@ class _$ServerError implements ServerError {
     TResult cancelledByUser(CancelledByUser value),
     TResult serverError(ServerError value),
     TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
     TResult invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     @required TResult orElse(),
@@ -344,11 +365,13 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required TResult cancelledByUser(),
     @required TResult serverError(),
     @required TResult emailAlreadyInUse(),
+    @required TResult usernameAlreadyInUse(),
     @required TResult invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
+    assert(usernameAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     return emailAlreadyInUse();
   }
@@ -359,6 +382,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult cancelledByUser(),
     TResult serverError(),
     TResult emailAlreadyInUse(),
+    TResult usernameAlreadyInUse(),
     TResult invalidEmailAndPasswordCombination(),
     @required TResult orElse(),
   }) {
@@ -375,6 +399,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required TResult cancelledByUser(CancelledByUser value),
     @required TResult serverError(ServerError value),
     @required TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    @required TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
     @required
         TResult invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
@@ -382,6 +407,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
+    assert(usernameAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     return emailAlreadyInUse(this);
   }
@@ -392,6 +418,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult cancelledByUser(CancelledByUser value),
     TResult serverError(ServerError value),
     TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
     TResult invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     @required TResult orElse(),
@@ -406,6 +433,118 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
 
 abstract class EmailAlreadyInUse implements AuthFailure {
   const factory EmailAlreadyInUse() = _$EmailAlreadyInUse;
+}
+
+/// @nodoc
+abstract class $UsernameAlreadyInUseCopyWith<$Res> {
+  factory $UsernameAlreadyInUseCopyWith(UsernameAlreadyInUse value,
+          $Res Function(UsernameAlreadyInUse) then) =
+      _$UsernameAlreadyInUseCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$UsernameAlreadyInUseCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $UsernameAlreadyInUseCopyWith<$Res> {
+  _$UsernameAlreadyInUseCopyWithImpl(
+      UsernameAlreadyInUse _value, $Res Function(UsernameAlreadyInUse) _then)
+      : super(_value, (v) => _then(v as UsernameAlreadyInUse));
+
+  @override
+  UsernameAlreadyInUse get _value => super._value as UsernameAlreadyInUse;
+}
+
+/// @nodoc
+class _$UsernameAlreadyInUse implements UsernameAlreadyInUse {
+  const _$UsernameAlreadyInUse();
+
+  @override
+  String toString() {
+    return 'AuthFailure.usernameAlreadyInUse()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is UsernameAlreadyInUse);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult cancelledByUser(),
+    @required TResult serverError(),
+    @required TResult emailAlreadyInUse(),
+    @required TResult usernameAlreadyInUse(),
+    @required TResult invalidEmailAndPasswordCombination(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(usernameAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return usernameAlreadyInUse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult cancelledByUser(),
+    TResult serverError(),
+    TResult emailAlreadyInUse(),
+    TResult usernameAlreadyInUse(),
+    TResult invalidEmailAndPasswordCombination(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (usernameAlreadyInUse != null) {
+      return usernameAlreadyInUse();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult cancelledByUser(CancelledByUser value),
+    @required TResult serverError(ServerError value),
+    @required TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    @required TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
+    @required
+        TResult invalidEmailAndPasswordCombination(
+            InvalidEmailAndPasswordCombination value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(usernameAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    return usernameAlreadyInUse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult cancelledByUser(CancelledByUser value),
+    TResult serverError(ServerError value),
+    TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
+    TResult invalidEmailAndPasswordCombination(
+        InvalidEmailAndPasswordCombination value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (usernameAlreadyInUse != null) {
+      return usernameAlreadyInUse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UsernameAlreadyInUse implements AuthFailure {
+  const factory UsernameAlreadyInUse() = _$UsernameAlreadyInUse;
 }
 
 /// @nodoc
@@ -455,11 +594,13 @@ class _$InvalidEmailAndPasswordCombination
     @required TResult cancelledByUser(),
     @required TResult serverError(),
     @required TResult emailAlreadyInUse(),
+    @required TResult usernameAlreadyInUse(),
     @required TResult invalidEmailAndPasswordCombination(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
+    assert(usernameAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     return invalidEmailAndPasswordCombination();
   }
@@ -470,6 +611,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult cancelledByUser(),
     TResult serverError(),
     TResult emailAlreadyInUse(),
+    TResult usernameAlreadyInUse(),
     TResult invalidEmailAndPasswordCombination(),
     @required TResult orElse(),
   }) {
@@ -486,6 +628,7 @@ class _$InvalidEmailAndPasswordCombination
     @required TResult cancelledByUser(CancelledByUser value),
     @required TResult serverError(ServerError value),
     @required TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    @required TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
     @required
         TResult invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
@@ -493,6 +636,7 @@ class _$InvalidEmailAndPasswordCombination
     assert(cancelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
+    assert(usernameAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     return invalidEmailAndPasswordCombination(this);
   }
@@ -503,6 +647,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult cancelledByUser(CancelledByUser value),
     TResult serverError(ServerError value),
     TResult emailAlreadyInUse(EmailAlreadyInUse value),
+    TResult usernameAlreadyInUse(UsernameAlreadyInUse value),
     TResult invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     @required TResult orElse(),

@@ -1,7 +1,7 @@
 import 'package:Cuisson/application/core/global/globals/globals.dart'
     as globals;
 import 'package:Cuisson/application/core/global/shared_preferences/shared_preferences_helper.dart';
-import 'package:Cuisson/presentation/auth/pages/log_in_page.dart';
+import 'package:Cuisson/presentation/auth/pages/sign_in_page.dart';
 import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 import 'package:Cuisson/presentation/core/global/theme/bloc/theme_bloc.dart';
 import 'package:Cuisson/presentation/core/global/widgets/keyboard_dismisser.dart';
@@ -56,7 +56,7 @@ class _AppWidgetState extends State<AppWidget> {
                           theme: appTheme,
                           // builder: ExtendedNavigator.builder(
                           //     router: app_router.Router()), /// TODO: This will need to be added when Router is complete
-                          home: LogInPage(),
+                          home: SignInPage(),
                           builder: ExtendedNavigator.builder(
                               router: app_router.Router()),
                         ),

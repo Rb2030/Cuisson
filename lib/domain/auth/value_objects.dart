@@ -11,7 +11,7 @@ class EmailAddress extends ValueObject<String> {
     // This prevents the email constructor being called if the email isn't in the correct format
     assert(input != null);
     return EmailAddress._(//This is being called by the private const below
-        validateEmailAddress(input));
+        validateEmailAddress(input).flatMap((_) => validateStringNotEmpty(input)));
   }
 
   const EmailAddress._(this.value);
@@ -24,9 +24,28 @@ class Password extends ValueObject<String> {
   factory Password(String input) {
     // This prevents the email constructor being called if the email isn't in the correct format
     assert(input != null);
-    return Password._(//This is being called by the private const below
-        validatePassword(input));
+       return Password._(
+        validatePassword(input).flatMap((_) => validateStringNotEmpty(input)));
+
   }
 
   const Password._(this.value);
 }
+
+
+/// Username
+
+class Username extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory Username(String input) {
+
+    assert(input != null);
+    return Username._(
+        validatePassword(input).flatMap((_) => validateStringNotEmpty(input)));
+  }
+
+  const Username._(this.value);
+}
+

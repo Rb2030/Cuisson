@@ -1,11 +1,11 @@
 import 'package:Cuisson/application/auth/sign_in_form/sign_in_form_bloc.dart';
-import 'package:Cuisson/presentation/auth/widgets/log_in_form.dart';
+import 'package:Cuisson/presentation/auth/widgets/sign_in_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../injection.dart';
 
-class LogInPage extends StatelessWidget {
+class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class LogInPage extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => getIt<SignInFormBloc>(),
-        child: LogInForm(),
+        child: SignInForm(),
     )
     );
   }

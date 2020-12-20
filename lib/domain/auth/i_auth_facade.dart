@@ -1,6 +1,5 @@
 import 'package:Cuisson/domain/auth/user.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
 import 'auth_failure.dart';

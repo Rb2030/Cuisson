@@ -13,12 +13,13 @@ final appThemeData = {
       accentColor: Colors.black,
       backgroundColor: Colors.white,
       canvasColor: Colors.white,
-      cursorColor: Colors.black,
       buttonColor: Colors.black,
+      buttonBarTheme: const ButtonBarThemeData(alignment: MainAxisAlignment.center),
       buttonTheme: ButtonThemeData(
           padding: const EdgeInsets.all(UIHelper.buttonPadding),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(UIHelper.buttonCornerRadius),
+              // ignore: avoid_redundant_argument_values
               side: const BorderSide(color: Colors.black)),
           minWidth: UIHelper.buttonMinWidth,
           height: UIHelper.buttonMinHeight,
@@ -35,13 +36,13 @@ final appThemeData = {
               borderRadius:
                   BorderRadius.circular(UIHelper.textFieldBorderRadius),
               borderSide: const BorderSide(
-                  color: Colors.black,
+                  // color: Colors.black,
                   width: UIHelper.textFieldBorderWidthFocused)),
           enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(
+                  // ignore: avoid_redundant_argument_values
                   color: Colors.black,
                   width: UIHelper.textFieldBorderWidthEnabled))),
-      textSelectionHandleColor: Colors.black,
       textTheme: textTheme()
           .apply(displayColor: Colors.black, bodyColor: Colors.black)),
 
@@ -52,8 +53,8 @@ final appThemeData = {
       accentColor: Colors.white,
       backgroundColor: Colors.black,
       canvasColor: Colors.black,
-      cursorColor: Colors.white,
       buttonColor: Colors.white,
+      buttonBarTheme: const ButtonBarThemeData(alignment: MainAxisAlignment.center),
       buttonTheme: ButtonThemeData(
           padding: const EdgeInsets.all(UIHelper.buttonPadding),
           shape: RoundedRectangleBorder(

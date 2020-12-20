@@ -4,7 +4,7 @@ import 'package:Cuisson/application/core/global/globals/globals.dart' as globals
 Widget keyboardDismisser({BuildContext context, Widget child}) {
   final gesture = GestureDetector(
     onTap: () {
-      FocusScopeNode currentFocus = FocusScope.of(context);
+      final currentFocus = FocusScope.of(context);
       if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
         FocusManager.instance.primaryFocus.unfocus();
         debugPrint("Unfocused!");

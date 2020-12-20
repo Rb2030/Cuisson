@@ -35,7 +35,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       await _firebaseAuth.createUserWithEmailAndPassword(
           email: emailAddressString, password: passwordString);
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
@@ -55,8 +55,8 @@ class FirebaseAuthFacade implements IAuthFacade {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: emailAddressString, password: passwordString);
       return right(unit);
-    } on PlatformException catch (e) {
-      if (e.code == 'wrong-password' || e.code == 'user-not-found') {
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'error-wrong-password' || e.code == 'error-user-not-found') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
       } else {
         return left(const AuthFailure.serverError());

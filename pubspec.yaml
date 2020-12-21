@@ -40,7 +40,7 @@ dependencies:
   uuid: ^2.2.2
   auto_route: ^0.6.9
   kt_dart: ^0.8.0
-  cloud_firestore: ^0.14.3
+  cloud_firestore: ^0.14.4
   import_sorter: ^4.4.0
   carousel_slider: ^2.3.1
 

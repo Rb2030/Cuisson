@@ -44,9 +44,13 @@ class FirebaseAuthFacade implements IAuthFacade {
     }
   }
 
-      @override
-  Future<Either<AuthFailure, Unit>> uniqueUsernameCheck({Username username}) {
-    // TODO: implement uniqueUsernameCheck
+  @override
+  Future<Either<AuthFailure, Unit>> uniqueUsernameCheck(
+      {@required Username username}) async {
+    final usernameString = username.getOrCrash();
+    // try {
+    //   await 
+    // }
     throw UnimplementedError(); //TODO:---------------------------------------------------------------- Need to check Firebase for unique username id.
   }
 

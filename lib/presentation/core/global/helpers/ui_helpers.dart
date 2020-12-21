@@ -20,7 +20,7 @@ class UIHelper {
   static const double textFieldBorderWidthEnabled = 1.2;
   static const double textFieldBorderWidthFocused = 4;
   static const double textFieldBorderRadius = 6;
-  static const double textFieldPadding = 4;
+  static const double textFieldPadding = 6;
   static const double textFieldHeight = 50;
 
   /// Button

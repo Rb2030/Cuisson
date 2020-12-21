@@ -29,9 +29,7 @@ final appThemeData = {
       iconTheme: const IconThemeData(color: Colors.black),
       inputDecorationTheme: InputDecorationTheme(
           errorStyle: const TextStyle(color: Colors.black),
-          contentPadding: const EdgeInsets.symmetric(
-              vertical: UIHelper.textFieldPadding,
-              horizontal: UIHelper.textFieldPadding),
+          contentPadding: const EdgeInsets.fromLTRB(UIHelper.textFieldPadding * 2, UIHelper.textFieldPadding, UIHelper.textFieldPadding, UIHelper.textFieldPadding),
           focusedBorder: OutlineInputBorder(
               borderRadius:
                   BorderRadius.circular(UIHelper.textFieldBorderRadius),
@@ -70,9 +68,7 @@ final appThemeData = {
       iconTheme: const IconThemeData(color: Colors.white),
       inputDecorationTheme: InputDecorationTheme(
           errorStyle: const TextStyle(color: Colors.white),
-          contentPadding: const EdgeInsets.symmetric(
-              vertical: UIHelper.textFieldPadding,
-              horizontal: UIHelper.textFieldPadding),
+          contentPadding: const EdgeInsets.fromLTRB(UIHelper.textFieldPadding * 2, UIHelper.textFieldPadding, UIHelper.textFieldPadding, UIHelper.textFieldPadding),
           focusedBorder: OutlineInputBorder(
               borderRadius:
                   BorderRadius.circular(UIHelper.textFieldBorderRadius),

@@ -18,7 +18,10 @@ class RegisterForm extends StatelessWidget {
     Constants.username
   ];
 
-  void getCurrentOnChanged(int page, String value, BuildContext newContext) {
+  void getCurrentOnChanged(
+      {@required int page,
+      @required String value,
+      @required BuildContext newContext}) {
     switch (page) {
       case 0:
         return newContext
@@ -49,7 +52,7 @@ class RegisterForm extends StatelessWidget {
     throw ArgumentError.notNull();
   }
 
-  String getErrorString(int page) {
+  String getErrorString({@required int page}) {
     switch (page) {
       case 0:
         return Constants.invalidEmail;
@@ -63,46 +66,47 @@ class RegisterForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool bottomButtonEnabled = true;
     return BlocConsumer<RegisterFormBloc, RegisterFormState>(
         listener: (context, state) {},
         builder: (context, state) {
-          globals.isUnfocused || bottomButtonEnabled == true
-              ? bottomButtonEnabled = true
-              : bottomButtonEnabled = false;
           return Scaffold(
-            body: Align(
-              child: SizedBox(
-                width: UIHelper.screenWidth(context) / 1.7,
-                child: Column(
-                  children: <Widget>[
-                    CarouselSlider.builder(
-                      itemCount: pages.length,
-                      carouselController: carouselController,
-                      itemBuilder: (BuildContext context, int itemIndex) {
-                        return Form(
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: LayoutBuilder(
-                            builder: (BuildContext context,
-                                BoxConstraints constraints) {
-                              return ListView(
+            body: Center(
+              child: Column(
+                children: [
+                  CarouselSlider.builder(
+                    itemCount: pages.length,
+                    options: CarouselOptions(
+                      viewportFraction: 1,
+                      height:
+                          UIHelper.screenHeightWithOutSafeArea(context) * 0.7,
+                    ),
+                    carouselController: carouselController,
+                    itemBuilder: (BuildContext context, int itemIndex) {
+                      return Form(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        child: LayoutBuilder(
+                          builder: (BuildContext context,
+                              BoxConstraints constraints) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: UIHelper.safeAreaPadding,
+                                  horizontal: UIHelper.screenWidth(context) * 0.2),
+                              child: ListView(
                                 children: [
                                   SizedBox(
                                       height:
                                           UIHelper.screenHeightWithOutSafeArea(
                                                   context) /
                                               14),
-                                  Row(
-                                    children: [
-                                      const Spacer(),
-                                      Text(pages[itemIndex],
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText1),
-                                      const Spacer(),
-                                    ],
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    width: UIHelper.screenWidth(context),
+                                    child: Text(pages[itemIndex],
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1),
                                   ),
-                                  const SizedBox(height: UIHelper.spaceHuge),
+                                  const SizedBox(height: UIHelper.spaceSmall),
                                   TextFormField(
                                     autocorrect: false,
                                     // ignore: avoid_bool_literals_in_conditional_expressions
@@ -112,13 +116,15 @@ class RegisterForm extends StatelessWidget {
                                     decoration: const InputDecoration()
                                         .copyWith(hintText: pages[itemIndex]),
                                     onChanged: (value) => getCurrentOnChanged(
-                                        itemIndex, value, context),
+                                        page: itemIndex,
+                                        value: value,
+                                        newContext: context),
                                     validator: (_) =>
                                         getinputValidation(itemIndex, context)
                                             .fold(
                                       (leftFailure) => leftFailure.maybeMap(
                                           authOrReg: (_) =>
-                                              getErrorString(itemIndex),
+                                              getErrorString(page: itemIndex),
                                           orElse: () => null),
                                       (rightSuccess) => null,
                                     ),
@@ -127,82 +133,43 @@ class RegisterForm extends StatelessWidget {
                                           RegExp(r"\s\b|\b\s"))
                                     ],
                                     onTap: () {
-                                      bottomButtonEnabled = false;
                                       globals.isUnfocused = false;
                                     },
                                   ),
                                 ],
-                              );
-                            },
-                          ),
-                        );
-                      },
-                      options: CarouselOptions(viewportFraction: 0.9),
-                    ),
-                    const SizedBox(height: UIHelper.spaceLarge),
-                    Row(
-                      children: [
-                        const Spacer(),
-                        RaisedButton(
-                          onPressed: () {
-                            carouselController.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.linear);
-                            debugPrint('Next pressed');
-                            bottomButtonEnabled = true;
+                              ),
+                            );
                           },
-                          textColor: Colors.white,
-                          child: Text(Constants.next.toUpperCase()),
                         ),
-                        const Spacer(),
-                      ],
-                    ),
-                    const SizedBox(height: UIHelper.spaceMedium),
-                    GestureDetector(
-                      onTap: () {
-                        debugPrint(
-                            'Login page requested pressed'); ///// ---------------------------------------- Move to Login Page!!!!!!
-                      },
-                      child: Row(
-                        children: const <Widget>[
-                          Spacer(),
-                          Text(
-                            Constants.logIn,
-                          ),
-                          Spacer(),
-                        ],
+                      );
+                    },
+                  ),
+                  Row(
+                    children: [
+                      const Spacer(),
+                      RaisedButton(
+                        onPressed: () {
+                          globals.isUnfocused = true;
+                          carouselController.nextPage(
+                              duration: const Duration(milliseconds: 450),
+                              curve: Curves.linear);
+                          debugPrint('Next pressed');
+                        },
+                        textColor: Colors.white,
+                        child: Text(Constants.next.toUpperCase()),
                       ),
-                    ),
-                    if (state.isSubmitting) ...[
-                      const SizedBox(height: UIHelper.spaceSmall),
-                      const LinearProgressIndicator(
-                          backgroundColor: Colors.black),
+                      const Spacer(),
                     ],
+                  ),
+                  const SizedBox(height: UIHelper.spaceMedium),
+                  if (state.isSubmitting) ...[
+                    const SizedBox(height: UIHelper.spaceSmall),
+                    const LinearProgressIndicator(
+                        backgroundColor: Colors.black),
                   ],
-                ),
+                ],
               ),
             ),
-            floatingActionButton: Row(
-              children: [
-                const Spacer(),
-                SizedBox(width: UIHelper.screenWidth(context) / 13.5),
-                Visibility(
-                  visible: bottomButtonEnabled,
-                  child: GestureDetector(
-                    onTap: () {
-                      if (bottomButtonEnabled) {
-                        debugPrint('Forgotten Deets pressed');
-                      }
-                    },
-                    child: Text(Constants.forgottenSigninDetails,
-                        style: Theme.of(context).textTheme.bodyText1,
-                        textAlign: TextAlign.center),
-                  ),
-                ),
-                const Spacer()
-              ],
-            ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           );
         });
   }

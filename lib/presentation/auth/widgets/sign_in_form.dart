@@ -159,7 +159,7 @@ class _SignInFormState extends State<SignInForm> {
                           const SizedBox(height: UIHelper.spaceMedium),
                           GestureDetector(
                             onTap: () {
-                              ExtendedNavigator.of(context).replace(Routes.registerPage);
+                              ExtendedNavigator.of(context).push(Routes.registerPage);
                               debugPrint(
                                   'Register pressed'); ///// ---------------------------------------- Move to Register Page!!!!!!
 

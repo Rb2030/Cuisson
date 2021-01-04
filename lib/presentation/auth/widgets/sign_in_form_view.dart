@@ -9,12 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignInForm extends StatefulWidget {
+class SignInFormView extends StatefulWidget {
   @override
-  _SignInFormState createState() => _SignInFormState();
+  _SignInFormViewState createState() => _SignInFormViewState();
 }
 
-class _SignInFormState extends State<SignInForm> {
+class _SignInFormViewState extends State<SignInFormView> {
   final ScrollController listScrollController = ScrollController();
   bool bottomButtonEnabled = true;
 

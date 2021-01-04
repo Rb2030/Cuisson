@@ -8,6 +8,7 @@ abstract class RegisterFormState with _$RegisterFormState {
     @required Username username,
     @required bool showErrorMessages,
     @required bool isSubmitting,
+    @required String buttonText,
     @required Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption,
     @required
         Option<Either<AuthFailure, Unit>> uniqueUsernameFailureOrSuccessOption,
@@ -19,6 +20,7 @@ abstract class RegisterFormState with _$RegisterFormState {
         username: Username(''),
         showErrorMessages: false,
         isSubmitting: false,
+        buttonText: '',
         registerFailureOrSuccessOption: none(),
         uniqueUsernameFailureOrSuccessOption: none(),
       );

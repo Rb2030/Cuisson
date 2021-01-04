@@ -28,21 +28,33 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
             registerFailureOrSuccessOption: none(),
           );
         },
-        emailButtonClicked: (e) async* {},
+        
+        emailButtonClicked: (e) async* {
+
+        },
+
         passwordChanged: (e) async* {
           yield state.copyWith(
             password: Password(e.passwordString),
             registerFailureOrSuccessOption: none(),
           );
         },
-        passwordButtonClicked: (e) async* {},
+        
+        passwordButtonClicked: (e) async* {
+
+        },
+
         usernameChanged: (e) async* {
           yield state.copyWith(
             username: Username(e.usernameString),
             registerFailureOrSuccessOption: none(),
           );
         },
-        usernameButtonClicked: (e) async* {},
+        
+        usernameButtonClicked: (e) async* {
+
+        },
+
         registerWithEmailAndPasswordPressed: (e) async* {
           yield* _performActionOnAuthFacadeWithEmailAndPassword(
             _authFacade.registerWithEmailAndPassword,

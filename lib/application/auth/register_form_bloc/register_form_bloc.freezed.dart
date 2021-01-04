@@ -1100,6 +1100,8 @@ class _$RegisterFormStateTearOff {
       @required
           bool isSubmitting,
       @required
+          String buttonText,
+      @required
           Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption,
       @required
           Option<Either<AuthFailure, Unit>>
@@ -1110,6 +1112,7 @@ class _$RegisterFormStateTearOff {
       username: username,
       showErrorMessages: showErrorMessages,
       isSubmitting: isSubmitting,
+      buttonText: buttonText,
       registerFailureOrSuccessOption: registerFailureOrSuccessOption,
       uniqueUsernameFailureOrSuccessOption:
           uniqueUsernameFailureOrSuccessOption,
@@ -1128,6 +1131,7 @@ mixin _$RegisterFormState {
   Username get username;
   bool get showErrorMessages;
   bool get isSubmitting;
+  String get buttonText;
   Option<Either<AuthFailure, Unit>> get registerFailureOrSuccessOption;
   Option<Either<AuthFailure, Unit>> get uniqueUsernameFailureOrSuccessOption;
 
@@ -1145,6 +1149,7 @@ abstract class $RegisterFormStateCopyWith<$Res> {
       Username username,
       bool showErrorMessages,
       bool isSubmitting,
+      String buttonText,
       Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption,
       Option<Either<AuthFailure, Unit>> uniqueUsernameFailureOrSuccessOption});
 }
@@ -1165,6 +1170,7 @@ class _$RegisterFormStateCopyWithImpl<$Res>
     Object username = freezed,
     Object showErrorMessages = freezed,
     Object isSubmitting = freezed,
+    Object buttonText = freezed,
     Object registerFailureOrSuccessOption = freezed,
     Object uniqueUsernameFailureOrSuccessOption = freezed,
   }) {
@@ -1179,6 +1185,8 @@ class _$RegisterFormStateCopyWithImpl<$Res>
           : showErrorMessages as bool,
       isSubmitting:
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      buttonText:
+          buttonText == freezed ? _value.buttonText : buttonText as String,
       registerFailureOrSuccessOption: registerFailureOrSuccessOption == freezed
           ? _value.registerFailureOrSuccessOption
           : registerFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
@@ -1204,6 +1212,7 @@ abstract class _$RegisterFormStateCopyWith<$Res>
       Username username,
       bool showErrorMessages,
       bool isSubmitting,
+      String buttonText,
       Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption,
       Option<Either<AuthFailure, Unit>> uniqueUsernameFailureOrSuccessOption});
 }
@@ -1226,6 +1235,7 @@ class __$RegisterFormStateCopyWithImpl<$Res>
     Object username = freezed,
     Object showErrorMessages = freezed,
     Object isSubmitting = freezed,
+    Object buttonText = freezed,
     Object registerFailureOrSuccessOption = freezed,
     Object uniqueUsernameFailureOrSuccessOption = freezed,
   }) {
@@ -1240,6 +1250,8 @@ class __$RegisterFormStateCopyWithImpl<$Res>
           : showErrorMessages as bool,
       isSubmitting:
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      buttonText:
+          buttonText == freezed ? _value.buttonText : buttonText as String,
       registerFailureOrSuccessOption: registerFailureOrSuccessOption == freezed
           ? _value.registerFailureOrSuccessOption
           : registerFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
@@ -1260,6 +1272,7 @@ class _$_RegisterFormState implements _RegisterFormState {
       @required this.username,
       @required this.showErrorMessages,
       @required this.isSubmitting,
+      @required this.buttonText,
       @required this.registerFailureOrSuccessOption,
       @required this.uniqueUsernameFailureOrSuccessOption})
       : assert(emailAddress != null),
@@ -1267,6 +1280,7 @@ class _$_RegisterFormState implements _RegisterFormState {
         assert(username != null),
         assert(showErrorMessages != null),
         assert(isSubmitting != null),
+        assert(buttonText != null),
         assert(registerFailureOrSuccessOption != null),
         assert(uniqueUsernameFailureOrSuccessOption != null);
 
@@ -1281,13 +1295,15 @@ class _$_RegisterFormState implements _RegisterFormState {
   @override
   final bool isSubmitting;
   @override
+  final String buttonText;
+  @override
   final Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption;
   @override
   final Option<Either<AuthFailure, Unit>> uniqueUsernameFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'RegisterFormState(emailAddress: $emailAddress, password: $password, username: $username, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, registerFailureOrSuccessOption: $registerFailureOrSuccessOption, uniqueUsernameFailureOrSuccessOption: $uniqueUsernameFailureOrSuccessOption)';
+    return 'RegisterFormState(emailAddress: $emailAddress, password: $password, username: $username, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, buttonText: $buttonText, registerFailureOrSuccessOption: $registerFailureOrSuccessOption, uniqueUsernameFailureOrSuccessOption: $uniqueUsernameFailureOrSuccessOption)';
   }
 
   @override
@@ -1309,6 +1325,9 @@ class _$_RegisterFormState implements _RegisterFormState {
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
+            (identical(other.buttonText, buttonText) ||
+                const DeepCollectionEquality()
+                    .equals(other.buttonText, buttonText)) &&
             (identical(other.registerFailureOrSuccessOption,
                     registerFailureOrSuccessOption) ||
                 const DeepCollectionEquality().equals(
@@ -1329,6 +1348,7 @@ class _$_RegisterFormState implements _RegisterFormState {
       const DeepCollectionEquality().hash(username) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
+      const DeepCollectionEquality().hash(buttonText) ^
       const DeepCollectionEquality().hash(registerFailureOrSuccessOption) ^
       const DeepCollectionEquality().hash(uniqueUsernameFailureOrSuccessOption);
 
@@ -1350,6 +1370,8 @@ abstract class _RegisterFormState implements RegisterFormState {
       @required
           bool isSubmitting,
       @required
+          String buttonText,
+      @required
           Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption,
       @required
           Option<Either<AuthFailure, Unit>>
@@ -1365,6 +1387,8 @@ abstract class _RegisterFormState implements RegisterFormState {
   bool get showErrorMessages;
   @override
   bool get isSubmitting;
+  @override
+  String get buttonText;
   @override
   Option<Either<AuthFailure, Unit>> get registerFailureOrSuccessOption;
   @override

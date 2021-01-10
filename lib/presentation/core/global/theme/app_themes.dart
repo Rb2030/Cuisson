@@ -109,14 +109,14 @@ TextTheme textTheme() {
         fontWeight: FontWeight.w500,
         letterSpacing: 0.1),
     bodyText1: GoogleFonts.beVietnam(
-        fontSize: 18, fontWeight: FontWeight.w400, letterSpacing: 0.5),
+        fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.15),
     bodyText2: GoogleFonts.beVietnam(
-        fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.1),
+        fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.15),
     button: GoogleFonts.beVietnam(
-        fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 1.25),
+        fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.15),
     caption: GoogleFonts.beVietnam(
-        fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 0.4),
+        fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 0.15),
     overline: GoogleFonts.beVietnam(
-        fontSize: 8, fontWeight: FontWeight.w400, letterSpacing: 1.5),
+        fontSize: 8, fontWeight: FontWeight.w400, letterSpacing: 0.15),
   );
 }

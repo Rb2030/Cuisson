@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:Cuisson/application/core/global/colors/custom_colours.dart';
 import 'package:dartz/dartz.dart' as dartz;
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -101,7 +103,7 @@ class _RegisterFormViewState extends State<RegisterFormView>
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: UIHelper.safeAreaPadding,
+            vertical: UIHelper.safeAreaPadding(context),
             horizontal: UIHelper.screenWidth(context) * 0.2),
         child: ListView(
           shrinkWrap: true,
@@ -161,6 +163,14 @@ class _RegisterFormViewState extends State<RegisterFormView>
         builder: (context, state) {
           final int currentView = context.watch<RegisterFormBloc>().currentView;
           final String buttonText = state.buttonText;
+          const decorator = DotsDecorator(
+            activeSize: Size(UIHelper.spaceSmall, 4),
+            size: Size(UIHelper.spaceSmall, 4),
+            activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(UIHelper.spaceMiniscule))),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(UIHelper.spaceMiniscule))),
+            activeColor: Colors.black,
+            color: CustomColours.grey,
+          );
           return Scaffold(
             body: Center(
               child: Column(
@@ -207,6 +217,13 @@ class _RegisterFormViewState extends State<RegisterFormView>
                     const LinearProgressIndicator(
                         backgroundColor: Colors.black),
                   ],
+                  const Spacer(),
+                  DotsIndicator(
+                        dotsCount: 3,
+                        position: currentView.toDouble(),
+                        decorator: decorator,
+                      ),
+                  const SizedBox(height: UIHelper.spaceSmallMedium)
                 ],
               ),
             ),

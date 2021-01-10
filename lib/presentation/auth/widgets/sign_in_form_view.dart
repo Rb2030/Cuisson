@@ -1,4 +1,5 @@
 import 'package:Cuisson/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:Cuisson/application/core/global/colors/custom_colours.dart';
 import 'package:Cuisson/application/core/global/constants/constants.dart';
 import 'package:Cuisson/presentation/core/global/helpers/ui_helpers.dart';
 import 'package:Cuisson/application/core/global/globals/globals.dart'
@@ -81,7 +82,7 @@ class _SignInFormViewState extends State<SignInFormView> {
                               const Spacer(),
                             ],
                           ),
-                          const SizedBox(height: UIHelper.spaceHuge),
+                          const SizedBox(height: UIHelper.spaceVeryLarge),
                           TextFormField(
                             autocorrect: false,
                             keyboardType: TextInputType.emailAddress,
@@ -198,7 +199,7 @@ class _SignInFormViewState extends State<SignInFormView> {
                     }
                   },
                   child: Text(Constants.forgottenSigninDetails,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyText2.copyWith(color: CustomColours.grey),
                       textAlign: TextAlign.center),
                 ),
               ),

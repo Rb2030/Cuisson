@@ -55,7 +55,7 @@ class CuissonAppBar extends StatelessWidget implements PreferredSizeWidget {
               statusBarBrightness: level,
             ),
             child: SafeArea(
-              minimum: const EdgeInsets.all(UIHelper.safeAreaPadding),
+              minimum: EdgeInsets.all(UIHelper.safeAreaPadding(context)),
               child: Column(
                 children: <Widget>[
                   const SizedBox(height: UIHelper.spaceSmall),

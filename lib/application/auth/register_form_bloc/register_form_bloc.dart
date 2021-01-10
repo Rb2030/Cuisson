@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:Cuisson/application/core/global/constants/constants.dart';
 import 'package:Cuisson/domain/auth/auth_failure.dart';
 import 'package:Cuisson/domain/auth/i_auth_facade.dart';
 import 'package:Cuisson/domain/auth/value_objects.dart';
@@ -15,6 +16,8 @@ part 'register_form_bloc.freezed.dart';
 @injectable
 class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
   final IAuthFacade _authFacade;
+  int currentView  = 0;
+
   RegisterFormBloc(this._authFacade) : super(RegisterFormState.initial());
 
   @override
@@ -22,44 +25,47 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
     RegisterFormEvent event,
   ) async* {
     yield* event.map(
+        initial: (e) async* {
+          yield state;
+        },
         emailChanged: (e) async* {
           yield state.copyWith(
             emailAddress: EmailAddress(e.emailString),
             registerFailureOrSuccessOption: none(),
+            uniqueUsernameFailureOrSuccessOption: none(),
           );
         },
-        
         emailButtonClicked: (e) async* {
-
+          currentView = 1;
+          yield state.copyWith(
+            stateChangerField: 'EMAIL', // Added this field to change the state, bit of a hack
+          );
         },
-
         passwordChanged: (e) async* {
           yield state.copyWith(
             password: Password(e.passwordString),
             registerFailureOrSuccessOption: none(),
+            uniqueUsernameFailureOrSuccessOption: none(),
           );
         },
-        
         passwordButtonClicked: (e) async* {
-
+          currentView = 2;
+          yield state.copyWith(
+            buttonText: Constants.submit,
+            stateChangerField: 'PASSWORD', // Added this field to change the state, bit of a hack
+          );
         },
-
         usernameChanged: (e) async* {
           yield state.copyWith(
             username: Username(e.usernameString),
             registerFailureOrSuccessOption: none(),
           );
         },
-        
-        usernameButtonClicked: (e) async* {
-
-        },
-
+        usernameButtonClicked: (e) async* {},
         registerWithEmailAndPasswordPressed: (e) async* {
           yield* _performActionOnAuthFacadeWithEmailAndPassword(
-            _authFacade.registerWithEmailAndPassword,
-            _authFacade.uniqueUsernameCheck
-          );
+              _authFacade.registerWithEmailAndPassword,
+              _authFacade.uniqueUsernameCheck);
         });
   }
 
@@ -87,17 +93,17 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
           emailAddress: state.emailAddress, password: state.password);
 
       if (registrationFailureOrSuccess != null) {
-         registrationFailureOrSuccess.fold((failure) => null, (success) async {
-         uniqueUsernameCheck = await uniqueUsernameCall(username: state.username);
-      });
+        registrationFailureOrSuccess.fold((failure) => null, (success) async {
+          uniqueUsernameCheck =
+              await uniqueUsernameCall(username: state.username);
+        });
       }
     }
 
     yield state.copyWith(
-      isSubmitting: true,
-      showErrorMessages: true,
-      registerFailureOrSuccessOption: optionOf(registrationFailureOrSuccess),
-      uniqueUsernameFailureOrSuccessOption: optionOf(uniqueUsernameCheck)
-    );
+        isSubmitting: true,
+        showErrorMessages: true,
+        registerFailureOrSuccessOption: optionOf(registrationFailureOrSuccess),
+        uniqueUsernameFailureOrSuccessOption: optionOf(uniqueUsernameCheck));
   }
 }

@@ -18,7 +18,7 @@ class RegisterPage extends StatelessWidget {
           elevation: 0,
         ),
         body: BlocProvider(
-          create: (context) => getIt<RegisterFormBloc>(),
+          create: (context) => getIt<RegisterFormBloc>()..add(const RegisterFormEvent.initial()),
           child: RegisterFormView(),
         ));
   }

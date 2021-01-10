@@ -6,6 +6,7 @@ abstract class RegisterFormState with _$RegisterFormState {
     @required EmailAddress emailAddress,
     @required Password password,
     @required Username username,
+    @required String stateChangerField,
     @required bool showErrorMessages,
     @required bool isSubmitting,
     @required String buttonText,
@@ -18,10 +19,11 @@ abstract class RegisterFormState with _$RegisterFormState {
         emailAddress: EmailAddress(''),
         password: Password(''),
         username: Username(''),
+        stateChangerField: '',
         showErrorMessages: false,
         isSubmitting: false,
-        buttonText: '',
+        buttonText: Constants.next,
         registerFailureOrSuccessOption: none(),
         uniqueUsernameFailureOrSuccessOption: none(),
-      );
+  );
 }

@@ -16,6 +16,7 @@ class Constants extends InheritedWidget {
   static const String serverError = 'Server error';
   static const String ok = 'OK';
   static const String next = 'Next';
+  static const String submit = 'Submit';
 
 // Sign In Screen
 

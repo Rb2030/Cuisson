@@ -16,7 +16,8 @@ part 'register_form_bloc.freezed.dart';
 @injectable
 class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
   final IAuthFacade _authFacade;
-  int currentView  = 0;
+  int currentView = 0;
+  bool showInfo = false;
 
   RegisterFormBloc(this._authFacade) : super(RegisterFormState.initial());
 
@@ -24,49 +25,75 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
   Stream<RegisterFormState> mapEventToState(
     RegisterFormEvent event,
   ) async* {
-    yield* event.map(
-        initial: (e) async* {
-          yield state;
-        },
-        emailChanged: (e) async* {
-          yield state.copyWith(
-            emailAddress: EmailAddress(e.emailString),
-            registerFailureOrSuccessOption: none(),
-            uniqueUsernameFailureOrSuccessOption: none(),
-          );
-        },
-        emailButtonClicked: (e) async* {
-          currentView = 1;
-          yield state.copyWith(
-            stateChangerField: 'EMAIL', // Added this field to change the state, bit of a hack
-          );
-        },
-        passwordChanged: (e) async* {
-          yield state.copyWith(
-            password: Password(e.passwordString),
-            registerFailureOrSuccessOption: none(),
-            uniqueUsernameFailureOrSuccessOption: none(),
-          );
-        },
-        passwordButtonClicked: (e) async* {
-          currentView = 2;
-          yield state.copyWith(
-            buttonText: Constants.submit,
-            stateChangerField: 'PASSWORD', // Added this field to change the state, bit of a hack
-          );
-        },
-        usernameChanged: (e) async* {
-          yield state.copyWith(
-            username: Username(e.usernameString),
-            registerFailureOrSuccessOption: none(),
-          );
-        },
-        usernameButtonClicked: (e) async* {},
-        registerWithEmailAndPasswordPressed: (e) async* {
-          yield* _performActionOnAuthFacadeWithEmailAndPassword(
-              _authFacade.registerWithEmailAndPassword,
-              _authFacade.uniqueUsernameCheck);
-        });
+    yield* event.map(initial: (e) async* {
+      yield state;
+    }, informationPressed: (e) async* {
+      showInfo = !showInfo;
+      switch (e.currentView) {
+        case 0:
+          if (showInfo) {
+            yield state.copyWith(information: Constants.emailInformation);
+          } else {
+            yield state.copyWith(information: '');
+          }
+          break;
+        case 1:
+          if (showInfo) {
+            yield state.copyWith(information: Constants.passwordInformation);
+          } else {
+            yield state.copyWith(information: '');
+          }
+          break;
+        case 2:
+          if (showInfo) {
+            yield state.copyWith(information: Constants.usernameInformation);
+          } else {
+            yield state.copyWith(information: '');
+          }
+          break;
+        default:
+      }
+    }, emailChanged: (e) async* {
+      yield state.copyWith(
+        emailAddress: EmailAddress(e.emailString),
+        registerFailureOrSuccessOption: none(),
+        uniqueUsernameFailureOrSuccessOption: none(),
+      );
+    }, emailButtonClicked: (e) async* {
+      currentView = 1;
+      showInfo = false;
+      yield state.copyWith(
+        stateChangerField:
+            'EMAIL', // Added this field to change the state, bit of a hack
+        information: ''
+      );
+    }, passwordChanged: (e) async* {
+      yield state.copyWith(
+        password: Password(e.passwordString),
+        registerFailureOrSuccessOption: none(),
+        uniqueUsernameFailureOrSuccessOption: none(),
+      );
+    }, passwordButtonClicked: (e) async* {
+      currentView = 2;
+      showInfo = false;
+      yield state.copyWith(
+        buttonText: Constants.submit,
+        stateChangerField:
+            'PASSWORD', // Added this field to change the state, bit of a hack
+        information: ''
+      );
+    }, usernameChanged: (e) async* {
+      yield state.copyWith(
+        username: Username(e.usernameString),
+        registerFailureOrSuccessOption: none(),
+      );
+    }, usernameButtonClicked: (e) async* {
+      showInfo = false;
+    }, registerWithEmailAndPasswordPressed: (e) async* {
+      yield* _performActionOnAuthFacadeWithEmailAndPassword(
+          _authFacade.registerWithEmailAndPassword,
+          _authFacade.uniqueUsernameCheck);
+    });
   }
 
   Stream<RegisterFormState> _performActionOnAuthFacadeWithEmailAndPassword(
@@ -85,6 +112,7 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
 
     if (isEmailValid && isPasswordValid && isUsernameValid) {
       yield state.copyWith(
+        information: '',
         isSubmitting: true,
         registerFailureOrSuccessOption: none(),
       );

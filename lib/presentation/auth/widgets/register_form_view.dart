@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:Cuisson/application/core/global/colors/custom_colours.dart';
 import 'package:dartz/dartz.dart' as dartz;
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -98,7 +99,8 @@ class _RegisterFormViewState extends State<RegisterFormView>
     throw ArgumentError.notNull();
   }
 
-  Widget buildTextView({@required int itemIndex}) {
+  Widget buildTextView(
+      {@required int itemIndex, @required RegisterFormState state}) {
     return Form(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Padding(
@@ -108,7 +110,13 @@ class _RegisterFormViewState extends State<RegisterFormView>
         child: ListView(
           shrinkWrap: true,
           children: [
-            SizedBox(height: UIHelper.screenHeightWithOutSafeArea(context) / 5),
+            Container(
+                alignment: Alignment.centerLeft,
+                height: UIHelper.screenHeightWithOutSafeArea(context) / 5,
+                child: Text(state.information,
+                    style: Theme.of(context).textTheme.bodyText2),
+              ),
+            // ignore: avoid_bool_literals_in_conditional_expressions
             Container(
               alignment: Alignment.centerLeft,
               width: UIHelper.screenWidth(context),
@@ -166,8 +174,12 @@ class _RegisterFormViewState extends State<RegisterFormView>
           const decorator = DotsDecorator(
             activeSize: Size(UIHelper.spaceSmall, 4),
             size: Size(UIHelper.spaceSmall, 4),
-            activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(UIHelper.spaceMiniscule))),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(UIHelper.spaceMiniscule))),
+            activeShape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.all(Radius.circular(UIHelper.spaceMiniscule))),
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.all(Radius.circular(UIHelper.spaceMiniscule))),
             activeColor: Colors.black,
             color: CustomColours.grey,
           );
@@ -177,7 +189,8 @@ class _RegisterFormViewState extends State<RegisterFormView>
                 children: [
                   SlideTransition(
                       position: animation,
-                      child: buildTextView(itemIndex: currentView)),
+                      child:
+                          buildTextView(itemIndex: currentView, state: state)),
                   Row(
                     children: [
                       const Spacer(),
@@ -211,6 +224,7 @@ class _RegisterFormViewState extends State<RegisterFormView>
                       const Spacer(),
                     ],
                   ),
+                  const Spacer(),
                   const SizedBox(height: UIHelper.spaceMedium),
                   if (state.isSubmitting) ...[
                     const SizedBox(height: UIHelper.spaceSmall),
@@ -218,11 +232,32 @@ class _RegisterFormViewState extends State<RegisterFormView>
                         backgroundColor: Colors.black),
                   ],
                   const Spacer(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: UIHelper.safeAreaPadding(context)),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            context.read<RegisterFormBloc>().add(
+                                RegisterFormEvent.informationPressed(
+                                    currentView));
+                          },
+                          child: SvgPicture.asset(Constants.informationIcon,
+                              color: Colors.black,
+                              width: UIHelper.iconSize * 0.8,
+                              height: UIHelper.iconSize * 0.8),
+                        ),
+                        const Spacer(),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: UIHelper.spaceSmall),
                   DotsIndicator(
-                        dotsCount: 3,
-                        position: currentView.toDouble(),
-                        decorator: decorator,
-                      ),
+                    dotsCount: 3,
+                    position: currentView.toDouble(),
+                    decorator: decorator,
+                  ),
                   const SizedBox(height: UIHelper.spaceSmallMedium)
                 ],
               ),

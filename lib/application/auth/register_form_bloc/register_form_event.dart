@@ -3,6 +3,7 @@ part of 'register_form_bloc.dart';
 @freezed
 abstract class RegisterFormEvent with _$RegisterFormEvent {
   const factory RegisterFormEvent.initial() = _Initial;
+  const factory RegisterFormEvent.informationPressed(int currentView) = _InformationPressed;
   const factory RegisterFormEvent.emailChanged(String emailString) =
       _EmailChanged;
   const factory RegisterFormEvent.emailButtonClicked({String emailString}) =

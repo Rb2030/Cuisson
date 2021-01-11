@@ -3,6 +3,7 @@ part of 'register_form_bloc.dart';
 @freezed
 abstract class RegisterFormState with _$RegisterFormState {
   const factory RegisterFormState({
+    @required String information,
     @required EmailAddress emailAddress,
     @required Password password,
     @required Username username,
@@ -16,6 +17,7 @@ abstract class RegisterFormState with _$RegisterFormState {
   }) = _RegisterFormState;
 
   factory RegisterFormState.initial() => RegisterFormState(
+        information: '',
         emailAddress: EmailAddress(''),
         password: Password(''),
         username: Username(''),

@@ -29,6 +29,7 @@ class _RegisterFormViewState extends State<RegisterFormView>
     Constants.password,
     Constants.username
   ];
+  final _textViewController = TextEditingController(text: '');
 
   @override
   void initState() {
@@ -99,60 +100,6 @@ class _RegisterFormViewState extends State<RegisterFormView>
     throw ArgumentError.notNull();
   }
 
-  Widget buildTextView(
-      {@required int itemIndex, @required RegisterFormState state}) {
-    return Form(
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: UIHelper.safeAreaPadding(context),
-            horizontal: UIHelper.screenWidth(context) * 0.2),
-        child: ListView(
-          shrinkWrap: true,
-          children: [
-            Container(
-                alignment: Alignment.centerLeft,
-                height: UIHelper.screenHeightWithOutSafeArea(context) / 5,
-                child: Text(state.information,
-                    style: Theme.of(context).textTheme.bodyText2),
-              ),
-            // ignore: avoid_bool_literals_in_conditional_expressions
-            Container(
-              alignment: Alignment.centerLeft,
-              width: UIHelper.screenWidth(context),
-              child: Text(pages[itemIndex],
-                  style: Theme.of(context).textTheme.bodyText1),
-            ),
-            const SizedBox(height: UIHelper.spaceSmall),
-            TextFormField(
-              autocorrect: false,
-              // ignore: avoid_bool_literals_in_conditional_expressions
-              obscureText: itemIndex == 1 ? true : false,
-              // ignore: avoid_redundant_argument_values
-              obscuringCharacter: '•',
-              decoration:
-                  const InputDecoration().copyWith(hintText: pages[itemIndex]),
-              onChanged: (value) =>
-                  getCurrentOnChanged(page: itemIndex, value: value),
-              validator: (_) => getinputValidation(itemIndex).fold(
-                (leftFailure) => leftFailure.maybeMap(
-                    authOrReg: (_) => getErrorString(page: itemIndex),
-                    orElse: () => null),
-                (rightSuccess) => null,
-              ),
-              inputFormatters: [
-                FilteringTextInputFormatter.deny(RegExp(r"\s\b|\b\s"))
-              ],
-              onTap: () {
-                globals.isUnfocused = false;
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   void showNextView() {
     animation = Tween<Offset>(
       begin: const Offset(1.0, 0.0),
@@ -166,11 +113,14 @@ class _RegisterFormViewState extends State<RegisterFormView>
 
   @override
   Widget build(BuildContext context) {
+
     return BlocConsumer<RegisterFormBloc, RegisterFormState>(
         listener: (context, state) {},
         builder: (context, state) {
+          //
           final int currentView = context.watch<RegisterFormBloc>().currentView;
           final String buttonText = state.buttonText;
+          //
           const decorator = DotsDecorator(
             activeSize: Size(UIHelper.spaceSmall, 4),
             size: Size(UIHelper.spaceSmall, 4),
@@ -188,14 +138,74 @@ class _RegisterFormViewState extends State<RegisterFormView>
               child: Column(
                 children: [
                   SlideTransition(
-                      position: animation,
-                      child:
-                          buildTextView(itemIndex: currentView, state: state)),
+                    position: animation,
+                    child: Form(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: UIHelper.safeAreaPadding(context),
+                            horizontal: UIHelper.screenWidth(context) * 0.2),
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: [
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              height: UIHelper.screenHeightWithOutSafeArea(
+                                      context) /
+                                  5,
+                              child: Text(state.information,
+                                  style: Theme.of(context).textTheme.bodyText2),
+                            ),
+                            // ignore: avoid_bool_literals_in_conditional_expressions
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              width: UIHelper.screenWidth(context),
+                              child: Text(pages[currentView],
+                                  style: Theme.of(context).textTheme.bodyText1),
+                            ),
+                            const SizedBox(height: UIHelper.spaceSmall),
+                            TextFormField(
+                              controller: _textViewController,
+                              autocorrect: false,
+                              // ignore: avoid_bool_literals_in_conditional_expressions
+                              obscureText: currentView == 1 ? true : false,
+                              // ignore: avoid_redundant_argument_values
+                              obscuringCharacter: '•',
+                              decoration: const InputDecoration()
+                                  .copyWith(hintText: pages[currentView]),
+                              onChanged: (value) {
+                                _textViewController.text = value;
+                                _textViewController.selection = TextSelection.fromPosition(TextPosition(offset: _textViewController.text.length)); // Puts the cursor at the end of the text
+                                return getCurrentOnChanged(
+                                    page: currentView, value: value);
+                              },
+                              validator: (_) =>
+                                  getinputValidation(currentView).fold(
+                                (leftFailure) => leftFailure.maybeMap(
+                                    authOrReg: (_) =>
+                                        getErrorString(page: currentView),
+                                    orElse: () => null),
+                                (rightSuccess) => null,
+                              ),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.deny(
+                                    RegExp(r"\s\b|\b\s"))
+                              ],
+                              onTap: () {
+                                globals.isUnfocused = false;
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                   Row(
                     children: [
                       const Spacer(),
                       RaisedButton(
                         onPressed: () {
+                          _textViewController.clear();
                           globals.isUnfocused = false;
                           switch (currentView) {
                             case 0:

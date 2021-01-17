@@ -9,13 +9,15 @@ import 'value_objects.dart';
 
 abstract class IAuthFacade {
   Future<Option<CurrentUser>> getSignedInUser();
-  
+
+ // Future<void> oiDeleteUserBruv();  Used this to delete user after signing in
+
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     @required EmailAddress emailAddress,
     @required Password password,
   });
 
-    Future<Either<AuthFailure, Unit>> uniqueUsernameCheck({
+  Future<Either<AuthFailure, Unit>> uniqueUsernameCheck({
     @required Username username,
   });
 
@@ -24,6 +26,7 @@ abstract class IAuthFacade {
     @required Password password,
   });
 
-  Future<Either<AuthFailure, Unit>> signInWithGoogle(); // Won't have google sign in as I want my own set of users with data
+  Future<Either<AuthFailure, Unit>>
+      signInWithGoogle(); // Won't have google sign in as I want my own set of users with data
   Future<void> signOut();
 }

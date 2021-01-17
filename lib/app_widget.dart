@@ -5,8 +5,7 @@ import 'package:Cuisson/presentation/auth/pages/sign_in_page.dart';
 import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 import 'package:Cuisson/presentation/core/global/theme/bloc/theme_bloc.dart';
 import 'package:Cuisson/presentation/core/global/widgets/keyboard_dismisser.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:Cuisson/presentation/routes/router.gr.dart' as app_router;
+import 'package:Cuisson/presentation/routes/router.gr.dart' as r;
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'application/auth/auth_bloc.dart';
 import 'application/core/global/constants/constants.dart';
 import 'injection.dart';
+import 'presentation/routes/router.gr.dart';
 
 class AppWidget extends StatefulWidget {
   @override
@@ -50,17 +50,15 @@ class _AppWidgetState extends State<AppWidget> {
                           ? appThemeData.values.last
                           : appThemeData.values.first;
                       return keyboardDismisser(
-                        context: context,
-                        child: MaterialApp(
-                          title: 'Material App',
-                          theme: appTheme,
-                          // builder: ExtendedNavigator.builder(
-                          //     router: app_router.Router()), /// TODO: This will need to be added when Router is complete
-                          home: SignInPage(),
-                          builder: ExtendedNavigator.builder(
-                              router: app_router.Router()),
-                        ),
-                      );
+                          context: context,
+                          child: MaterialApp(
+                            title: 'Material App',
+                            theme: appTheme,
+                            home: Container(),
+                            builder: ExtendedNavigator.builder<r.Router>(
+                              router: r.Router(),
+                            ),
+                          ));
                     }));
           } else {
             return Container();

@@ -15,18 +15,27 @@ abstract class AuthOrRegValueFailure<T> with _$AuthOrRegValueFailure<T> {
   const factory AuthOrRegValueFailure.invalidEmail({
     @required T failedValue,
   }) = InvalidEmail<T>;
-    const factory AuthOrRegValueFailure.exceedingLength({
-    @required T failedValue, 
-  }) = ExceedingLength<T>;
-  const factory AuthOrRegValueFailure.emptyField({
-    @required T failedValue,
-  }) = EmptyField<T>; 
   const factory AuthOrRegValueFailure.invalidPassword({
     @required T failedValue,
   }) = InvalidPassword<T>;
   const factory AuthOrRegValueFailure.invalidUsername({
     @required T failedValue,
   }) = InvalidUsername<T>;
+  const factory AuthOrRegValueFailure.exceedingLength({
+    @required T failedValue, 
+  }) = ExceedingLength<T>;
+  const factory AuthOrRegValueFailure.emptyField({
+    @required T failedValue,
+  }) = EmptyField<T>; 
+  const factory AuthOrRegValueFailure.containsProfanity({
+    @required T failedValue,
+  }) = ContainsProfanity<T>;
+  const factory AuthOrRegValueFailure.stringEmpty({
+    @required T failedValue,
+  }) = StringEmpty<T>;
+  const factory AuthOrRegValueFailure.stringExceedsMaxLength({
+    @required T failedValue,
+  }) = StringExceedsMaxLength<T>;
 }
 
 // @freezed

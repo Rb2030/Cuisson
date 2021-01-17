@@ -125,28 +125,28 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
     final isPasswordValid = state.password.isValid();
     final isUsernameValid = state.username.isValid();
 
-    if (isEmailValid && isPasswordValid && isUsernameValid) {
-      yield state.copyWith(
-        information: '',
-        isSubmitting: true,
-        registerFailureOrSuccessOption: none(),
-      );
+    // if (isEmailValid && isPasswordValid && isUsernameValid) { //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //   yield state.copyWith( //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //     information: '', //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //     isSubmitting: true, //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //     registerFailureOrSuccessOption: none(), //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //   );
 
-      registrationFailureOrSuccess = await registerCall(
-          emailAddress: state.emailAddress, password: state.password);
+    //   registrationFailureOrSuccess = await registerCall( //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //       emailAddress: state.emailAddress, password: state.password); //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
 
-      if (registrationFailureOrSuccess != null) {
-        registrationFailureOrSuccess.fold((failure) => null, (success) async {
-          uniqueUsernameCheck =
-              await uniqueUsernameCall(username: state.username);
-        });
-      }
-    }
+    //   if (registrationFailureOrSuccess != null) { //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //     registrationFailureOrSuccess.fold((failure) => null, (success) async { //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //       uniqueUsernameCheck = //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //           await uniqueUsernameCall(username: state.username); //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //     });
+    //   }
+    // }
 
-    yield state.copyWith(
-        isSubmitting: true,
-        showErrorMessages: true,
-        registerFailureOrSuccessOption: optionOf(registrationFailureOrSuccess),
-        uniqueUsernameFailureOrSuccessOption: optionOf(uniqueUsernameCheck));
+    // yield state.copyWith( //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //     isSubmitting: true, //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //     showErrorMessages: true, //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //     registerFailureOrSuccessOption: optionOf(registrationFailureOrSuccess), //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+    //     uniqueUsernameFailureOrSuccessOption: optionOf(uniqueUsernameCheck)); //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
   }
 }

@@ -11,7 +11,10 @@ class EmailAddress extends ValueObject<String> {
     // This prevents the email constructor being called if the email isn't in the correct format
     assert(input != null);
     return EmailAddress._(//This is being called by the private const below
-        validateEmailAddress(input).flatMap((_) => validateStringNotEmpty(input)));
+        validateEmailAddress(input).flatMap(
+          (_) => validateStringNotEmpty(input)).flatMap(
+            (_) => validateMaxStringLength(input))
+      );
   }
 
   const EmailAddress._(this.value);
@@ -25,8 +28,10 @@ class Password extends ValueObject<String> {
     // This prevents the email constructor being called if the email isn't in the correct format
     assert(input != null);
        return Password._(
-        validatePassword(input).flatMap((_) => validateStringNotEmpty(input)));
-
+        validatePassword(input).flatMap(
+          (_) => validateStringNotEmpty(input)).flatMap(
+            (_) => validateMaxStringLength(input))
+      );
   }
 
   const Password._(this.value);
@@ -43,7 +48,9 @@ class Username extends ValueObject<String> {
 
     assert(input != null);
     return Username._(
-        validatePassword(input).flatMap((_) => validateStringNotEmpty(input)));
+        validatePassword(input).flatMap(
+          (_) => validateStringNotEmpty(input)).flatMap(
+          (_) => validateStringForProfanity(input)));
   }
 
   const Username._(this.value);

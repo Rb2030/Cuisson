@@ -24,6 +24,10 @@ class FirebaseAuthFacade implements IAuthFacade {
   Future<Option<CurrentUser>> getSignedInUser() async =>
       optionOf(_firebaseAuth.currentUser?.toDomain());
 
+  //   @override
+  // Future<void> oiDeleteUserBruv() async =>
+  //     _firebaseAuth.currentUser?.delete();  Used this to delete user after signing in
+
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     @required EmailAddress emailAddress,

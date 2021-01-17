@@ -1,5 +1,6 @@
 import 'package:Cuisson/domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
+import 'package:profanity_filter/profanity_filter.dart';
 
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   const pattern =
@@ -29,8 +30,31 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
   }
 }
 
-Either<ValueFailure<String>, String> validateMaxStringLength(String input, int maxLength) {
+Either<ValueFailure<String>, String> validateUsername(String input) {
+
+  if (input.isNotEmpty) {
+    return right(input);
+  } else {
+        return left(ValueFailure.authOrReg(
+        AuthOrRegValueFailure.invalidPassword(failedValue: input)));
+
+  }
+}
+
+Either<ValueFailure<String>, String> validateMaxStringLength(String input) {
+  const maxLength = 16;
   if (input.length > maxLength) {
+    return right(input);
+  } else {
+    return left(ValueFailure.authOrReg(
+        AuthOrRegValueFailure.exceedingLength(failedValue: input)));
+  }
+}
+
+Either<ValueFailure<String>, String> validateStringForProfanity(String input) {
+  final filter = ProfanityFilter();
+  final bool hasProfanity = filter.hasProfanity(input);
+  if (!hasProfanity) {
     return right(input);
   } else {
     return left(ValueFailure.authOrReg(

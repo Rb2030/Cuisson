@@ -62,7 +62,7 @@ class _SignInFormViewState extends State<SignInFormView> {
             child: SizedBox(
               width: UIHelper.screenWidth(context) / 1.7,
               child: Form(
-                  //       autovalidate: state.showErrorMessages, // Deprecated
+         //       autovalidate: state.showErrorMessages, // Deprecated
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: LayoutBuilder(
                     builder:

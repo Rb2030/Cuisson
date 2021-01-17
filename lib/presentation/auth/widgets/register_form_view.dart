@@ -231,7 +231,8 @@ class _RegisterFormViewState extends State<RegisterFormView>
                                           const RegisterFormEvent
                                               .disableButton());
                             _textViewController.clear();
-                            globals.isUnfocused = false;
+                            FocusScope.of(context).unfocus();
+                            globals.isUnfocused = true;
                             switch (currentView) {
                               case 0:
                                 context.read<RegisterFormBloc>().add(

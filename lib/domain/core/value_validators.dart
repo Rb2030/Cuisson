@@ -58,7 +58,7 @@ Either<ValueFailure<String>, String> validateStringForProfanity(String input) {
     return right(input);
   } else {
     return left(ValueFailure.authOrReg(
-        AuthOrRegValueFailure.exceedingLength(failedValue: input)));
+        AuthOrRegValueFailure.containsProfanity(failedValue: input)));
   }
 }
 

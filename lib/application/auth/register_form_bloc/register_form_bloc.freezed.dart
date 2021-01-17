@@ -19,6 +19,16 @@ class _$RegisterFormEventTearOff {
   }
 
 // ignore: unused_element
+  _EnableButton enableButton() {
+    return const _EnableButton();
+  }
+
+// ignore: unused_element
+  _DisableButton disableButton() {
+    return const _DisableButton();
+  }
+
+// ignore: unused_element
   _InformationPressed informationPressed(int currentView) {
     return _InformationPressed(
       currentView,
@@ -82,6 +92,8 @@ mixin _$RegisterFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
     @required TResult informationPressed(int currentView),
     @required TResult emailChanged(String emailString),
     @required TResult emailButtonClicked(String emailString),
@@ -94,6 +106,8 @@ mixin _$RegisterFormEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
     TResult informationPressed(int currentView),
     TResult emailChanged(String emailString),
     TResult emailButtonClicked(String emailString),
@@ -107,6 +121,8 @@ mixin _$RegisterFormEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
     @required TResult informationPressed(_InformationPressed value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult emailButtonClicked(_EmailButtonClicked value),
@@ -121,6 +137,8 @@ mixin _$RegisterFormEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
     TResult informationPressed(_InformationPressed value),
     TResult emailChanged(_EmailChanged value),
     TResult emailButtonClicked(_EmailButtonClicked value),
@@ -188,6 +206,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
     @required TResult informationPressed(int currentView),
     @required TResult emailChanged(String emailString),
     @required TResult emailButtonClicked(String emailString),
@@ -198,6 +218,8 @@ class _$_Initial implements _Initial {
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -213,6 +235,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
     TResult informationPressed(int currentView),
     TResult emailChanged(String emailString),
     TResult emailButtonClicked(String emailString),
@@ -234,6 +258,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
     @required TResult informationPressed(_InformationPressed value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult emailButtonClicked(_EmailButtonClicked value),
@@ -246,6 +272,8 @@ class _$_Initial implements _Initial {
             _RegisterWithEmailAndPasswordPressed value),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -261,6 +289,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
     TResult informationPressed(_InformationPressed value),
     TResult emailChanged(_EmailChanged value),
     TResult emailButtonClicked(_EmailButtonClicked value),
@@ -282,6 +312,302 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements RegisterFormEvent {
   const factory _Initial() = _$_Initial;
+}
+
+/// @nodoc
+abstract class _$EnableButtonCopyWith<$Res> {
+  factory _$EnableButtonCopyWith(
+          _EnableButton value, $Res Function(_EnableButton) then) =
+      __$EnableButtonCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$EnableButtonCopyWithImpl<$Res>
+    extends _$RegisterFormEventCopyWithImpl<$Res>
+    implements _$EnableButtonCopyWith<$Res> {
+  __$EnableButtonCopyWithImpl(
+      _EnableButton _value, $Res Function(_EnableButton) _then)
+      : super(_value, (v) => _then(v as _EnableButton));
+
+  @override
+  _EnableButton get _value => super._value as _EnableButton;
+}
+
+/// @nodoc
+class _$_EnableButton implements _EnableButton {
+  const _$_EnableButton();
+
+  @override
+  String toString() {
+    return 'RegisterFormEvent.enableButton()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _EnableButton);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
+    @required TResult informationPressed(int currentView),
+    @required TResult emailChanged(String emailString),
+    @required TResult emailButtonClicked(String emailString),
+    @required TResult passwordChanged(String passwordString),
+    @required TResult passwordButtonClicked(String passwordString),
+    @required TResult usernameChanged(String usernameString),
+    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult registerWithEmailAndPasswordPressed(),
+  }) {
+    assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
+    assert(informationPressed != null);
+    assert(emailChanged != null);
+    assert(emailButtonClicked != null);
+    assert(passwordChanged != null);
+    assert(passwordButtonClicked != null);
+    assert(usernameChanged != null);
+    assert(usernameButtonClicked != null);
+    assert(registerWithEmailAndPasswordPressed != null);
+    return enableButton();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
+    TResult informationPressed(int currentView),
+    TResult emailChanged(String emailString),
+    TResult emailButtonClicked(String emailString),
+    TResult passwordChanged(String passwordString),
+    TResult passwordButtonClicked(String passwordString),
+    TResult usernameChanged(String usernameString),
+    TResult usernameButtonClicked(String usernameString),
+    TResult registerWithEmailAndPasswordPressed(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (enableButton != null) {
+      return enableButton();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
+    @required TResult informationPressed(_InformationPressed value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult emailButtonClicked(_EmailButtonClicked value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult passwordButtonClicked(_PasswordButtonClicked value),
+    @required TResult usernameChanged(_UsernameChanged value),
+    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required
+        TResult registerWithEmailAndPasswordPressed(
+            _RegisterWithEmailAndPasswordPressed value),
+  }) {
+    assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
+    assert(informationPressed != null);
+    assert(emailChanged != null);
+    assert(emailButtonClicked != null);
+    assert(passwordChanged != null);
+    assert(passwordButtonClicked != null);
+    assert(usernameChanged != null);
+    assert(usernameButtonClicked != null);
+    assert(registerWithEmailAndPasswordPressed != null);
+    return enableButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
+    TResult informationPressed(_InformationPressed value),
+    TResult emailChanged(_EmailChanged value),
+    TResult emailButtonClicked(_EmailButtonClicked value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult passwordButtonClicked(_PasswordButtonClicked value),
+    TResult usernameChanged(_UsernameChanged value),
+    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult registerWithEmailAndPasswordPressed(
+        _RegisterWithEmailAndPasswordPressed value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (enableButton != null) {
+      return enableButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EnableButton implements RegisterFormEvent {
+  const factory _EnableButton() = _$_EnableButton;
+}
+
+/// @nodoc
+abstract class _$DisableButtonCopyWith<$Res> {
+  factory _$DisableButtonCopyWith(
+          _DisableButton value, $Res Function(_DisableButton) then) =
+      __$DisableButtonCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$DisableButtonCopyWithImpl<$Res>
+    extends _$RegisterFormEventCopyWithImpl<$Res>
+    implements _$DisableButtonCopyWith<$Res> {
+  __$DisableButtonCopyWithImpl(
+      _DisableButton _value, $Res Function(_DisableButton) _then)
+      : super(_value, (v) => _then(v as _DisableButton));
+
+  @override
+  _DisableButton get _value => super._value as _DisableButton;
+}
+
+/// @nodoc
+class _$_DisableButton implements _DisableButton {
+  const _$_DisableButton();
+
+  @override
+  String toString() {
+    return 'RegisterFormEvent.disableButton()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _DisableButton);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
+    @required TResult informationPressed(int currentView),
+    @required TResult emailChanged(String emailString),
+    @required TResult emailButtonClicked(String emailString),
+    @required TResult passwordChanged(String passwordString),
+    @required TResult passwordButtonClicked(String passwordString),
+    @required TResult usernameChanged(String usernameString),
+    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult registerWithEmailAndPasswordPressed(),
+  }) {
+    assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
+    assert(informationPressed != null);
+    assert(emailChanged != null);
+    assert(emailButtonClicked != null);
+    assert(passwordChanged != null);
+    assert(passwordButtonClicked != null);
+    assert(usernameChanged != null);
+    assert(usernameButtonClicked != null);
+    assert(registerWithEmailAndPasswordPressed != null);
+    return disableButton();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
+    TResult informationPressed(int currentView),
+    TResult emailChanged(String emailString),
+    TResult emailButtonClicked(String emailString),
+    TResult passwordChanged(String passwordString),
+    TResult passwordButtonClicked(String passwordString),
+    TResult usernameChanged(String usernameString),
+    TResult usernameButtonClicked(String usernameString),
+    TResult registerWithEmailAndPasswordPressed(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (disableButton != null) {
+      return disableButton();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
+    @required TResult informationPressed(_InformationPressed value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult emailButtonClicked(_EmailButtonClicked value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult passwordButtonClicked(_PasswordButtonClicked value),
+    @required TResult usernameChanged(_UsernameChanged value),
+    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required
+        TResult registerWithEmailAndPasswordPressed(
+            _RegisterWithEmailAndPasswordPressed value),
+  }) {
+    assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
+    assert(informationPressed != null);
+    assert(emailChanged != null);
+    assert(emailButtonClicked != null);
+    assert(passwordChanged != null);
+    assert(passwordButtonClicked != null);
+    assert(usernameChanged != null);
+    assert(usernameButtonClicked != null);
+    assert(registerWithEmailAndPasswordPressed != null);
+    return disableButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
+    TResult informationPressed(_InformationPressed value),
+    TResult emailChanged(_EmailChanged value),
+    TResult emailButtonClicked(_EmailButtonClicked value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult passwordButtonClicked(_PasswordButtonClicked value),
+    TResult usernameChanged(_UsernameChanged value),
+    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult registerWithEmailAndPasswordPressed(
+        _RegisterWithEmailAndPasswordPressed value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (disableButton != null) {
+      return disableButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DisableButton implements RegisterFormEvent {
+  const factory _DisableButton() = _$_DisableButton;
 }
 
 /// @nodoc
@@ -346,6 +672,8 @@ class _$_InformationPressed implements _InformationPressed {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
     @required TResult informationPressed(int currentView),
     @required TResult emailChanged(String emailString),
     @required TResult emailButtonClicked(String emailString),
@@ -356,6 +684,8 @@ class _$_InformationPressed implements _InformationPressed {
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -371,6 +701,8 @@ class _$_InformationPressed implements _InformationPressed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
     TResult informationPressed(int currentView),
     TResult emailChanged(String emailString),
     TResult emailButtonClicked(String emailString),
@@ -392,6 +724,8 @@ class _$_InformationPressed implements _InformationPressed {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
     @required TResult informationPressed(_InformationPressed value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult emailButtonClicked(_EmailButtonClicked value),
@@ -404,6 +738,8 @@ class _$_InformationPressed implements _InformationPressed {
             _RegisterWithEmailAndPasswordPressed value),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -419,6 +755,8 @@ class _$_InformationPressed implements _InformationPressed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
     TResult informationPressed(_InformationPressed value),
     TResult emailChanged(_EmailChanged value),
     TResult emailButtonClicked(_EmailButtonClicked value),
@@ -507,6 +845,8 @@ class _$_EmailChanged implements _EmailChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
     @required TResult informationPressed(int currentView),
     @required TResult emailChanged(String emailString),
     @required TResult emailButtonClicked(String emailString),
@@ -517,6 +857,8 @@ class _$_EmailChanged implements _EmailChanged {
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -532,6 +874,8 @@ class _$_EmailChanged implements _EmailChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
     TResult informationPressed(int currentView),
     TResult emailChanged(String emailString),
     TResult emailButtonClicked(String emailString),
@@ -553,6 +897,8 @@ class _$_EmailChanged implements _EmailChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
     @required TResult informationPressed(_InformationPressed value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult emailButtonClicked(_EmailButtonClicked value),
@@ -565,6 +911,8 @@ class _$_EmailChanged implements _EmailChanged {
             _RegisterWithEmailAndPasswordPressed value),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -580,6 +928,8 @@ class _$_EmailChanged implements _EmailChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
     TResult informationPressed(_InformationPressed value),
     TResult emailChanged(_EmailChanged value),
     TResult emailButtonClicked(_EmailButtonClicked value),
@@ -669,6 +1019,8 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
     @required TResult informationPressed(int currentView),
     @required TResult emailChanged(String emailString),
     @required TResult emailButtonClicked(String emailString),
@@ -679,6 +1031,8 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -694,6 +1048,8 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
     TResult informationPressed(int currentView),
     TResult emailChanged(String emailString),
     TResult emailButtonClicked(String emailString),
@@ -715,6 +1071,8 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
     @required TResult informationPressed(_InformationPressed value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult emailButtonClicked(_EmailButtonClicked value),
@@ -727,6 +1085,8 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
             _RegisterWithEmailAndPasswordPressed value),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -742,6 +1102,8 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
     TResult informationPressed(_InformationPressed value),
     TResult emailChanged(_EmailChanged value),
     TResult emailButtonClicked(_EmailButtonClicked value),
@@ -835,6 +1197,8 @@ class _$_PasswordChanged implements _PasswordChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
     @required TResult informationPressed(int currentView),
     @required TResult emailChanged(String emailString),
     @required TResult emailButtonClicked(String emailString),
@@ -845,6 +1209,8 @@ class _$_PasswordChanged implements _PasswordChanged {
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -860,6 +1226,8 @@ class _$_PasswordChanged implements _PasswordChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
     TResult informationPressed(int currentView),
     TResult emailChanged(String emailString),
     TResult emailButtonClicked(String emailString),
@@ -881,6 +1249,8 @@ class _$_PasswordChanged implements _PasswordChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
     @required TResult informationPressed(_InformationPressed value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult emailButtonClicked(_EmailButtonClicked value),
@@ -893,6 +1263,8 @@ class _$_PasswordChanged implements _PasswordChanged {
             _RegisterWithEmailAndPasswordPressed value),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -908,6 +1280,8 @@ class _$_PasswordChanged implements _PasswordChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
     TResult informationPressed(_InformationPressed value),
     TResult emailChanged(_EmailChanged value),
     TResult emailButtonClicked(_EmailButtonClicked value),
@@ -1000,6 +1374,8 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
     @required TResult informationPressed(int currentView),
     @required TResult emailChanged(String emailString),
     @required TResult emailButtonClicked(String emailString),
@@ -1010,6 +1386,8 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -1025,6 +1403,8 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
     TResult informationPressed(int currentView),
     TResult emailChanged(String emailString),
     TResult emailButtonClicked(String emailString),
@@ -1046,6 +1426,8 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
     @required TResult informationPressed(_InformationPressed value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult emailButtonClicked(_EmailButtonClicked value),
@@ -1058,6 +1440,8 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
             _RegisterWithEmailAndPasswordPressed value),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -1073,6 +1457,8 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
     TResult informationPressed(_InformationPressed value),
     TResult emailChanged(_EmailChanged value),
     TResult emailButtonClicked(_EmailButtonClicked value),
@@ -1166,6 +1552,8 @@ class _$_UsernameChanged implements _UsernameChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
     @required TResult informationPressed(int currentView),
     @required TResult emailChanged(String emailString),
     @required TResult emailButtonClicked(String emailString),
@@ -1176,6 +1564,8 @@ class _$_UsernameChanged implements _UsernameChanged {
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -1191,6 +1581,8 @@ class _$_UsernameChanged implements _UsernameChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
     TResult informationPressed(int currentView),
     TResult emailChanged(String emailString),
     TResult emailButtonClicked(String emailString),
@@ -1212,6 +1604,8 @@ class _$_UsernameChanged implements _UsernameChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
     @required TResult informationPressed(_InformationPressed value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult emailButtonClicked(_EmailButtonClicked value),
@@ -1224,6 +1618,8 @@ class _$_UsernameChanged implements _UsernameChanged {
             _RegisterWithEmailAndPasswordPressed value),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -1239,6 +1635,8 @@ class _$_UsernameChanged implements _UsernameChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
     TResult informationPressed(_InformationPressed value),
     TResult emailChanged(_EmailChanged value),
     TResult emailButtonClicked(_EmailButtonClicked value),
@@ -1331,6 +1729,8 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
     @required TResult informationPressed(int currentView),
     @required TResult emailChanged(String emailString),
     @required TResult emailButtonClicked(String emailString),
@@ -1341,6 +1741,8 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -1356,6 +1758,8 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
     TResult informationPressed(int currentView),
     TResult emailChanged(String emailString),
     TResult emailButtonClicked(String emailString),
@@ -1377,6 +1781,8 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
     @required TResult informationPressed(_InformationPressed value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult emailButtonClicked(_EmailButtonClicked value),
@@ -1389,6 +1795,8 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
             _RegisterWithEmailAndPasswordPressed value),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -1404,6 +1812,8 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
     TResult informationPressed(_InformationPressed value),
     TResult emailChanged(_EmailChanged value),
     TResult emailButtonClicked(_EmailButtonClicked value),
@@ -1476,6 +1886,8 @@ class _$_RegisterWithEmailAndPasswordPressed
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult enableButton(),
+    @required TResult disableButton(),
     @required TResult informationPressed(int currentView),
     @required TResult emailChanged(String emailString),
     @required TResult emailButtonClicked(String emailString),
@@ -1486,6 +1898,8 @@ class _$_RegisterWithEmailAndPasswordPressed
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -1501,6 +1915,8 @@ class _$_RegisterWithEmailAndPasswordPressed
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult enableButton(),
+    TResult disableButton(),
     TResult informationPressed(int currentView),
     TResult emailChanged(String emailString),
     TResult emailButtonClicked(String emailString),
@@ -1522,6 +1938,8 @@ class _$_RegisterWithEmailAndPasswordPressed
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
+    @required TResult enableButton(_EnableButton value),
+    @required TResult disableButton(_DisableButton value),
     @required TResult informationPressed(_InformationPressed value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult emailButtonClicked(_EmailButtonClicked value),
@@ -1534,6 +1952,8 @@ class _$_RegisterWithEmailAndPasswordPressed
             _RegisterWithEmailAndPasswordPressed value),
   }) {
     assert(initial != null);
+    assert(enableButton != null);
+    assert(disableButton != null);
     assert(informationPressed != null);
     assert(emailChanged != null);
     assert(emailButtonClicked != null);
@@ -1549,6 +1969,8 @@ class _$_RegisterWithEmailAndPasswordPressed
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
+    TResult enableButton(_EnableButton value),
+    TResult disableButton(_DisableButton value),
     TResult informationPressed(_InformationPressed value),
     TResult emailChanged(_EmailChanged value),
     TResult emailButtonClicked(_EmailButtonClicked value),
@@ -1597,6 +2019,8 @@ class _$RegisterFormStateTearOff {
       @required
           String buttonText,
       @required
+          bool buttonEnabled,
+      @required
           Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption,
       @required
           Option<Either<AuthFailure, Unit>>
@@ -1610,6 +2034,7 @@ class _$RegisterFormStateTearOff {
       showErrorMessages: showErrorMessages,
       isSubmitting: isSubmitting,
       buttonText: buttonText,
+      buttonEnabled: buttonEnabled,
       registerFailureOrSuccessOption: registerFailureOrSuccessOption,
       uniqueUsernameFailureOrSuccessOption:
           uniqueUsernameFailureOrSuccessOption,
@@ -1631,6 +2056,7 @@ mixin _$RegisterFormState {
   bool get showErrorMessages;
   bool get isSubmitting;
   String get buttonText;
+  bool get buttonEnabled;
   Option<Either<AuthFailure, Unit>> get registerFailureOrSuccessOption;
   Option<Either<AuthFailure, Unit>> get uniqueUsernameFailureOrSuccessOption;
 
@@ -1651,6 +2077,7 @@ abstract class $RegisterFormStateCopyWith<$Res> {
       bool showErrorMessages,
       bool isSubmitting,
       String buttonText,
+      bool buttonEnabled,
       Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption,
       Option<Either<AuthFailure, Unit>> uniqueUsernameFailureOrSuccessOption});
 }
@@ -1674,6 +2101,7 @@ class _$RegisterFormStateCopyWithImpl<$Res>
     Object showErrorMessages = freezed,
     Object isSubmitting = freezed,
     Object buttonText = freezed,
+    Object buttonEnabled = freezed,
     Object registerFailureOrSuccessOption = freezed,
     Object uniqueUsernameFailureOrSuccessOption = freezed,
   }) {
@@ -1695,6 +2123,9 @@ class _$RegisterFormStateCopyWithImpl<$Res>
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
       buttonText:
           buttonText == freezed ? _value.buttonText : buttonText as String,
+      buttonEnabled: buttonEnabled == freezed
+          ? _value.buttonEnabled
+          : buttonEnabled as bool,
       registerFailureOrSuccessOption: registerFailureOrSuccessOption == freezed
           ? _value.registerFailureOrSuccessOption
           : registerFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
@@ -1723,6 +2154,7 @@ abstract class _$RegisterFormStateCopyWith<$Res>
       bool showErrorMessages,
       bool isSubmitting,
       String buttonText,
+      bool buttonEnabled,
       Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption,
       Option<Either<AuthFailure, Unit>> uniqueUsernameFailureOrSuccessOption});
 }
@@ -1748,6 +2180,7 @@ class __$RegisterFormStateCopyWithImpl<$Res>
     Object showErrorMessages = freezed,
     Object isSubmitting = freezed,
     Object buttonText = freezed,
+    Object buttonEnabled = freezed,
     Object registerFailureOrSuccessOption = freezed,
     Object uniqueUsernameFailureOrSuccessOption = freezed,
   }) {
@@ -1769,6 +2202,9 @@ class __$RegisterFormStateCopyWithImpl<$Res>
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
       buttonText:
           buttonText == freezed ? _value.buttonText : buttonText as String,
+      buttonEnabled: buttonEnabled == freezed
+          ? _value.buttonEnabled
+          : buttonEnabled as bool,
       registerFailureOrSuccessOption: registerFailureOrSuccessOption == freezed
           ? _value.registerFailureOrSuccessOption
           : registerFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
@@ -1792,6 +2228,7 @@ class _$_RegisterFormState implements _RegisterFormState {
       @required this.showErrorMessages,
       @required this.isSubmitting,
       @required this.buttonText,
+      @required this.buttonEnabled,
       @required this.registerFailureOrSuccessOption,
       @required this.uniqueUsernameFailureOrSuccessOption})
       : assert(information != null),
@@ -1802,6 +2239,7 @@ class _$_RegisterFormState implements _RegisterFormState {
         assert(showErrorMessages != null),
         assert(isSubmitting != null),
         assert(buttonText != null),
+        assert(buttonEnabled != null),
         assert(registerFailureOrSuccessOption != null),
         assert(uniqueUsernameFailureOrSuccessOption != null);
 
@@ -1822,13 +2260,15 @@ class _$_RegisterFormState implements _RegisterFormState {
   @override
   final String buttonText;
   @override
+  final bool buttonEnabled;
+  @override
   final Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption;
   @override
   final Option<Either<AuthFailure, Unit>> uniqueUsernameFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'RegisterFormState(information: $information, emailAddress: $emailAddress, password: $password, username: $username, stateChangerField: $stateChangerField, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, buttonText: $buttonText, registerFailureOrSuccessOption: $registerFailureOrSuccessOption, uniqueUsernameFailureOrSuccessOption: $uniqueUsernameFailureOrSuccessOption)';
+    return 'RegisterFormState(information: $information, emailAddress: $emailAddress, password: $password, username: $username, stateChangerField: $stateChangerField, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, buttonText: $buttonText, buttonEnabled: $buttonEnabled, registerFailureOrSuccessOption: $registerFailureOrSuccessOption, uniqueUsernameFailureOrSuccessOption: $uniqueUsernameFailureOrSuccessOption)';
   }
 
   @override
@@ -1859,6 +2299,9 @@ class _$_RegisterFormState implements _RegisterFormState {
             (identical(other.buttonText, buttonText) ||
                 const DeepCollectionEquality()
                     .equals(other.buttonText, buttonText)) &&
+            (identical(other.buttonEnabled, buttonEnabled) ||
+                const DeepCollectionEquality()
+                    .equals(other.buttonEnabled, buttonEnabled)) &&
             (identical(other.registerFailureOrSuccessOption,
                     registerFailureOrSuccessOption) ||
                 const DeepCollectionEquality().equals(
@@ -1882,6 +2325,7 @@ class _$_RegisterFormState implements _RegisterFormState {
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(buttonText) ^
+      const DeepCollectionEquality().hash(buttonEnabled) ^
       const DeepCollectionEquality().hash(registerFailureOrSuccessOption) ^
       const DeepCollectionEquality().hash(uniqueUsernameFailureOrSuccessOption);
 
@@ -1909,6 +2353,8 @@ abstract class _RegisterFormState implements RegisterFormState {
       @required
           String buttonText,
       @required
+          bool buttonEnabled,
+      @required
           Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption,
       @required
           Option<Either<AuthFailure, Unit>>
@@ -1930,6 +2376,8 @@ abstract class _RegisterFormState implements RegisterFormState {
   bool get isSubmitting;
   @override
   String get buttonText;
+  @override
+  bool get buttonEnabled;
   @override
   Option<Either<AuthFailure, Unit>> get registerFailureOrSuccessOption;
   @override

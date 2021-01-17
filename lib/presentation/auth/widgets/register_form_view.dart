@@ -34,7 +34,6 @@ class _RegisterFormViewState extends State<RegisterFormView>
   @override
   void initState() {
     super.initState();
-
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
@@ -113,13 +112,14 @@ class _RegisterFormViewState extends State<RegisterFormView>
 
   @override
   Widget build(BuildContext context) {
-
     return BlocConsumer<RegisterFormBloc, RegisterFormState>(
         listener: (context, state) {},
         builder: (context, state) {
           //
           final int currentView = context.watch<RegisterFormBloc>().currentView;
           final String buttonText = state.buttonText;
+          final bool buttonEnabled = state.buttonEnabled;
+
           //
           const decorator = DotsDecorator(
             activeSize: Size(UIHelper.spaceSmall, 4),
@@ -175,17 +175,28 @@ class _RegisterFormViewState extends State<RegisterFormView>
                                   .copyWith(hintText: pages[currentView]),
                               onChanged: (value) {
                                 _textViewController.text = value;
-                                _textViewController.selection = TextSelection.fromPosition(TextPosition(offset: _textViewController.text.length)); // Puts the cursor at the end of the text
+                                _textViewController.selection =
+                                    TextSelection.fromPosition(TextPosition(
+                                        offset: _textViewController.text
+                                            .length)); // Puts the cursor at the end of the text
                                 return getCurrentOnChanged(
                                     page: currentView, value: value);
                               },
                               validator: (_) =>
                                   getinputValidation(currentView).fold(
                                 (leftFailure) => leftFailure.maybeMap(
-                                    authOrReg: (_) =>
-                                        getErrorString(page: currentView),
+                                    authOrReg: (_) {
+                                      context.read<RegisterFormBloc>().add(
+                                          const RegisterFormEvent
+                                              .disableButton());
+                                      return getErrorString(page: currentView);
+                                    },
                                     orElse: () => null),
-                                (rightSuccess) => null,
+                                (rightSuccess) {
+                                  context.read<RegisterFormBloc>().add(
+                                      const RegisterFormEvent.enableButton());
+                                  return null;
+                                },
                               ),
                               inputFormatters: [
                                 FilteringTextInputFormatter.deny(
@@ -204,28 +215,44 @@ class _RegisterFormViewState extends State<RegisterFormView>
                     children: [
                       const Spacer(),
                       RaisedButton(
+                        color:
+                            buttonEnabled ? Colors.black : CustomColours.grey,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              UIHelper.buttonCornerRadius),
+                        ).copyWith(
+                            side: const BorderSide().copyWith(
+                                color: buttonEnabled
+                                    ? Colors.black
+                                    : CustomColours.grey)),
                         onPressed: () {
-                          _textViewController.clear();
-                          globals.isUnfocused = false;
-                          switch (currentView) {
-                            case 0:
-                              context.read<RegisterFormBloc>().add(
-                                  const RegisterFormEvent.emailButtonClicked());
-                              showNextView();
-                              animationController.forward();
-                              break;
-                            case 1:
-                              context.read<RegisterFormBloc>().add(
-                                  const RegisterFormEvent
-                                      .passwordButtonClicked());
-                              showNextView();
-                              animationController.forward();
-                              break;
-                            case 2:
-                              context.read<RegisterFormBloc>().add(
-                                  const RegisterFormEvent
-                                      .usernameButtonClicked());
-                              break;
+                          if (buttonEnabled) {
+                            context.read<RegisterFormBloc>().add(
+                                          const RegisterFormEvent
+                                              .disableButton());
+                            _textViewController.clear();
+                            globals.isUnfocused = false;
+                            switch (currentView) {
+                              case 0:
+                                context.read<RegisterFormBloc>().add(
+                                    const RegisterFormEvent
+                                        .emailButtonClicked());
+                                showNextView();
+                                animationController.forward();
+                                break;
+                              case 1:
+                                context.read<RegisterFormBloc>().add(
+                                    const RegisterFormEvent
+                                        .passwordButtonClicked());
+                                showNextView();
+                                animationController.forward();
+                                break;
+                              case 2:
+                                context.read<RegisterFormBloc>().add(
+                                    const RegisterFormEvent
+                                        .usernameButtonClicked());
+                                break;
+                            }
                           }
                         },
                         textColor: Colors.white,

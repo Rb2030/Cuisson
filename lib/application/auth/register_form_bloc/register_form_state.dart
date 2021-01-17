@@ -11,6 +11,7 @@ abstract class RegisterFormState with _$RegisterFormState {
     @required bool showErrorMessages,
     @required bool isSubmitting,
     @required String buttonText,
+    @required bool buttonEnabled,
     @required Option<Either<AuthFailure, Unit>> registerFailureOrSuccessOption,
     @required
         Option<Either<AuthFailure, Unit>> uniqueUsernameFailureOrSuccessOption,
@@ -25,6 +26,7 @@ abstract class RegisterFormState with _$RegisterFormState {
         showErrorMessages: false,
         isSubmitting: false,
         buttonText: Constants.next,
+        buttonEnabled: false,
         registerFailureOrSuccessOption: none(),
         uniqueUsernameFailureOrSuccessOption: none(),
   );

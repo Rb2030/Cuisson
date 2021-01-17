@@ -36,14 +36,14 @@ Either<ValueFailure<String>, String> validateUsername(String input) {
     return right(input);
   } else {
         return left(ValueFailure.authOrReg(
-        AuthOrRegValueFailure.invalidPassword(failedValue: input)));
+        AuthOrRegValueFailure.invalidUsername(failedValue: input)));
 
   }
 }
 
 Either<ValueFailure<String>, String> validateMaxStringLength(String input) {
   const maxLength = 16;
-  if (input.length > maxLength) {
+  if (input.length < maxLength) {
     return right(input);
   } else {
     return left(ValueFailure.authOrReg(

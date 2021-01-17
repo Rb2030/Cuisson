@@ -25,13 +25,9 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
   Stream<RegisterFormState> mapEventToState(
     RegisterFormEvent event,
   ) async* {
-    yield* event.map(
-      
-      initial: (e) async* {
+    yield* event.map(initial: (e) async* {
       yield state;
-    }, 
-    
-    informationPressed: (e) async* {
+    }, informationPressed: (e) async* {
       showInfo = !showInfo;
       switch (e.currentView) {
         case 0:
@@ -57,34 +53,35 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
           break;
         default:
       }
-    }, 
-    
-    emailChanged: (e) async* {
+    }, enableButton: (e) async* {
+      yield state.copyWith(
+        buttonEnabled: true,
+      );
+    }, disableButton: (e) async* {
+      yield state.copyWith(
+        buttonEnabled: false,
+      );
+    },
+     emailChanged: (e) async* {
       yield state.copyWith(
         emailAddress: EmailAddress(e.emailString),
         registerFailureOrSuccessOption: none(),
         uniqueUsernameFailureOrSuccessOption: none(),
       );
-    }, 
-    
-    emailButtonClicked: (e) async* {
+    }, emailButtonClicked: (e) async* {
       currentView = 1;
       showInfo = false;
       yield state.copyWith(
           stateChangerField:
               'EMAIL', // Added this field to change the state, bit of a hack
           information: '');
-    }, 
-    
-    passwordChanged: (e) async* {
+    }, passwordChanged: (e) async* {
       yield state.copyWith(
         password: Password(e.passwordString),
         registerFailureOrSuccessOption: none(),
         uniqueUsernameFailureOrSuccessOption: none(),
       );
-    }, 
-    
-    passwordButtonClicked: (e) async* {
+    }, passwordButtonClicked: (e) async* {
       currentView = 2;
       showInfo = false;
       yield state.copyWith(
@@ -92,16 +89,12 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
           stateChangerField:
               'PASSWORD', // Added this field to change the state, bit of a hack
           information: '');
-    }, 
-    
-    usernameChanged: (e) async* {
+    }, usernameChanged: (e) async* {
       yield state.copyWith(
         username: Username(e.usernameString),
         registerFailureOrSuccessOption: none(),
       );
-    }, 
-    
-    usernameButtonClicked: (e) async* {
+    }, usernameButtonClicked: (e) async* {
       showInfo = false;
       add(const RegisterFormEvent.registerWithEmailAndPasswordPressed());
     }, registerWithEmailAndPasswordPressed: (e) async* {

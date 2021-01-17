@@ -48,7 +48,7 @@ class Username extends ValueObject<String> {
 
     assert(input != null);
     return Username._(
-        validatePassword(input).flatMap(
+        validateUsername(input).flatMap(
           (_) => validateStringNotEmpty(input)).flatMap(
           (_) => validateStringForProfanity(input)));
   }

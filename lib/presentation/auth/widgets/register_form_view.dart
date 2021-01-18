@@ -154,82 +154,101 @@ class _RegisterFormViewState extends State<RegisterFormView>
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SlideTransition(
-                        position: animation,
-                        child: Form(
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: UIHelper.safeAreaPadding(context),
-                                horizontal:
-                                    UIHelper.screenWidth(context) * 0.2),
-                            child: ListView(
-                              shrinkWrap: true,
-                              children: [
-                                Container(
-                                  alignment: Alignment.centerLeft,
-                                  height: UIHelper.screenHeightWithOutSafeArea(
-                                          context) /
-                                      5,
-                                  child: Text(state.information,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2),
-                                ),
+                      position: animation,
+                      child: Form(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: UIHelper.safeAreaPadding(context),
+                              horizontal: UIHelper.screenWidth(context) * 0.2),
+                          child: ListView(
+                            shrinkWrap: true,
+                            children: [
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                height: UIHelper.screenHeightWithOutSafeArea(
+                                        context) /
+                                    5,
+                                child: Text(state.information,
+                                    style:
+                                        Theme.of(context).textTheme.bodyText2),
+                              ),
+                              // ignore: avoid_bool_literals_in_conditional_expressions
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                width: UIHelper.screenWidth(context),
+                                child: Text(pages[currentView],
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1),
+                              ),
+                              const SizedBox(height: UIHelper.spaceSmall),
+                              TextFormField(
+                                keyboardType: keyBoardType(currentView),
+                                controller: _textViewController,
+                                autocorrect: false,
                                 // ignore: avoid_bool_literals_in_conditional_expressions
-                                Container(
-                                  alignment: Alignment.centerLeft,
-                                  width: UIHelper.screenWidth(context),
-                                  child: Text(pages[currentView],
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1),
+                                obscureText: currentView == 1 ? true : false,
+                                // ignore: avoid_redundant_argument_values
+                                obscuringCharacter: '•',
+                                decoration: const InputDecoration()
+                                    .copyWith(hintText: pages[currentView]),
+                                onChanged: (value) {
+                                  _textViewController.text = value;
+                                  _textViewController.selection =
+                                      TextSelection.fromPosition(TextPosition(
+                                          offset: _textViewController.text
+                                              .length)); // Puts the cursor at the end of the text
+                                  return getCurrentOnChanged(
+                                      page: currentView, value: value);
+                                },
+                                validator: (_) =>
+                                    getinputValidation(currentView).fold(
+                                  (leftFailure) => leftFailure.maybeMap(
+                                      authOrReg: (_) {
+                                        context.read<RegisterFormBloc>().add(
+                                            const RegisterFormEvent
+                                                .disableButton());
+                                        return getErrorString(
+                                            page: currentView);
+                                      },
+                                      orElse: () => null),
+                                  (rightSuccess) => null,
                                 ),
-                                const SizedBox(height: UIHelper.spaceSmall),
-                                TextFormField(
-                                  keyboardType: keyBoardType(currentView),
-                                  controller: _textViewController,
-                                  autocorrect: false,
-                                  // ignore: avoid_bool_literals_in_conditional_expressions
-                                  obscureText: currentView == 1 ? true : false,
-                                  // ignore: avoid_redundant_argument_values
-                                  obscuringCharacter: '•',
-                                  decoration: const InputDecoration()
-                                      .copyWith(hintText: pages[currentView]),
-                                  onChanged: (value) {
-                                    _textViewController.text = value;
-                                    _textViewController.selection =
-                                        TextSelection.fromPosition(TextPosition(
-                                            offset: _textViewController.text
-                                                .length)); // Puts the cursor at the end of the text
-                                    return getCurrentOnChanged(
-                                        page: currentView, value: value);
-                                  },
-                                  validator: (_) =>
-                                      getinputValidation(currentView).fold(
-                                    (leftFailure) => leftFailure.maybeMap(
-                                        authOrReg: (_) {
-                                          context.read<RegisterFormBloc>().add(
-                                              const RegisterFormEvent
-                                                  .disableButton());
-                                          return getErrorString(
-                                              page: currentView);
-                                        },
-                                        orElse: () => null),
-                                    (rightSuccess) => null,
-                                  ),
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.deny(
-                                        RegExp(r"\s\b|\b\s"))
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.deny(
+                                      RegExp(r"\s\b|\b\s"))
+                                ],
+                                onTap: () {
+                                  globals.isUnfocused = false;
+                                },
+                              ),
+                              const SizedBox(height: UIHelper.spaceSmall),
+                              Visibility(
+                                visible: !buttonEnabled,
+                                child: Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        context.read<RegisterFormBloc>().add(
+                                            RegisterFormEvent
+                                                .informationPressed(
+                                                    currentView));
+                                      },
+                                      child: SvgPicture.asset(
+                                          Constants.informationIcon,
+                                          color: Colors.black,
+                                          width: UIHelper.iconSize * 0.8,
+                                          height: UIHelper.iconSize * 0.8),
+                                    ),
+                                    const Spacer(),
                                   ],
-                                  onTap: () {
-                                    globals.isUnfocused = false;
-                                  },
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
+                    ),
                     Flexible(
                       child: Row(
                         children: [
@@ -245,7 +264,7 @@ class _RegisterFormViewState extends State<RegisterFormView>
                               if (buttonEnabled) {
                                 context.read<RegisterFormBloc>().add(
                                     const RegisterFormEvent.disableButton());
-                             //   FocusScope.of(context).unfocus();
+                                //   FocusScope.of(context).unfocus();
                                 _textViewController.clear();
                                 globals.isUnfocused = true;
                                 switch (currentView) {
@@ -286,32 +305,11 @@ class _RegisterFormViewState extends State<RegisterFormView>
                           backgroundColor: Colors.black),
                     ],
                     const Spacer(),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: UIHelper.safeAreaPadding(context)),
-                      child: Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              context.read<RegisterFormBloc>().add(
-                                  RegisterFormEvent.informationPressed(
-                                      currentView));
-                            },
-                            child: SvgPicture.asset(Constants.informationIcon,
-                                color: Colors.black,
-                                width: UIHelper.iconSize * 0.8,
-                                height: UIHelper.iconSize * 0.8),
-                          ),
-                          const Spacer(),
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
                     DotsIndicator(
-                        dotsCount: 3,
-                        position: currentView.toDouble(),
-                        decorator: decorator,
-                      ),
+                      dotsCount: 3,
+                      position: currentView.toDouble(),
+                      decorator: decorator,
+                    ),
                     const SizedBox(height: UIHelper.spaceSmallMedium)
                   ],
                 ),

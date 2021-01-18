@@ -40,7 +40,7 @@ class Constants extends InheritedWidget {
 
   static const String emailInformation = 'Please ensure that you do not leave any blank spaces and your email is in the correct format e.g cuisson@mail.com.';
   static const String passwordInformation = 'Please ensure that the password has at least one capital letter, one number, one special character, no blank spaces and is at least 6 characters long.';
-  static const String usernameInformation = "Please select a username which is unique. This will be linked to your account so please don't use any profanity.";
+  static const String usernameInformation = "Please select a username which is unique. This will be linked to your account so please refrain from using any profanity.";
 
 // AppTheme Keys
 

@@ -42,7 +42,7 @@ Either<ValueFailure<String>, String> validateUsername(String input) {
 }
 
 Either<ValueFailure<String>, String> validateMaxStringLength(String input) {
-  const maxLength = 16;
+  const maxLength = 28;
   if (input.length < maxLength) {
     return right(input);
   } else {

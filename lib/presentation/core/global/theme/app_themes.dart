@@ -20,7 +20,7 @@ final appThemeData = {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(UIHelper.buttonCornerRadius),
               // ignore: avoid_redundant_argument_values
-              side: const BorderSide(color: Colors.black)),
+              /*side: const BorderSide(color: Colors.black)*/),
           minWidth: UIHelper.buttonMinWidth,
           height: UIHelper.buttonMinHeight,
           buttonColor: Colors.black,

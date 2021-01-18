@@ -61,13 +61,15 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
       yield state.copyWith(
         buttonEnabled: false,
       );
-    },
-     emailChanged: (e) async* {
+    }, emailChanged: (e) async* {
       yield state.copyWith(
         emailAddress: EmailAddress(e.emailString),
         registerFailureOrSuccessOption: none(),
         uniqueUsernameFailureOrSuccessOption: none(),
       );
+      EmailAddress(e.emailString).value.fold((fail) => null, (success) {
+        add(const RegisterFormEvent.enableButton());
+      });
     }, emailButtonClicked: (e) async* {
       currentView = 1;
       showInfo = false;
@@ -81,6 +83,9 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
         registerFailureOrSuccessOption: none(),
         uniqueUsernameFailureOrSuccessOption: none(),
       );
+      Password(e.passwordString).value.fold((fail) => null, (success) {
+        add(const RegisterFormEvent.enableButton());
+      });
     }, passwordButtonClicked: (e) async* {
       currentView = 2;
       showInfo = false;
@@ -94,6 +99,9 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
         username: Username(e.usernameString),
         registerFailureOrSuccessOption: none(),
       );
+      Username(e.usernameString).value.fold((fail) => null, (success) {
+        add(const RegisterFormEvent.enableButton());
+      });
     }, usernameButtonClicked: (e) async* {
       showInfo = false;
       add(const RegisterFormEvent.registerWithEmailAndPasswordPressed());

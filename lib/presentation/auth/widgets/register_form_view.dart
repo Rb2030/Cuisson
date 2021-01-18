@@ -192,11 +192,7 @@ class _RegisterFormViewState extends State<RegisterFormView>
                                       return getErrorString(page: currentView);
                                     },
                                     orElse: () => null),
-                                (rightSuccess) {
-                                  context.read<RegisterFormBloc>().add(
-                                      const RegisterFormEvent.enableButton());
-                                  return null;
-                                },
+                                (rightSuccess) => null,
                               ),
                               inputFormatters: [
                                 FilteringTextInputFormatter.deny(
@@ -227,11 +223,11 @@ class _RegisterFormViewState extends State<RegisterFormView>
                                     : CustomColours.grey)),
                         onPressed: () {
                           if (buttonEnabled) {
-                            context.read<RegisterFormBloc>().add(
-                                          const RegisterFormEvent
-                                              .disableButton());
-                            _textViewController.clear();
+                            context
+                                .read<RegisterFormBloc>()
+                                .add(const RegisterFormEvent.disableButton());
                             FocusScope.of(context).unfocus();
+                            _textViewController.clear();
                             globals.isUnfocused = true;
                             switch (currentView) {
                               case 0:

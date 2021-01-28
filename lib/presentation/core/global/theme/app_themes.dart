@@ -86,36 +86,41 @@ final appThemeData = {
 
 TextTheme textTheme() {
   return TextTheme(
+    // Used for the Cuisson title
     headline1: GoogleFonts.cormorantGaramond(
-        fontSize: 111, fontWeight: FontWeight.w300, letterSpacing: -1.5),
+        fontSize: 70, fontWeight: FontWeight.w600, letterSpacing: -0.5),
+    // Main title
     headline2: GoogleFonts.cormorantGaramond(
-        fontSize: 69, fontWeight: FontWeight.w300, letterSpacing: -0.5),
+        fontSize: 39, fontWeight: FontWeight.w600, letterSpacing: 0.25),
+    //
     headline3: GoogleFonts.cormorantGaramond(
-        fontSize: 55, fontWeight: FontWeight.w400),
+        fontSize: 30, fontWeight: FontWeight.w600),
     headline4: GoogleFonts.cormorantGaramond(
-        // Used for the Cuisson title
-        fontSize: 39,
-        fontWeight: FontWeight.w600,
-        letterSpacing: 0.25),
+      fontSize: 30,fontWeight: FontWeight.w600,letterSpacing: 0.25),
+    //
     headline5: GoogleFonts.cormorantGaramond(
         fontSize: 28, fontWeight: FontWeight.w400),
-    headline6: GoogleFonts.cormorantGaramond(
+    //
+    headline6: GoogleFonts.beVietnam(
         fontSize: 23, fontWeight: FontWeight.w500, letterSpacing: 0.15),
+    // Used for inside textFields
     subtitle1: GoogleFonts.beVietnam(
         fontSize: 18, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+    // Used for sub titles errors, notifications etc
     subtitle2: GoogleFonts.beVietnam(
-        // Used for inside textFields
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-        letterSpacing: 0.1),
+        fontSize: 20, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+    // Text buttons e.g Forgotten sign in details?, Labelling above textFields, main text size
     bodyText1: GoogleFonts.beVietnam(
         fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+    // Information & large bodies of text
     bodyText2: GoogleFonts.beVietnam(
         fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+    //
     button: GoogleFonts.beVietnam(
         fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.15),
     caption: GoogleFonts.beVietnam(
-        fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+        fontSize: 8, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+    //
     overline: GoogleFonts.beVietnam(
         fontSize: 8, fontWeight: FontWeight.w400, letterSpacing: 0.15),
   );

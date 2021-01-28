@@ -16,7 +16,7 @@ abstract class RegisterFormEvent with _$RegisterFormEvent {
       {String passwordString}) = _PasswordButtonClicked;
   const factory RegisterFormEvent.usernameChanged(String usernameString) =
       _UsernameChanged;
-  const factory RegisterFormEvent.usernameButtonClicked(
+  const factory RegisterFormEvent.submitRegisterCredentials(
       {String usernameString}) = _UsernameButtonClicked;
   const factory RegisterFormEvent.registerWithEmailAndPasswordPressed() =
       _RegisterWithEmailAndPasswordPressed;

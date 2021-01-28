@@ -17,7 +17,13 @@ class SignInFormView extends StatefulWidget {
 
 class _SignInFormViewState extends State<SignInFormView> {
   final ScrollController listScrollController = ScrollController();
-  bool bottomButtonEnabled = true;
+  bool bottomButtonEnabled;
+  
+  @override
+  void initState() {
+    super.initState();
+    bottomButtonEnabled = true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +43,7 @@ class _SignInFormViewState extends State<SignInFormView> {
                   usernameAlreadyInUse: (_) => null,
                 ),
               ),
-              content: const Text(Constants.dialogueMessage),
+              content: const Text(Constants.pleaseTryAgain),
               actions: <Widget>[
                 RaisedButton(
                   onPressed: () {
@@ -62,7 +68,7 @@ class _SignInFormViewState extends State<SignInFormView> {
             child: SizedBox(
               width: UIHelper.screenWidth(context) / 1.7,
               child: Form(
-         //       autovalidate: state.showErrorMessages, // Deprecated
+                  //       autovalidate: state.showErrorMessages, // Deprecated
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: LayoutBuilder(
                     builder:
@@ -78,7 +84,7 @@ class _SignInFormViewState extends State<SignInFormView> {
                             children: [
                               const Spacer(),
                               Text(Constants.cuisson,
-                                  style: Theme.of(context).textTheme.headline4),
+                                  style: Theme.of(context).textTheme.headline2),
                               const Spacer(),
                             ],
                           ),
@@ -99,10 +105,9 @@ class _SignInFormViewState extends State<SignInFormView> {
                                 .fold(
                                   (leftFailure) => leftFailure.maybeMap(
                                       authOrReg: (_) => Constants.invalidEmail,
-                                      orElse: () => null
-                                  ),
-                                (rightSuccess) => null,
-                              ),
+                                      orElse: () => null),
+                                  (rightSuccess) => null,
+                                ),
                             inputFormatters: [
                               FilteringTextInputFormatter.deny(
                                   RegExp(r"\s\b|\b\s"))
@@ -160,18 +165,22 @@ class _SignInFormViewState extends State<SignInFormView> {
                           const SizedBox(height: UIHelper.spaceMedium),
                           GestureDetector(
                             onTap: () {
-                              ExtendedNavigator.of(context).push(Routes.registerPage);
+                              ExtendedNavigator.of(context)
+                                  .push(Routes.registerPage);
                               debugPrint(
                                   'Register pressed'); ///// ---------------------------------------- Move to Register Page!!!!!!
-
                             },
                             child: Row(
-                              children: const <Widget>[
-                                Spacer(),
+                              children: <Widget>[
+                                const Spacer(),
                                 Text(
                                   Constants.register,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1
+                                      .copyWith(color: Colors.black),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                               ],
                             ),
                           ),
@@ -191,7 +200,7 @@ class _SignInFormViewState extends State<SignInFormView> {
               const Spacer(),
               SizedBox(width: UIHelper.screenWidth(context) / 13.5),
               Visibility(
-                  visible: bottomButtonEnabled,
+                visible: bottomButtonEnabled,
                 child: GestureDetector(
                   onTap: () {
                     if (bottomButtonEnabled) {
@@ -199,7 +208,10 @@ class _SignInFormViewState extends State<SignInFormView> {
                     }
                   },
                   child: Text(Constants.forgottenSigninDetails,
-                      style: Theme.of(context).textTheme.bodyText2.copyWith(color: CustomColours.grey),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1
+                          .copyWith(color: CustomColours.grey),
                       textAlign: TextAlign.center),
                 ),
               ),

@@ -13,7 +13,7 @@ class Constants extends InheritedWidget {
 // General
 
   static const String cuisson = 'CUISSON';
-  static const String serverError = 'Server error';
+  static const String serverError = 'Server error, please try again later.';
   static const String ok = 'OK';
   static const String next = 'Next';
   static const String submit = 'Submit';
@@ -32,15 +32,17 @@ class Constants extends InheritedWidget {
   static const String invalidUsername = 'Invalid Username';
 
   static const String cancelledByUser = 'Cancelled by user';
-  static const String emailAlreadyInUse = 'Email already in use';
+  static const String emailAlreadyInUse = 'Email already registered. Please sign in, or click "Forgotten sign in details?" if you have forgotten your log in details.';
   static const String invalidUsernameAndPasswordCombo = 'Invalid username and password combination';
-  static const String dialogueMessage = 'Please try again';
+  static const String pleaseTryAgain = 'Please try again';
+  static const String usernameTaken = 'This username has already been taken, please choose another unique one';
 
 // Register Screen
 
   static const String emailInformation = 'Please ensure that you do not leave any blank spaces and your email is in the correct format e.g cuisson@mail.com.';
   static const String passwordInformation = 'Please ensure that the password has at least one capital letter, one number, one special character, no blank spaces and is at least 6 characters long.';
   static const String usernameInformation = "Please select a username which is unique. This will be linked to your account so please refrain from using any profanity.";
+  static const String unableToRegister = "Unable to register";
 
 // AppTheme Keys
 

@@ -1,5 +1,9 @@
 import 'dart:async';
 import 'package:Cuisson/application/core/global/colors/custom_colours.dart';
+import 'package:Cuisson/injection.dart';
+import 'package:Cuisson/presentation/auth/widgets/register_failure_form_view.dart';
+import 'package:Cuisson/presentation/routes/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart' as dartz;
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter_svg/svg.dart';
@@ -125,13 +129,59 @@ class _RegisterFormViewState extends State<RegisterFormView>
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterFormBloc, RegisterFormState>(
-        listener: (context, state) {},
+        listenWhen: (s, d) => s.initial == false,
+        listener: (context, state) {
+          // MARK:- This is for one off actions e.g a flush bar/navigating to new route or showing alert etc
+          state.registerFailureOrSuccessOption.fold(
+              () {},
+              // MARK:- Below is when the registration fails because of server error or email already in use
+              (either) => either.fold((failure) {
+                    final bool buttonEnabled = state.buttonEnabled;
+                    final String errorMessage = failure.map(
+                      cancelledByUser: (_) => Constants.cancelledByUser,
+                      serverError: (_) => Constants.serverError,
+                      emailAlreadyInUse: (_) => Constants.emailAlreadyInUse,
+                      invalidEmailAndPasswordCombination: (_) =>
+                          Constants.invalidUsernameAndPasswordCombo,
+                      usernameAlreadyInUse: (_) => Constants.usernameTaken,
+                    );
+
+                    if (errorMessage == Constants.serverError) {
+                      return AlertDialog(
+                        title: Text(errorMessage,
+                            style: Theme.of(context).textTheme.bodyText1),
+                        content: const Text(Constants.pleaseTryAgain),
+                        actions: <Widget>[
+                          RaisedButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text(Constants.ok),
+                          )
+                        ],
+                      );
+                    } else {
+                      // ------------------------------------------- All textFields
+                      // return BlocProvider(
+                      //   create: (context) => getIt<RegisterFormBloc>(),
+                      //   child: RegisterFailureFormView(errorMessage),
+                      // );
+                      // return Center(child: Container(width: 10, height: 10, color: Colors.pink));
+                      ExtendedNavigator.of(context).push(
+                          Routes.registerFailurePage,
+                          arguments: RegisterFailurePageArguments(
+                              errorMessage: errorMessage));
+                    }
+                  }, (success) {
+                    // TODO: This will then do the unique username check in the registerBloc
+                  }));
+        },
+        buildWhen: (s, d) => s.initial == true,
         builder: (context, state) {
-          //
+          // MARK:- Below is the initial view state
           final int currentView = context.watch<RegisterFormBloc>().currentView;
           final String buttonText = state.buttonText;
           final bool buttonEnabled = state.buttonEnabled;
-
           //
           const decorator = DotsDecorator(
             activeSize: Size(UIHelper.spaceSmall, 4),
@@ -145,6 +195,15 @@ class _RegisterFormViewState extends State<RegisterFormView>
             activeColor: Colors.black,
             color: CustomColours.grey,
           );
+
+          // If loading -----------------------------------------------------------------
+
+          if (state.isSubmitting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          // Initial screen ---------------------------------------------------------------------------------------
+          // if (state.initial) {
           return Scaffold(
             body: SingleChildScrollView(
               child: SizedBox(
@@ -153,169 +212,158 @@ class _RegisterFormViewState extends State<RegisterFormView>
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SlideTransition(
-                      position: animation,
-                      child: Form(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: UIHelper.safeAreaPadding(context),
-                              horizontal: UIHelper.screenWidth(context) * 0.2),
-                          child: ListView(
-                            shrinkWrap: true,
-                            children: [
-                              Container(
-                                alignment: Alignment.centerLeft,
-                                height: UIHelper.screenHeightWithOutSafeArea(
-                                        context) /
-                                    5,
-                                child: Text(state.information,
-                                    style:
-                                        Theme.of(context).textTheme.bodyText2),
-                              ),
+                    // SlideTransition(
+                    //   position: animation,
+                    Form(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: UIHelper.safeAreaPadding(context),
+                            horizontal: UIHelper.screenWidth(context) * 0.2),
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: [
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              height: UIHelper.screenHeightWithOutSafeArea(
+                                      context) /
+                                  5,
+                              child: Text(state.information,
+                                  style: Theme.of(context).textTheme.bodyText2),
+                            ),
+                            // ignore: avoid_bool_literals_in_conditional_expressions
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              width: UIHelper.screenWidth(context),
+                              child: Text(pages[currentView],
+                                  style: Theme.of(context).textTheme.bodyText1),
+                            ),
+                            const SizedBox(height: UIHelper.spaceSmall),
+                            TextFormField(
+                              keyboardType: keyBoardType(currentView),
+                              controller: _textViewController,
+                              autocorrect: false,
                               // ignore: avoid_bool_literals_in_conditional_expressions
-                              Container(
-                                alignment: Alignment.centerLeft,
-                                width: UIHelper.screenWidth(context),
-                                child: Text(pages[currentView],
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1),
+                              obscureText: currentView == 1 ? true : false,
+                              // ignore: avoid_redundant_argument_values
+                              obscuringCharacter: '•',
+                              decoration: const InputDecoration()
+                                  .copyWith(hintText: pages[currentView]),
+                              onChanged: (value) {
+                                _textViewController.text = value;
+                                _textViewController.selection =
+                                    TextSelection.fromPosition(TextPosition(
+                                        offset: _textViewController.text
+                                            .length)); // Puts the cursor at the end of the text
+                                return getCurrentOnChanged(
+                                    page: currentView, value: value);
+                              },
+                              validator: (_) =>
+                                  getinputValidation(currentView).fold(
+                                (leftFailure) => leftFailure.maybeMap(
+                                    authOrReg: (_) {
+                                      context.read<RegisterFormBloc>().add(
+                                          const RegisterFormEvent
+                                              .disableButton());
+                                      return getErrorString(page: currentView);
+                                    },
+                                    orElse: () => null),
+                                (rightSuccess) => null,
                               ),
-                              const SizedBox(height: UIHelper.spaceSmall),
-                              TextFormField(
-                                keyboardType: keyBoardType(currentView),
-                                controller: _textViewController,
-                                autocorrect: false,
-                                // ignore: avoid_bool_literals_in_conditional_expressions
-                                obscureText: currentView == 1 ? true : false,
-                                // ignore: avoid_redundant_argument_values
-                                obscuringCharacter: '•',
-                                decoration: const InputDecoration()
-                                    .copyWith(hintText: pages[currentView]),
-                                onChanged: (value) {
-                                  _textViewController.text = value;
-                                  _textViewController.selection =
-                                      TextSelection.fromPosition(TextPosition(
-                                          offset: _textViewController.text
-                                              .length)); // Puts the cursor at the end of the text
-                                  return getCurrentOnChanged(
-                                      page: currentView, value: value);
-                                },
-                                validator: (_) =>
-                                    getinputValidation(currentView).fold(
-                                  (leftFailure) => leftFailure.maybeMap(
-                                      authOrReg: (_) {
-                                        context.read<RegisterFormBloc>().add(
-                                            const RegisterFormEvent
-                                                .disableButton());
-                                        return getErrorString(
-                                            page: currentView);
-                                      },
-                                      orElse: () => null),
-                                  (rightSuccess) => null,
-                                ),
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.deny(
-                                      RegExp(r"\s\b|\b\s"))
+                              inputFormatters: [
+                                FilteringTextInputFormatter.deny(
+                                    RegExp(r"\s\b|\b\s"))
+                              ],
+                              onTap: () {
+                                globals.isUnfocused = false;
+                              },
+                            ),
+                            const SizedBox(height: UIHelper.spaceSmall),
+                            Visibility(
+                              visible: !buttonEnabled,
+                              child: Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      context.read<RegisterFormBloc>().add(
+                                          RegisterFormEvent.informationPressed(
+                                              currentView));
+                                    },
+                                    child: SvgPicture.asset(
+                                        Constants.informationIcon,
+                                        color: Colors.black,
+                                        width: UIHelper.iconSize * 0.8,
+                                        height: UIHelper.iconSize * 0.8),
+                                  ),
+                                  const Spacer(),
                                 ],
-                                onTap: () {
-                                  globals.isUnfocused = false;
-                                },
                               ),
-                              const SizedBox(height: UIHelper.spaceSmall),
-                              Visibility(
-                                visible: !buttonEnabled,
-                                child: Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        context.read<RegisterFormBloc>().add(
-                                            RegisterFormEvent
-                                                .informationPressed(
-                                                    currentView));
-                                      },
-                                      child: SvgPicture.asset(
-                                          Constants.informationIcon,
-                                          color: Colors.black,
-                                          width: UIHelper.iconSize * 0.8,
-                                          height: UIHelper.iconSize * 0.8),
-                                    ),
-                                    const Spacer(),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    Flexible(
-                      child: Row(
-                        children: [
-                          const Spacer(),
-                          RaisedButton(
-                            elevation: 0,
-                            color: buttonEnabled ? Colors.black : Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  UIHelper.buttonCornerRadius),
-                            ),
-                            onPressed: () {
-                              if (buttonEnabled) {
-                                context.read<RegisterFormBloc>().add(
-                                    const RegisterFormEvent.disableButton());
-                                //   FocusScope.of(context).unfocus();
-                                _textViewController.clear();
-                                globals.isUnfocused = true;
-                                switch (currentView) {
-                                  case 0:
-                                    context.read<RegisterFormBloc>().add(
-                                        const RegisterFormEvent
-                                            .emailButtonClicked());
-                                    showNextView();
-                                    animationController.forward();
-                                    break;
-                                  case 1:
-                                    context.read<RegisterFormBloc>().add(
-                                        const RegisterFormEvent
-                                            .passwordButtonClicked());
-                                    showNextView();
-                                    animationController.forward();
-                                    break;
-                                  case 2:
-                                    context.read<RegisterFormBloc>().add(
-                                        const RegisterFormEvent
-                                            .usernameButtonClicked());
-                                    break;
-                                }
-                              }
-                            },
-                            textColor: Colors.white,
-                            child: Text(buttonText.toUpperCase()),
+                    // ),
+                    Row(
+                      children: [
+                        const Spacer(),
+                        RaisedButton(
+                          elevation: 0,
+                          color: buttonEnabled ? Colors.black : Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                UIHelper.buttonCornerRadius),
                           ),
-                          const Spacer(),
-                        ],
-                      ),
+                          onPressed: () {
+                            if (buttonEnabled) {
+                              context
+                                  .read<RegisterFormBloc>()
+                                  .add(const RegisterFormEvent.disableButton());
+                              //   FocusScope.of(context).unfocus();
+                              _textViewController.clear();
+                              globals.isUnfocused = true;
+                              switch (currentView) {
+                                case 0:
+                                  context.read<RegisterFormBloc>().add(
+                                      const RegisterFormEvent
+                                          .emailButtonClicked());
+                                  showNextView();
+                                  animationController.forward();
+                                  break;
+                                case 1:
+                                  context.read<RegisterFormBloc>().add(
+                                      const RegisterFormEvent
+                                          .passwordButtonClicked());
+                                  showNextView();
+                                  animationController.forward();
+                                  break;
+                                case 2:
+                                  context.read<RegisterFormBloc>().add(
+                                      const RegisterFormEvent
+                                          .submitRegisterCredentials());
+                                  break;
+                              }
+                            }
+                          },
+                          textColor: Colors.white,
+                          child: Text(buttonText.toUpperCase()),
+                        ),
+                        const Spacer(),
+                      ],
                     ),
-                    const Spacer(),
-                    const SizedBox(height: UIHelper.spaceMedium),
-                    if (state.isSubmitting) ...[
-                      const SizedBox(height: UIHelper.spaceSmall),
-                      const LinearProgressIndicator(
-                          backgroundColor: Colors.black),
-                    ],
                     const Spacer(),
                     DotsIndicator(
                       dotsCount: 3,
                       position: currentView.toDouble(),
                       decorator: decorator,
                     ),
-                    const SizedBox(height: UIHelper.spaceSmallMedium)
+                    const SizedBox(height: UIHelper.spaceSmallMedium),
                   ],
                 ),
               ),
             ),
           );
+          //     );
         });
   }
 }

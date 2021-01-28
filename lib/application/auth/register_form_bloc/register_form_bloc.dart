@@ -32,37 +32,40 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
       switch (e.currentView) {
         case 0:
           if (showInfo) {
-            yield state.copyWith(information: Constants.emailInformation);
+            yield state.copyWith(initial: true, information: Constants.emailInformation, registerFailureOrSuccessOption: none());
           } else {
-            yield state.copyWith(information: '');
+            yield state.copyWith(initial: true, information: '', registerFailureOrSuccessOption: none());
           }
           break;
         case 1:
           if (showInfo) {
-            yield state.copyWith(information: Constants.passwordInformation);
+            yield state.copyWith(initial: true, information: Constants.passwordInformation, registerFailureOrSuccessOption: none());
           } else {
-            yield state.copyWith(information: '');
+            yield state.copyWith(initial: true, information: '', registerFailureOrSuccessOption: none());
           }
           break;
         case 2:
           if (showInfo) {
-            yield state.copyWith(information: Constants.usernameInformation);
+            yield state.copyWith(initial: true, information: Constants.usernameInformation, registerFailureOrSuccessOption: none());
           } else {
-            yield state.copyWith(information: '');
+            yield state.copyWith(initial: true, information: '', registerFailureOrSuccessOption: none());
           }
           break;
         default:
       }
     }, enableButton: (e) async* {
       yield state.copyWith(
-        buttonEnabled: true,
+        initial: true,
+        buttonEnabled: true,registerFailureOrSuccessOption: none(),
       );
     }, disableButton: (e) async* {
       yield state.copyWith(
-        buttonEnabled: false,
+        initial: true,
+        buttonEnabled: false,registerFailureOrSuccessOption: none(),
       );
     }, emailChanged: (e) async* {
       yield state.copyWith(
+        initial: true,
         emailAddress: EmailAddress(e.emailString),
         registerFailureOrSuccessOption: none(),
         uniqueUsernameFailureOrSuccessOption: none(),
@@ -74,11 +77,14 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
       currentView = 1;
       showInfo = false;
       yield state.copyWith(
+        initial: true,
           stateChangerField:
               'EMAIL', // Added this field to change the state, bit of a hack
-          information: '');
+          information: '',
+          registerFailureOrSuccessOption: none(),);
     }, passwordChanged: (e) async* {
       yield state.copyWith(
+        initial: true,
         password: Password(e.passwordString),
         registerFailureOrSuccessOption: none(),
         uniqueUsernameFailureOrSuccessOption: none(),
@@ -90,19 +96,22 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
       currentView = 2;
       showInfo = false;
       yield state.copyWith(
+        initial: true,
           buttonText: Constants.submit,
           stateChangerField:
               'PASSWORD', // Added this field to change the state, bit of a hack
-          information: '');
+          information: '',
+          registerFailureOrSuccessOption: none(),);
     }, usernameChanged: (e) async* {
       yield state.copyWith(
+        initial: true,
         username: Username(e.usernameString),
         registerFailureOrSuccessOption: none(),
       );
       Username(e.usernameString).value.fold((fail) => null, (success) {
         add(const RegisterFormEvent.enableButton());
       });
-    }, usernameButtonClicked: (e) async* {
+    }, submitRegisterCredentials: (e) async* {
       showInfo = false;
       add(const RegisterFormEvent.registerWithEmailAndPasswordPressed());
     }, registerWithEmailAndPasswordPressed: (e) async* {
@@ -126,28 +135,38 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
     final isPasswordValid = state.password.isValid();
     final isUsernameValid = state.username.isValid();
 
-    // if (isEmailValid && isPasswordValid && isUsernameValid) { //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //   yield state.copyWith( //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //     information: '', //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //     isSubmitting: true, //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //     registerFailureOrSuccessOption: none(), //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //   );
+    if (isEmailValid && isPasswordValid && isUsernameValid) {
+      yield state.copyWith(
+        initial: false,
+        information: '',
+        isSubmitting: true,
+        registerFailureOrSuccessOption: none(),
+      );
 
-    //   registrationFailureOrSuccess = await registerCall( //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //       emailAddress: state.emailAddress, password: state.password); //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+      registrationFailureOrSuccess = await registerCall(
+          emailAddress: state.emailAddress, password: state.password);
 
-    //   if (registrationFailureOrSuccess != null) { //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //     registrationFailureOrSuccess.fold((failure) => null, (success) async { //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //       uniqueUsernameCheck = //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //           await uniqueUsernameCall(username: state.username); //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //     });
-    //   }
-    // }
+      if (registrationFailureOrSuccess != null) {
+          yield state.copyWith(
+            initial: false,
+            showErrorMessages: true,
+            isSubmitting: false,
+            registerFailureOrSuccessOption: optionOf(registrationFailureOrSuccess),
+            uniqueUsernameFailureOrSuccessOption: none(),
+          );
 
-    // yield state.copyWith( //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //     isSubmitting: true, //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //     showErrorMessages: true, //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //     registerFailureOrSuccessOption: optionOf(registrationFailureOrSuccess), //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
-    //     uniqueUsernameFailureOrSuccessOption: optionOf(uniqueUsernameCheck)); //TODO: This must be uncommented when wanting to authenticate the user. Currently it works!!!!
+          // uniqueUsernameCheck =
+          //     await uniqueUsernameCall(username: state.username);
+
+          // if (uniqueUsernameCheck != null) {
+          //     yield state.copyWith(
+          //       isSubmitting: true,
+          //       showErrorMessages: true,
+          //       registerFailureOrSuccessOption: none(),
+          //       uniqueUsernameFailureOrSuccessOption: optionOf(uniqueUsernameCheck),
+          //     );
+          // }
+      }
+    }
   }
 }

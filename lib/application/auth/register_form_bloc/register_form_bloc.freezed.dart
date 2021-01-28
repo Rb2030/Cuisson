@@ -71,7 +71,7 @@ class _$RegisterFormEventTearOff {
   }
 
 // ignore: unused_element
-  _UsernameButtonClicked usernameButtonClicked({String usernameString}) {
+  _UsernameButtonClicked submitRegisterCredentials({String usernameString}) {
     return _UsernameButtonClicked(
       usernameString: usernameString,
     );
@@ -100,7 +100,7 @@ mixin _$RegisterFormEvent {
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   });
   @optionalTypeArgs
@@ -114,7 +114,7 @@ mixin _$RegisterFormEvent {
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   });
@@ -129,7 +129,7 @@ mixin _$RegisterFormEvent {
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -145,7 +145,7 @@ mixin _$RegisterFormEvent {
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
@@ -214,7 +214,7 @@ class _$_Initial implements _Initial {
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
@@ -226,7 +226,7 @@ class _$_Initial implements _Initial {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return initial();
   }
@@ -243,7 +243,7 @@ class _$_Initial implements _Initial {
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   }) {
@@ -266,7 +266,7 @@ class _$_Initial implements _Initial {
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -280,7 +280,7 @@ class _$_Initial implements _Initial {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return initial(this);
   }
@@ -297,7 +297,7 @@ class _$_Initial implements _Initial {
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
@@ -362,7 +362,7 @@ class _$_EnableButton implements _EnableButton {
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
@@ -374,7 +374,7 @@ class _$_EnableButton implements _EnableButton {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return enableButton();
   }
@@ -391,7 +391,7 @@ class _$_EnableButton implements _EnableButton {
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   }) {
@@ -414,7 +414,7 @@ class _$_EnableButton implements _EnableButton {
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -428,7 +428,7 @@ class _$_EnableButton implements _EnableButton {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return enableButton(this);
   }
@@ -445,7 +445,7 @@ class _$_EnableButton implements _EnableButton {
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
@@ -510,7 +510,7 @@ class _$_DisableButton implements _DisableButton {
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
@@ -522,7 +522,7 @@ class _$_DisableButton implements _DisableButton {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return disableButton();
   }
@@ -539,7 +539,7 @@ class _$_DisableButton implements _DisableButton {
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   }) {
@@ -562,7 +562,7 @@ class _$_DisableButton implements _DisableButton {
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -576,7 +576,7 @@ class _$_DisableButton implements _DisableButton {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return disableButton(this);
   }
@@ -593,7 +593,7 @@ class _$_DisableButton implements _DisableButton {
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
@@ -680,7 +680,7 @@ class _$_InformationPressed implements _InformationPressed {
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
@@ -692,7 +692,7 @@ class _$_InformationPressed implements _InformationPressed {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return informationPressed(currentView);
   }
@@ -709,7 +709,7 @@ class _$_InformationPressed implements _InformationPressed {
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   }) {
@@ -732,7 +732,7 @@ class _$_InformationPressed implements _InformationPressed {
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -746,7 +746,7 @@ class _$_InformationPressed implements _InformationPressed {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return informationPressed(this);
   }
@@ -763,7 +763,7 @@ class _$_InformationPressed implements _InformationPressed {
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
@@ -853,7 +853,7 @@ class _$_EmailChanged implements _EmailChanged {
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
@@ -865,7 +865,7 @@ class _$_EmailChanged implements _EmailChanged {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return emailChanged(emailString);
   }
@@ -882,7 +882,7 @@ class _$_EmailChanged implements _EmailChanged {
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   }) {
@@ -905,7 +905,7 @@ class _$_EmailChanged implements _EmailChanged {
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -919,7 +919,7 @@ class _$_EmailChanged implements _EmailChanged {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return emailChanged(this);
   }
@@ -936,7 +936,7 @@ class _$_EmailChanged implements _EmailChanged {
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
@@ -1027,7 +1027,7 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
@@ -1039,7 +1039,7 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return emailButtonClicked(emailString);
   }
@@ -1056,7 +1056,7 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   }) {
@@ -1079,7 +1079,7 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -1093,7 +1093,7 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return emailButtonClicked(this);
   }
@@ -1110,7 +1110,7 @@ class _$_EmailButtonClicked implements _EmailButtonClicked {
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
@@ -1205,7 +1205,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
@@ -1217,7 +1217,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return passwordChanged(passwordString);
   }
@@ -1234,7 +1234,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   }) {
@@ -1257,7 +1257,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -1271,7 +1271,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return passwordChanged(this);
   }
@@ -1288,7 +1288,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
@@ -1382,7 +1382,7 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
@@ -1394,7 +1394,7 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return passwordButtonClicked(passwordString);
   }
@@ -1411,7 +1411,7 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   }) {
@@ -1434,7 +1434,7 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -1448,7 +1448,7 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return passwordButtonClicked(this);
   }
@@ -1465,7 +1465,7 @@ class _$_PasswordButtonClicked implements _PasswordButtonClicked {
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
@@ -1560,7 +1560,7 @@ class _$_UsernameChanged implements _UsernameChanged {
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
@@ -1572,7 +1572,7 @@ class _$_UsernameChanged implements _UsernameChanged {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return usernameChanged(usernameString);
   }
@@ -1589,7 +1589,7 @@ class _$_UsernameChanged implements _UsernameChanged {
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   }) {
@@ -1612,7 +1612,7 @@ class _$_UsernameChanged implements _UsernameChanged {
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -1626,7 +1626,7 @@ class _$_UsernameChanged implements _UsernameChanged {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return usernameChanged(this);
   }
@@ -1643,7 +1643,7 @@ class _$_UsernameChanged implements _UsernameChanged {
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
@@ -1703,7 +1703,7 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
 
   @override
   String toString() {
-    return 'RegisterFormEvent.usernameButtonClicked(usernameString: $usernameString)';
+    return 'RegisterFormEvent.submitRegisterCredentials(usernameString: $usernameString)';
   }
 
   @override
@@ -1737,7 +1737,7 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
@@ -1749,9 +1749,9 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
-    return usernameButtonClicked(usernameString);
+    return submitRegisterCredentials(usernameString);
   }
 
   @override
@@ -1766,13 +1766,13 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (usernameButtonClicked != null) {
-      return usernameButtonClicked(usernameString);
+    if (submitRegisterCredentials != null) {
+      return submitRegisterCredentials(usernameString);
     }
     return orElse();
   }
@@ -1789,7 +1789,7 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -1803,9 +1803,9 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
-    return usernameButtonClicked(this);
+    return submitRegisterCredentials(this);
   }
 
   @override
@@ -1820,14 +1820,14 @@ class _$_UsernameButtonClicked implements _UsernameButtonClicked {
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (usernameButtonClicked != null) {
-      return usernameButtonClicked(this);
+    if (submitRegisterCredentials != null) {
+      return submitRegisterCredentials(this);
     }
     return orElse();
   }
@@ -1894,7 +1894,7 @@ class _$_RegisterWithEmailAndPasswordPressed
     @required TResult passwordChanged(String passwordString),
     @required TResult passwordButtonClicked(String passwordString),
     @required TResult usernameChanged(String usernameString),
-    @required TResult usernameButtonClicked(String usernameString),
+    @required TResult submitRegisterCredentials(String usernameString),
     @required TResult registerWithEmailAndPasswordPressed(),
   }) {
     assert(initial != null);
@@ -1906,7 +1906,7 @@ class _$_RegisterWithEmailAndPasswordPressed
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return registerWithEmailAndPasswordPressed();
   }
@@ -1923,7 +1923,7 @@ class _$_RegisterWithEmailAndPasswordPressed
     TResult passwordChanged(String passwordString),
     TResult passwordButtonClicked(String passwordString),
     TResult usernameChanged(String usernameString),
-    TResult usernameButtonClicked(String usernameString),
+    TResult submitRegisterCredentials(String usernameString),
     TResult registerWithEmailAndPasswordPressed(),
     @required TResult orElse(),
   }) {
@@ -1946,7 +1946,7 @@ class _$_RegisterWithEmailAndPasswordPressed
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult passwordButtonClicked(_PasswordButtonClicked value),
     @required TResult usernameChanged(_UsernameChanged value),
-    @required TResult usernameButtonClicked(_UsernameButtonClicked value),
+    @required TResult submitRegisterCredentials(_UsernameButtonClicked value),
     @required
         TResult registerWithEmailAndPasswordPressed(
             _RegisterWithEmailAndPasswordPressed value),
@@ -1960,7 +1960,7 @@ class _$_RegisterWithEmailAndPasswordPressed
     assert(passwordChanged != null);
     assert(passwordButtonClicked != null);
     assert(usernameChanged != null);
-    assert(usernameButtonClicked != null);
+    assert(submitRegisterCredentials != null);
     assert(registerWithEmailAndPasswordPressed != null);
     return registerWithEmailAndPasswordPressed(this);
   }
@@ -1977,7 +1977,7 @@ class _$_RegisterWithEmailAndPasswordPressed
     TResult passwordChanged(_PasswordChanged value),
     TResult passwordButtonClicked(_PasswordButtonClicked value),
     TResult usernameChanged(_UsernameChanged value),
-    TResult usernameButtonClicked(_UsernameButtonClicked value),
+    TResult submitRegisterCredentials(_UsernameButtonClicked value),
     TResult registerWithEmailAndPasswordPressed(
         _RegisterWithEmailAndPasswordPressed value),
     @required TResult orElse(),
@@ -2003,6 +2003,8 @@ class _$RegisterFormStateTearOff {
 // ignore: unused_element
   _RegisterFormState call(
       {@required
+          bool initial,
+      @required
           String information,
       @required
           EmailAddress emailAddress,
@@ -2026,6 +2028,7 @@ class _$RegisterFormStateTearOff {
           Option<Either<AuthFailure, Unit>>
               uniqueUsernameFailureOrSuccessOption}) {
     return _RegisterFormState(
+      initial: initial,
       information: information,
       emailAddress: emailAddress,
       password: password,
@@ -2048,6 +2051,7 @@ const $RegisterFormState = _$RegisterFormStateTearOff();
 
 /// @nodoc
 mixin _$RegisterFormState {
+  bool get initial;
   String get information;
   EmailAddress get emailAddress;
   Password get password;
@@ -2069,7 +2073,8 @@ abstract class $RegisterFormStateCopyWith<$Res> {
           RegisterFormState value, $Res Function(RegisterFormState) then) =
       _$RegisterFormStateCopyWithImpl<$Res>;
   $Res call(
-      {String information,
+      {bool initial,
+      String information,
       EmailAddress emailAddress,
       Password password,
       Username username,
@@ -2093,6 +2098,7 @@ class _$RegisterFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object initial = freezed,
     Object information = freezed,
     Object emailAddress = freezed,
     Object password = freezed,
@@ -2106,6 +2112,7 @@ class _$RegisterFormStateCopyWithImpl<$Res>
     Object uniqueUsernameFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
+      initial: initial == freezed ? _value.initial : initial as bool,
       information:
           information == freezed ? _value.information : information as String,
       emailAddress: emailAddress == freezed
@@ -2146,7 +2153,8 @@ abstract class _$RegisterFormStateCopyWith<$Res>
       __$RegisterFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String information,
+      {bool initial,
+      String information,
       EmailAddress emailAddress,
       Password password,
       Username username,
@@ -2172,6 +2180,7 @@ class __$RegisterFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object initial = freezed,
     Object information = freezed,
     Object emailAddress = freezed,
     Object password = freezed,
@@ -2185,6 +2194,7 @@ class __$RegisterFormStateCopyWithImpl<$Res>
     Object uniqueUsernameFailureOrSuccessOption = freezed,
   }) {
     return _then(_RegisterFormState(
+      initial: initial == freezed ? _value.initial : initial as bool,
       information:
           information == freezed ? _value.information : information as String,
       emailAddress: emailAddress == freezed
@@ -2220,7 +2230,8 @@ class __$RegisterFormStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_RegisterFormState implements _RegisterFormState {
   const _$_RegisterFormState(
-      {@required this.information,
+      {@required this.initial,
+      @required this.information,
       @required this.emailAddress,
       @required this.password,
       @required this.username,
@@ -2231,7 +2242,8 @@ class _$_RegisterFormState implements _RegisterFormState {
       @required this.buttonEnabled,
       @required this.registerFailureOrSuccessOption,
       @required this.uniqueUsernameFailureOrSuccessOption})
-      : assert(information != null),
+      : assert(initial != null),
+        assert(information != null),
         assert(emailAddress != null),
         assert(password != null),
         assert(username != null),
@@ -2243,6 +2255,8 @@ class _$_RegisterFormState implements _RegisterFormState {
         assert(registerFailureOrSuccessOption != null),
         assert(uniqueUsernameFailureOrSuccessOption != null);
 
+  @override
+  final bool initial;
   @override
   final String information;
   @override
@@ -2268,13 +2282,16 @@ class _$_RegisterFormState implements _RegisterFormState {
 
   @override
   String toString() {
-    return 'RegisterFormState(information: $information, emailAddress: $emailAddress, password: $password, username: $username, stateChangerField: $stateChangerField, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, buttonText: $buttonText, buttonEnabled: $buttonEnabled, registerFailureOrSuccessOption: $registerFailureOrSuccessOption, uniqueUsernameFailureOrSuccessOption: $uniqueUsernameFailureOrSuccessOption)';
+    return 'RegisterFormState(initial: $initial, information: $information, emailAddress: $emailAddress, password: $password, username: $username, stateChangerField: $stateChangerField, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, buttonText: $buttonText, buttonEnabled: $buttonEnabled, registerFailureOrSuccessOption: $registerFailureOrSuccessOption, uniqueUsernameFailureOrSuccessOption: $uniqueUsernameFailureOrSuccessOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _RegisterFormState &&
+            (identical(other.initial, initial) ||
+                const DeepCollectionEquality()
+                    .equals(other.initial, initial)) &&
             (identical(other.information, information) ||
                 const DeepCollectionEquality()
                     .equals(other.information, information)) &&
@@ -2317,6 +2334,7 @@ class _$_RegisterFormState implements _RegisterFormState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(initial) ^
       const DeepCollectionEquality().hash(information) ^
       const DeepCollectionEquality().hash(emailAddress) ^
       const DeepCollectionEquality().hash(password) ^
@@ -2337,6 +2355,8 @@ class _$_RegisterFormState implements _RegisterFormState {
 abstract class _RegisterFormState implements RegisterFormState {
   const factory _RegisterFormState(
       {@required
+          bool initial,
+      @required
           String information,
       @required
           EmailAddress emailAddress,
@@ -2360,6 +2380,8 @@ abstract class _RegisterFormState implements RegisterFormState {
           Option<Either<AuthFailure, Unit>>
               uniqueUsernameFailureOrSuccessOption}) = _$_RegisterFormState;
 
+  @override
+  bool get initial;
   @override
   String get information;
   @override

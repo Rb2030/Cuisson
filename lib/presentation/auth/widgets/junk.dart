@@ -8,44 +8,31 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Cuisson/application/core/global/globals/globals.dart'
     as globals;
 
-class RegisterFailureFormView extends StatefulWidget {
+class RegisterFailureForm1View extends StatefulWidget {
   final String errorMessage;
 
-  const RegisterFailureFormView(this.errorMessage) : super();
+  const RegisterFailureForm1View(this.errorMessage) : super();
 
   @override
-  _RegisterFailureFormViewState createState() =>
-      _RegisterFailureFormViewState();
+  _RegisterFailureForm1ViewState createState() =>
+      _RegisterFailureForm1ViewState();
 }
 
-class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
+class _RegisterFailureForm1ViewState extends State<RegisterFailureForm1View>
     with TickerProviderStateMixin {
   final _textViewController = TextEditingController(text: '');
   String _errorMessage;
-
   AnimationController animationController;
   AnimationController animationController2;
   AnimationController animationController3;
   AnimationController animationController4;
   AnimationController animationController5;
 
-  AnimationController fadeAnimationController;
-  AnimationController fadeAnimationController2;
-  AnimationController fadeAnimationController3;
-  AnimationController fadeAnimationController4;
-  AnimationController fadeAnimationController5;
-
   Animation<Offset> animation;
   Animation<Offset> animation2;
   Animation<Offset> animation3;
   Animation<Offset> animation4;
   Animation<Offset> animation5;
-
-  Animation<double> fadeAnimation;
-  Animation<double> fadeAnimation2;
-  Animation<double> fadeAnimation3;
-  Animation<double> fadeAnimation4;
-  Animation<double> fadeAnimation5;
 
   Tween<Offset> tween;
 
@@ -54,126 +41,39 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
     super.initState();
     _errorMessage = widget.errorMessage;
 
-    // Slide Animations
+    final List<Animation> animationArray = [];
+    animationArray.add(animation);
+    animationArray.add(animation2);
+    animationArray.add(animation3);
+    animationArray.add(animation4);
+    animationArray.add(animation5);
 
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 2000),
-    );
-    animation = Tween<Offset>(
-      begin: const Offset(0.0, -300.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: animationController,
-      curve: Curves.linear,
-    ));
+    final List<AnimationController> controllerArray = [];
+    controllerArray.add(animationController);
+    controllerArray.add(animationController2);
+    controllerArray.add(animationController3);
+    controllerArray.add(animationController4);
+    controllerArray.add(animationController5);
 
-    animationController2 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1800),
-    );
-    animation2 = Tween<Offset>(
-      begin: const Offset(0.0, -300.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: animationController2,
-      curve: Curves.linear,
-    ));
 
-    animationController3 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1600),
-    );
-    animation3 = Tween<Offset>(
-      begin: const Offset(0.0, -300.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: animationController3,
-      curve: Curves.linear,
-    ));
+    for (var a = 0; a < animationArray.length; a++) {
+      animationArray[a] = AnimationController(
+        vsync: this,
+        duration: Duration(seconds: a),
+      );
 
-    animationController4 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1200),
-    );
-    animation4 = Tween<Offset>(
-      begin: const Offset(0.0, -300.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: animationController4,
-      curve: Curves.linear,
-    ));
+      animationArray[a] = Tween<Offset>(
+        begin: const Offset(1.0, 0.0),
+        end: const Offset(0.0, 0.0),
+      ).animate(CurvedAnimation(
+        parent: controllerArray[a],
+        curve: Curves.fastLinearToSlowEaseIn,
+      ));
 
-    animationController5 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 800),
-    );
-    animation5 = Tween<Offset>(
-      begin: const Offset(0.0, -300.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: animationController5,
-      curve: Curves.linear,
-    ));
-
-    // Fade Animations
-
-    fadeAnimationController = AnimationController(
-      vsync: this,
-      value: 0,
-      duration: const Duration(milliseconds: 5000),
-    );
-    fadeAnimation = CurvedAnimation(
-      parent: fadeAnimationController,
-      curve: Curves.easeInOut,
-    );
-
-    fadeAnimationController2 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 5000),
-    );
-    fadeAnimation2 = CurvedAnimation(
-      parent: fadeAnimationController2,
-      curve: Curves.easeInOut,
-    );
-
-    fadeAnimationController3 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 7400),
-    );
-    fadeAnimation3 = CurvedAnimation(
-      parent: fadeAnimationController3,
-      curve: Curves.linear,
-    );
-
-    fadeAnimationController4 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 7200),
-    );
-    fadeAnimation4 = CurvedAnimation(
-      parent: fadeAnimationController4,
-      curve: Curves.linear,
-    );
-
-    fadeAnimationController5 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 7000),
-    );
-    fadeAnimation5 = CurvedAnimation(
-      parent: fadeAnimationController5,
-      curve: Curves.linear,
-    );
-
-    animationController.forward();
-    animationController2.forward();
-    animationController3.forward();
-    animationController4.forward();
-    animationController5.forward();
-    fadeAnimationController.forward();
-    fadeAnimationController2.forward();
-    fadeAnimationController3.forward();
-    fadeAnimationController4.forward();
-    fadeAnimationController5.forward();
+      Future<void>.delayed(const Duration(milliseconds: 1300), () {
+        controllerArray[a].forward();
+      });
+    }
   }
 
   @override
@@ -195,40 +95,37 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
           child: SizedBox(
             height: UIHelper.screenHeightWithOutSafeArea(context),
             width: UIHelper.screenWidth(context),
-            child: Form(
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              child: SizedBox(
-                height: UIHelper.screenHeightWithOutSafeAreaAndAppBar(context),
-                width: UIHelper.screenWidth(context),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: UIHelper.safeAreaPadding(context),
-                      horizontal: UIHelper.screenWidth(context) * 0.2),
-                  child: ListView(
-                    children: [
-                      FadeTransition(
-                        opacity: fadeAnimationController,
-                        child: SlideTransition(
+            child: AnimatedCrossFade(
+              firstChild: const CircularProgressIndicator(),
+              crossFadeState: CrossFadeState.showSecond,
+              duration: const Duration(milliseconds: 1400),
+              secondChild: Form(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                child: SizedBox(
+                  height:
+                      UIHelper.screenHeightWithOutSafeAreaAndAppBar(context),
+                  width: UIHelper.screenWidth(context),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: UIHelper.safeAreaPadding(context),
+                        horizontal: UIHelper.screenWidth(context) * 0.2),
+                    child: ListView(
+                      children: [
+                        SlideTransition(
                           position: animation,
                           child: Text(Constants.unableToRegister,
                               style: Theme.of(context).textTheme.subtitle2,
                               textAlign: TextAlign.center),
                         ),
-                      ),
-                      const SizedBox(height: UIHelper.spaceSmallMedium),
-                      FadeTransition(
-                        opacity: fadeAnimationController2,
-                        child: SlideTransition(
+                        const SizedBox(height: UIHelper.spaceSmallMedium),
+                        SlideTransition(
                           position: animation2,
                           child: Text(_errorMessage,
                               style: Theme.of(context).textTheme.bodyText1,
                               textAlign: TextAlign.center),
                         ),
-                      ),
-                      const SizedBox(height: UIHelper.spaceLarge),
-                      FadeTransition(
-                        opacity: fadeAnimationController3,
-                        child: SlideTransition(
+                        const SizedBox(height: UIHelper.spaceLarge),
+                        SlideTransition(
                           position: animation3,
                           child: TextFormField(
                             keyboardType: TextInputType.emailAddress,
@@ -277,11 +174,8 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
                             },
                           ),
                         ),
-                      ),
-                      const SizedBox(height: UIHelper.spaceSmall),
-                      FadeTransition(
-                        opacity: fadeAnimationController4,
-                        child: SlideTransition(
+                        const SizedBox(height: UIHelper.spaceSmall),
+                        SlideTransition(
                           position: animation4,
                           child: TextFormField(
                             keyboardType: TextInputType.text,
@@ -330,11 +224,8 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
                             },
                           ),
                         ),
-                      ),
-                      const SizedBox(height: UIHelper.spaceSmall),
-                      FadeTransition(
-                        opacity: fadeAnimationController5,
-                        child: SlideTransition(
+                        const SizedBox(height: UIHelper.spaceSmall),
+                        SlideTransition(
                           position: animation5,
                           child: TextFormField(
                             keyboardType: TextInputType.text,
@@ -382,33 +273,34 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
                             },
                           ),
                         ),
-                      ),
-                      Row(
-                        children: [
-                          const Spacer(),
-                          RaisedButton(
-                            elevation: 0,
-                            color: buttonEnabled ? Colors.black : Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  UIHelper.buttonCornerRadius),
+                        Row(
+                          children: [
+                            const Spacer(),
+                            RaisedButton(
+                              elevation: 0,
+                              color:
+                                  buttonEnabled ? Colors.black : Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    UIHelper.buttonCornerRadius),
+                              ),
+                              onPressed: () {
+                                if (buttonEnabled) {
+                                  context.read<RegisterFormBloc>().add(
+                                      const RegisterFormEvent
+                                          .submitRegisterCredentials());
+                                  bottomButtonEnabled = false;
+                                  globals.isUnfocused = false;
+                                }
+                              },
+                              textColor: Colors.white,
+                              child: Text(Constants.submit.toUpperCase()),
                             ),
-                            onPressed: () {
-                              if (buttonEnabled) {
-                                context.read<RegisterFormBloc>().add(
-                                    const RegisterFormEvent
-                                        .submitRegisterCredentials());
-                                bottomButtonEnabled = false;
-                                globals.isUnfocused = false;
-                              }
-                            },
-                            textColor: Colors.white,
-                            child: Text(Constants.submit.toUpperCase()),
-                          ),
-                          const Spacer(),
-                        ],
-                      ),
-                    ],
+                            const Spacer(),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

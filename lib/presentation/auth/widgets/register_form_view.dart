@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'package:Cuisson/application/core/global/colors/custom_colours.dart';
-import 'package:Cuisson/injection.dart';
-import 'package:Cuisson/presentation/auth/widgets/register_failure_form_view.dart';
 import 'package:Cuisson/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart' as dartz;
@@ -178,7 +176,7 @@ class _RegisterFormViewState extends State<RegisterFormView>
         },
         buildWhen: (s, d) => s.initial == true,
         builder: (context, state) {
-          // MARK:- Below is the initial view state
+          // MARK:- Below is the initial view state (no credentials yet added)
           final int currentView = context.watch<RegisterFormBloc>().currentView;
           final String buttonText = state.buttonText;
           final bool buttonEnabled = state.buttonEnabled;
@@ -212,9 +210,9 @@ class _RegisterFormViewState extends State<RegisterFormView>
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // SlideTransition(
-                    //   position: animation,
-                    Form(
+                    SlideTransition(
+                      position: animation,
+                    child: Form(
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       child: Padding(
                         padding: EdgeInsets.symmetric(
@@ -303,7 +301,7 @@ class _RegisterFormViewState extends State<RegisterFormView>
                         ),
                       ),
                     ),
-                    // ),
+                   ),
                     Row(
                       children: [
                         const Spacer(),

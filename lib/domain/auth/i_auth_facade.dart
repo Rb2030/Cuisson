@@ -10,7 +10,7 @@ import 'value_objects.dart';
 abstract class IAuthFacade {
   Future<Option<CurrentUser>> getSignedInUser();
 
- // Future<void> oiDeleteUserBruv();  Used this to delete user after signing in
+  // Future<void> oiDeleteUserBruv();  //Used this to delete user after signing in
 
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     @required EmailAddress emailAddress,

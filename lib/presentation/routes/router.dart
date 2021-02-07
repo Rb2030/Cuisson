@@ -11,7 +11,7 @@ import 'package:auto_route/auto_route_annotations.dart';
       MaterialRoute(page: SplashPage, initial: true),
       MaterialRoute(page: SignInPage),
       MaterialRoute(page: RegisterPage),
-      MaterialRoute(page: RegisterFailurePage),
+      MaterialRoute(page: EmailAlreadyInUsePage),
 
 
       // MaterialRoute(page: MainMenuMenus),

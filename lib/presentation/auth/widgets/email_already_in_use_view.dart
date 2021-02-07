@@ -8,13 +8,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Cuisson/application/core/global/globals/globals.dart'
     as globals;
 
-class RegisterFailureFormView extends StatefulWidget {
+class EmailAlreadyInUseView extends StatefulWidget {
   final String errorMessage;
   final String emailString;
   final String passwordString;
   final String usernameString;
 
-  const RegisterFailureFormView(
+  const EmailAlreadyInUseView(
       {this.errorMessage,
       this.emailString,
       this.passwordString,
@@ -22,13 +22,14 @@ class RegisterFailureFormView extends StatefulWidget {
       : super();
 
   @override
-  _RegisterFailureFormViewState createState() =>
-      _RegisterFailureFormViewState();
+  _EmailAlreadyInUseViewState createState() => _EmailAlreadyInUseViewState();
 }
 
-class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
+class _EmailAlreadyInUseViewState extends State<EmailAlreadyInUseView>
     with TickerProviderStateMixin {
   String _errorMessage;
+  bool initialLoad = true;
+
   TextEditingController _emailTextViewController;
   TextEditingController _passwordTextViewController;
   TextEditingController _usernameTextViewController;
@@ -134,6 +135,16 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
           : bottomButtonEnabled = false;
 
       //
+      // To stop the other fields turning red
+      if (!initialLoad) {
+        context
+            .read<RegisterFormBloc>()
+            .add(RegisterFormEvent.emailChanged(_emailTextViewController.text));
+        context.read<RegisterFormBloc>().add(RegisterFormEvent.passwordChanged(
+            _passwordTextViewController.text));
+        context.read<RegisterFormBloc>().add(RegisterFormEvent.usernameChanged(
+            _usernameTextViewController.text));
+      }
       return Scaffold(
         body: SingleChildScrollView(
           child: SizedBox(
@@ -170,9 +181,8 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
                           keyboardType: TextInputType.emailAddress,
                           controller: _emailTextViewController,
                           autocorrect: false,
-                          decoration: const InputDecoration()
-                              .copyWith(hintText: Constants.email),
                           onChanged: (value) {
+                            initialLoad = false;
                             _emailTextViewController.text = value;
                             _emailTextViewController.selection =
                                 TextSelection.fromPosition(TextPosition(
@@ -182,22 +192,30 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
                                 .read<RegisterFormBloc>()
                                 .add(RegisterFormEvent.emailChanged(value));
                           },
-                          validator: (_) => context
-                              .read<RegisterFormBloc>()
-                              .state
-                              .emailAddress
-                              .value
-                              .fold(
-                                (leftFailure) => leftFailure.maybeMap(
-                                    authOrReg: (_) {
-                                      context.read<RegisterFormBloc>().add(
-                                          const RegisterFormEvent
-                                              .disableButton());
-                                      return Constants.invalidEmail;
-                                    },
-                                    orElse: () => null),
-                                (rightSuccess) => null,
-                              ),
+                          decoration: const InputDecoration().copyWith(
+                            hintText: Constants.email,
+                            errorText: initialLoad
+                                ? Constants.emailAlreadyInUseTextFieldError
+                                : null,
+                          ),
+                          validator: (_) {
+                            return context
+                                .read<RegisterFormBloc>()
+                                .state
+                                .emailAddress
+                                .value
+                                .fold(
+                                  (leftFailure) => leftFailure.maybeMap(
+                                      authOrReg: (_) {
+                                        context.read<RegisterFormBloc>().add(
+                                            const RegisterFormEvent
+                                                .disableButton());
+                                        return Constants.invalidEmail;
+                                      },
+                                      orElse: () => null),
+                                  (rightSuccess) => null,
+                                );
+                          },
                           inputFormatters: [
                             FilteringTextInputFormatter.deny(
                                 RegExp(r"\s\b|\b\s"))
@@ -219,6 +237,7 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
                           decoration: const InputDecoration()
                               .copyWith(hintText: Constants.password),
                           onChanged: (value) {
+                            initialLoad = false;
                             _passwordTextViewController.text = value;
                             _passwordTextViewController.selection =
                                 TextSelection.fromPosition(TextPosition(
@@ -264,6 +283,7 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
                           decoration: const InputDecoration()
                               .copyWith(hintText: Constants.username),
                           onChanged: (value) {
+                            initialLoad = false;
                             _usernameTextViewController.text = value;
                             _usernameTextViewController.selection =
                                 TextSelection.fromPosition(TextPosition(

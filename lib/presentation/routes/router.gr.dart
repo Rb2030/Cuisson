@@ -18,12 +18,12 @@ class Routes {
   static const String splashPage = '/';
   static const String signInPage = '/sign-in-page';
   static const String registerPage = '/register-page';
-  static const String registerFailurePage = '/register-failure-page';
+  static const String emailAlreadyInUsePage = '/email-already-in-use-page';
   static const all = <String>{
     splashPage,
     signInPage,
     registerPage,
-    registerFailurePage,
+    emailAlreadyInUsePage,
   };
 }
 
@@ -34,7 +34,7 @@ class Router extends RouterBase {
     RouteDef(Routes.splashPage, page: SplashPage),
     RouteDef(Routes.signInPage, page: SignInPage),
     RouteDef(Routes.registerPage, page: RegisterPage),
-    RouteDef(Routes.registerFailurePage, page: RegisterFailurePage),
+    RouteDef(Routes.emailAlreadyInUsePage, page: EmailAlreadyInUsePage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -57,10 +57,10 @@ class Router extends RouterBase {
         settings: data,
       );
     },
-    RegisterFailurePage: (data) {
-      final args = data.getArgs<RegisterFailurePageArguments>(nullOk: false);
+    EmailAlreadyInUsePage: (data) {
+      final args = data.getArgs<EmailAlreadyInUsePageArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
-        builder: (context) => RegisterFailurePage(
+        builder: (context) => EmailAlreadyInUsePage(
           args.errorMessage,
           args.emailString,
           args.passwordString,
@@ -83,15 +83,15 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushRegisterPage() => push<dynamic>(Routes.registerPage);
 
-  Future<dynamic> pushRegisterFailurePage({
+  Future<dynamic> pushEmailAlreadyInUsePage({
     @required String errorMessage,
     @required String emailString,
     @required String passwordString,
     @required String usernameString,
   }) =>
       push<dynamic>(
-        Routes.registerFailurePage,
-        arguments: RegisterFailurePageArguments(
+        Routes.emailAlreadyInUsePage,
+        arguments: EmailAlreadyInUsePageArguments(
             errorMessage: errorMessage,
             emailString: emailString,
             passwordString: passwordString,
@@ -103,13 +103,13 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 /// Arguments holder classes
 /// *************************************************************************
 
-/// RegisterFailurePage arguments holder class
-class RegisterFailurePageArguments {
+/// EmailAlreadyInUsePage arguments holder class
+class EmailAlreadyInUsePageArguments {
   final String errorMessage;
   final String emailString;
   final String passwordString;
   final String usernameString;
-  RegisterFailurePageArguments(
+  EmailAlreadyInUsePageArguments(
       {@required this.errorMessage,
       @required this.emailString,
       @required this.passwordString,

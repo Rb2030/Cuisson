@@ -175,8 +175,8 @@ class _RegisterFormViewState extends State<RegisterFormView>
                       // );
                       // return Center(child: Container(width: 10, height: 10, color: Colors.pink));
                       ExtendedNavigator.of(context).push(
-                          Routes.registerFailurePage,
-                          arguments: RegisterFailurePageArguments(
+                          Routes.emailAlreadyInUsePage,
+                          arguments: EmailAlreadyInUsePageArguments(
                               errorMessage: errorMessage,
                               emailString: emailString,
                               passwordString: passwordString,

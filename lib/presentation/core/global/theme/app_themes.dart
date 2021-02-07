@@ -40,7 +40,7 @@ final appThemeData = {
               borderSide: BorderSide(
                   // ignore: avoid_redundant_argument_values
                   color: Colors.black,
-                  width: UIHelper.textFieldBorderWidthEnabled))),
+                  width: UIHelper.textFieldBorderWidthDisabled))),
       textTheme: textTheme()
           .apply(displayColor: Colors.black, bodyColor: Colors.black)),
 
@@ -78,7 +78,7 @@ final appThemeData = {
           enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                   color: Colors.white,
-                  width: UIHelper.textFieldBorderWidthEnabled))),
+                  width: UIHelper.textFieldBorderWidthDisabled))),
       textSelectionHandleColor: Colors.white,
       textTheme: textTheme()
           .apply(displayColor: Colors.white, bodyColor: Colors.white))

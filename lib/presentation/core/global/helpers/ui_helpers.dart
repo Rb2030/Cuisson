@@ -27,8 +27,8 @@ class UIHelper {
 
   /// TextField
 
-  static const double textFieldBorderWidthEnabled = 1.6;
-  static const double textFieldBorderWidthFocused = 4;
+  static const double textFieldBorderWidthDisabled = 0.8;
+  static const double textFieldBorderWidthFocused = 1.7;
   static const double textFieldBorderRadius = 6;
   static const double textFieldPadding = 10;
   static const double textFieldHeight = 50;

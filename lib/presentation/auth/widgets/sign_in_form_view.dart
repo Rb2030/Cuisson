@@ -15,14 +15,31 @@ class SignInFormView extends StatefulWidget {
   _SignInFormViewState createState() => _SignInFormViewState();
 }
 
-class _SignInFormViewState extends State<SignInFormView> {
+class _SignInFormViewState extends State<SignInFormView>
+    with TickerProviderStateMixin {
   final ScrollController listScrollController = ScrollController();
+  AnimationController fadeAnimationController;
+  Animation<double> fadeAnimation;
+
   bool bottomButtonEnabled;
-  
+
   @override
   void initState() {
     super.initState();
     bottomButtonEnabled = true;
+
+    fadeAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2000),
+    );
+    fadeAnimation = CurvedAnimation(
+      parent: fadeAnimationController,
+      curve: Curves.linear,
+    );
+
+    Future<void>.delayed(const Duration(milliseconds: 1800), () {
+      fadeAnimationController.forward();
+    });
   }
 
   @override
@@ -63,162 +80,167 @@ class _SignInFormViewState extends State<SignInFormView> {
         globals.isUnfocused || bottomButtonEnabled == true
             ? bottomButtonEnabled = true
             : bottomButtonEnabled = false;
-        return Scaffold(
-          body: Align(
-            child: SizedBox(
-              width: UIHelper.screenWidth(context) / 1.7,
-              child: Form(
-                  //       autovalidate: state.showErrorMessages, // Deprecated
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  child: LayoutBuilder(
-                    builder:
-                        (BuildContext context, BoxConstraints constraints) {
-                      return ListView(
-                        controller: listScrollController,
-                        children: [
-                          SizedBox(
-                              height: UIHelper.screenHeightWithOutSafeArea(
-                                      context) /
-                                  14),
-                          Row(
-                            children: [
-                              const Spacer(),
-                              Text(Constants.cuisson,
-                                  style: Theme.of(context).textTheme.headline2),
-                              const Spacer(),
-                            ],
-                          ),
-                          const SizedBox(height: UIHelper.spaceVeryLarge),
-                          TextFormField(
-                            autocorrect: false,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: const InputDecoration()
-                                .copyWith(hintText: Constants.email),
-                            onChanged: (value) => context
-                                .read<SignInFormBloc>()
-                                .add(SignInFormEvent.emailChanged(value)),
-                            validator: (_) => context
-                                .read<SignInFormBloc>()
-                                .state
-                                .emailAddress
-                                .value
-                                .fold(
-                                  (leftFailure) => leftFailure.maybeMap(
-                                      authOrReg: (_) => Constants.invalidEmail,
-                                      orElse: () => null),
-                                  (rightSuccess) => null,
-                                ),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.deny(
-                                  RegExp(r"\s\b|\b\s"))
-                            ],
-                            onTap: () {
-                              bottomButtonEnabled = false;
-                              globals.isUnfocused = false;
-                            },
-                          ),
-                          const SizedBox(height: UIHelper.spaceSmall),
-                          TextFormField(
-                            autocorrect: false,
-                            obscureText: true,
-                            decoration: const InputDecoration()
-                                .copyWith(hintText: Constants.password),
-                            onChanged: (value) => context
-                                .read<SignInFormBloc>()
-                                .add(SignInFormEvent.passwordChanged(value)),
-                            validator: (_) => context
-                                .read<SignInFormBloc>()
-                                .state
-                                .password
-                                .value
-                                .fold(
-                                  (leftFailure) => leftFailure.maybeMap(
-                                      authOrReg: (_) =>
-                                          Constants.invalidPassword,
-                                      orElse: () => null),
-                                  (rightSuccess) => null,
-                                ),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.deny(
-                                  RegExp(r"\s\b|\b\s"))
-                            ],
-                            onTap: () {
-                              bottomButtonEnabled = false;
-                              globals.isUnfocused = false;
-                            },
-                          ),
-                          const SizedBox(height: UIHelper.spaceLarge),
-                          Row(
-                            children: [
-                              const Spacer(),
-                              RaisedButton(
-                                onPressed: () {
-                                  debugPrint('SignIn pressed');
-                                  bottomButtonEnabled = true;
-                                },
-                                textColor: Colors.white,
-                                child: Text(Constants.signIn.toUpperCase()),
-                              ),
-                              const Spacer(),
-                            ],
-                          ),
-                          const SizedBox(height: UIHelper.spaceMedium),
-                          GestureDetector(
-                            onTap: () {
-                              ExtendedNavigator.of(context)
-                                  .push(Routes.registerPage);
-                              debugPrint(
-                                  'Register pressed'); ///// ---------------------------------------- Move to Register Page!!!!!!
-                            },
-                            child: Row(
-                              children: <Widget>[
+        return FadeTransition(
+          opacity: fadeAnimationController,
+          child: Scaffold(
+            body: Align(
+              child: SizedBox(
+                width: UIHelper.screenWidth(context) / 1.7,
+                child: Form(
+                    //       autovalidate: state.showErrorMessages, // Deprecated
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: LayoutBuilder(
+                      builder:
+                          (BuildContext context, BoxConstraints constraints) {
+                        return ListView(
+                          controller: listScrollController,
+                          children: [
+                            SizedBox(
+                                height: UIHelper.screenHeightWithOutSafeArea(
+                                        context) /
+                                    14),
+                            Row(
+                              children: [
                                 const Spacer(),
-                                Text(
-                                  Constants.register,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1
-                                      .copyWith(color: Colors.black),
+                                Text(Constants.cuisson,
+                                    style:
+                                        Theme.of(context).textTheme.headline2),
+                                const Spacer(),
+                              ],
+                            ),
+                            const SizedBox(height: UIHelper.spaceVeryLarge),
+                            TextFormField(
+                              autocorrect: false,
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: const InputDecoration()
+                                  .copyWith(hintText: Constants.email),
+                              onChanged: (value) => context
+                                  .read<SignInFormBloc>()
+                                  .add(SignInFormEvent.emailChanged(value)),
+                              validator: (_) => context
+                                  .read<SignInFormBloc>()
+                                  .state
+                                  .emailAddress
+                                  .value
+                                  .fold(
+                                    (leftFailure) => leftFailure.maybeMap(
+                                        authOrReg: (_) =>
+                                            Constants.invalidEmail,
+                                        orElse: () => null),
+                                    (rightSuccess) => null,
+                                  ),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.deny(
+                                    RegExp(r"\s\b|\b\s"))
+                              ],
+                              onTap: () {
+                                bottomButtonEnabled = false;
+                                globals.isUnfocused = false;
+                              },
+                            ),
+                            const SizedBox(height: UIHelper.spaceSmall),
+                            TextFormField(
+                              autocorrect: false,
+                              obscureText: true,
+                              decoration: const InputDecoration()
+                                  .copyWith(hintText: Constants.password),
+                              onChanged: (value) => context
+                                  .read<SignInFormBloc>()
+                                  .add(SignInFormEvent.passwordChanged(value)),
+                              validator: (_) => context
+                                  .read<SignInFormBloc>()
+                                  .state
+                                  .password
+                                  .value
+                                  .fold(
+                                    (leftFailure) => leftFailure.maybeMap(
+                                        authOrReg: (_) =>
+                                            Constants.invalidPassword,
+                                        orElse: () => null),
+                                    (rightSuccess) => null,
+                                  ),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.deny(
+                                    RegExp(r"\s\b|\b\s"))
+                              ],
+                              onTap: () {
+                                bottomButtonEnabled = false;
+                                globals.isUnfocused = false;
+                              },
+                            ),
+                            const SizedBox(height: UIHelper.spaceLarge),
+                            Row(
+                              children: [
+                                const Spacer(),
+                                RaisedButton(
+                                  onPressed: () {
+                                    debugPrint('SignIn pressed');
+                                    bottomButtonEnabled = true;
+                                  },
+                                  textColor: Colors.white,
+                                  child: Text(Constants.signIn.toUpperCase()),
                                 ),
                                 const Spacer(),
                               ],
                             ),
-                          ),
-                          if (state.isSubmitting) ...[
-                            const SizedBox(height: UIHelper.spaceSmall),
-                            const LinearProgressIndicator(
-                                backgroundColor: Colors.black)
-                          ]
-                        ],
-                      );
-                    },
-                  )),
-            ),
-          ),
-          floatingActionButton: Row(
-            children: [
-              const Spacer(),
-              SizedBox(width: UIHelper.screenWidth(context) / 13.5),
-              Visibility(
-                visible: bottomButtonEnabled,
-                child: GestureDetector(
-                  onTap: () {
-                    if (bottomButtonEnabled) {
-                      debugPrint('Forgotten Deets pressed');
-                    }
-                  },
-                  child: Text(Constants.forgottenSigninDetails,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1
-                          .copyWith(color: CustomColours.grey),
-                      textAlign: TextAlign.center),
-                ),
+                            const SizedBox(height: UIHelper.spaceMedium),
+                            GestureDetector(
+                              onTap: () {
+                                ExtendedNavigator.of(context)
+                                    .push(Routes.registerPage);
+                                debugPrint(
+                                    'Register pressed'); ///// ---------------------------------------- Move to Register Page!!!!!!
+                              },
+                              child: Row(
+                                children: <Widget>[
+                                  const Spacer(),
+                                  Text(
+                                    Constants.register,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1
+                                        .copyWith(color: Colors.black),
+                                  ),
+                                  const Spacer(),
+                                ],
+                              ),
+                            ),
+                            if (state.isSubmitting) ...[
+                              const SizedBox(height: UIHelper.spaceSmall),
+                              const LinearProgressIndicator(
+                                  backgroundColor: Colors.black)
+                            ]
+                          ],
+                        );
+                      },
+                    )),
               ),
-              const Spacer()
-            ],
+            ),
+            floatingActionButton: Row(
+              children: [
+                const Spacer(),
+                SizedBox(width: UIHelper.screenWidth(context) / 13.5),
+                Visibility(
+                  visible: bottomButtonEnabled,
+                  child: GestureDetector(
+                    onTap: () {
+                      if (bottomButtonEnabled) {
+                        debugPrint('Forgotten Deets pressed');
+                      }
+                    },
+                    child: Text(Constants.forgottenSigninDetails,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(color: CustomColours.grey),
+                        textAlign: TextAlign.center),
+                  ),
+                ),
+                const Spacer()
+              ],
+            ),
+            floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         );
       },
     );

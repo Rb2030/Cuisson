@@ -23,23 +23,11 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
   final _textViewController = TextEditingController(text: '');
   String _errorMessage;
 
-  AnimationController animationController;
-  AnimationController animationController2;
-  AnimationController animationController3;
-  AnimationController animationController4;
-  AnimationController animationController5;
-
   AnimationController fadeAnimationController;
   AnimationController fadeAnimationController2;
   AnimationController fadeAnimationController3;
   AnimationController fadeAnimationController4;
   AnimationController fadeAnimationController5;
-
-  Animation<Offset> animation;
-  Animation<Offset> animation2;
-  Animation<Offset> animation3;
-  Animation<Offset> animation4;
-  Animation<Offset> animation5;
 
   Animation<double> fadeAnimation;
   Animation<double> fadeAnimation2;
@@ -54,126 +42,67 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
     super.initState();
     _errorMessage = widget.errorMessage;
 
-    // Slide Animations
-
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 2000),
-    );
-    animation = Tween<Offset>(
-      begin: const Offset(0.0, -300.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: animationController,
-      curve: Curves.linear,
-    ));
-
-    animationController2 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1800),
-    );
-    animation2 = Tween<Offset>(
-      begin: const Offset(0.0, -300.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: animationController2,
-      curve: Curves.linear,
-    ));
-
-    animationController3 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1600),
-    );
-    animation3 = Tween<Offset>(
-      begin: const Offset(0.0, -300.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: animationController3,
-      curve: Curves.linear,
-    ));
-
-    animationController4 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1200),
-    );
-    animation4 = Tween<Offset>(
-      begin: const Offset(0.0, -300.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: animationController4,
-      curve: Curves.linear,
-    ));
-
-    animationController5 = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 800),
-    );
-    animation5 = Tween<Offset>(
-      begin: const Offset(0.0, -300.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: animationController5,
-      curve: Curves.linear,
-    ));
-
     // Fade Animations
 
     fadeAnimationController = AnimationController(
       vsync: this,
       value: 0,
-      duration: const Duration(milliseconds: 5000),
+      duration: const Duration(milliseconds: 1100),
     );
     fadeAnimation = CurvedAnimation(
       parent: fadeAnimationController,
-      curve: Curves.easeInOut,
+      curve: Curves.easeIn,
     );
 
     fadeAnimationController2 = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 5000),
+      duration: const Duration(milliseconds: 1200),
     );
     fadeAnimation2 = CurvedAnimation(
       parent: fadeAnimationController2,
-      curve: Curves.easeInOut,
+      curve: Curves.easeIn,
     );
 
     fadeAnimationController3 = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 7400),
+      duration: const Duration(milliseconds: 1300),
     );
     fadeAnimation3 = CurvedAnimation(
       parent: fadeAnimationController3,
-      curve: Curves.linear,
+      curve: Curves.easeIn,
     );
 
     fadeAnimationController4 = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 7200),
+      duration: const Duration(milliseconds: 1400),
     );
     fadeAnimation4 = CurvedAnimation(
       parent: fadeAnimationController4,
-      curve: Curves.linear,
+      curve: Curves.easeIn,
     );
 
     fadeAnimationController5 = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 7000),
+      duration: const Duration(milliseconds: 1500),
     );
     fadeAnimation5 = CurvedAnimation(
       parent: fadeAnimationController5,
-      curve: Curves.linear,
+      curve: Curves.easeIn,
     );
 
-    animationController.forward();
-    animationController2.forward();
-    animationController3.forward();
-    animationController4.forward();
-    animationController5.forward();
-    fadeAnimationController.forward();
-    fadeAnimationController2.forward();
-    fadeAnimationController3.forward();
-    fadeAnimationController4.forward();
     fadeAnimationController5.forward();
+    Future<void>.delayed(const Duration(milliseconds: 400), () {
+      fadeAnimationController4.forward();
+    });
+    Future<void>.delayed(const Duration(milliseconds: 800), () {
+      fadeAnimationController3.forward();
+    });
+    Future<void>.delayed(const Duration(milliseconds: 1200), () {
+      fadeAnimationController2.forward();
+    });
+    Future<void>.delayed(const Duration(milliseconds: 1600), () {
+      fadeAnimationController.forward();
+    });
   }
 
   @override
@@ -208,179 +137,166 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
                     children: [
                       FadeTransition(
                         opacity: fadeAnimationController,
-                        child: SlideTransition(
-                          position: animation,
-                          child: Text(Constants.unableToRegister,
-                              style: Theme.of(context).textTheme.subtitle2,
-                              textAlign: TextAlign.center),
-                        ),
+                        child: Text(Constants.unableToRegister,
+                            style: Theme.of(context).textTheme.subtitle2,
+                            textAlign: TextAlign.center),
                       ),
                       const SizedBox(height: UIHelper.spaceSmallMedium),
                       FadeTransition(
                         opacity: fadeAnimationController2,
-                        child: SlideTransition(
-                          position: animation2,
-                          child: Text(_errorMessage,
-                              style: Theme.of(context).textTheme.bodyText1,
-                              textAlign: TextAlign.center),
-                        ),
+                        child: Text(_errorMessage,
+                            style: Theme.of(context).textTheme.bodyText1,
+                            textAlign: TextAlign.center),
                       ),
                       const SizedBox(height: UIHelper.spaceLarge),
                       FadeTransition(
                         opacity: fadeAnimationController3,
-                        child: SlideTransition(
-                          position: animation3,
-                          child: TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            controller: _textViewController,
-                            autocorrect: false,
-                            decoration: const InputDecoration()
-                                .copyWith(hintText: Constants.email),
-                            initialValue: context
-                                .watch<RegisterFormBloc>()
-                                .state
-                                .emailAddress
-                                .value
-                                .fold((l) => null, (r) => r),
-                            onChanged: (value) {
-                              _textViewController.text = value;
-                              _textViewController.selection =
-                                  TextSelection.fromPosition(TextPosition(
-                                      offset: _textViewController.text.length));
-                              context
-                                  .read<RegisterFormBloc>()
-                                  .add(RegisterFormEvent.emailChanged(value));
-                            },
-                            validator: (_) => context
+                        child: TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          controller: _textViewController,
+                          autocorrect: false,
+                          decoration: const InputDecoration()
+                              .copyWith(hintText: Constants.email),
+                          initialValue: context
+                              .watch<RegisterFormBloc>()
+                              .state
+                              .emailAddress
+                              .value
+                              .fold((l) => null, (r) => r),
+                          onChanged: (value) {
+                            _textViewController.text = value;
+                            _textViewController.selection =
+                                TextSelection.fromPosition(TextPosition(
+                                    offset: _textViewController.text.length));
+                            context
                                 .read<RegisterFormBloc>()
-                                .state
-                                .emailAddress
-                                .value
-                                .fold(
-                                  (leftFailure) => leftFailure.maybeMap(
-                                      authOrReg: (_) {
-                                        context.read<RegisterFormBloc>().add(
-                                            const RegisterFormEvent
-                                                .disableButton());
-                                        return Constants.invalidEmail;
-                                      },
-                                      orElse: () => null),
-                                  (rightSuccess) => null,
-                                ),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.deny(
-                                  RegExp(r"\s\b|\b\s"))
-                            ],
-                            onTap: () {
-                              bottomButtonEnabled = false;
-                              globals.isUnfocused = false;
-                            },
-                          ),
+                                .add(RegisterFormEvent.emailChanged(value));
+                          },
+                          validator: (_) => context
+                              .read<RegisterFormBloc>()
+                              .state
+                              .emailAddress
+                              .value
+                              .fold(
+                                (leftFailure) => leftFailure.maybeMap(
+                                    authOrReg: (_) {
+                                      context.read<RegisterFormBloc>().add(
+                                          const RegisterFormEvent
+                                              .disableButton());
+                                      return Constants.invalidEmail;
+                                    },
+                                    orElse: () => null),
+                                (rightSuccess) => null,
+                              ),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.deny(
+                                RegExp(r"\s\b|\b\s"))
+                          ],
+                          onTap: () {
+                            bottomButtonEnabled = false;
+                            globals.isUnfocused = false;
+                          },
                         ),
                       ),
                       const SizedBox(height: UIHelper.spaceSmall),
                       FadeTransition(
                         opacity: fadeAnimationController4,
-                        child: SlideTransition(
-                          position: animation4,
-                          child: TextFormField(
-                            keyboardType: TextInputType.text,
-                            controller: _textViewController,
-                            autocorrect: false,
-                            obscureText: true,
-                            decoration: const InputDecoration()
-                                .copyWith(hintText: Constants.password),
-                            initialValue: context
-                                .watch<RegisterFormBloc>()
-                                .state
-                                .password
-                                .value
-                                .fold((l) => null, (r) => r),
-                            onChanged: (value) {
-                              _textViewController.text = value;
-                              _textViewController.selection =
-                                  TextSelection.fromPosition(TextPosition(
-                                      offset: _textViewController.text.length));
-                              context.read<RegisterFormBloc>().add(
-                                  RegisterFormEvent.passwordChanged(value));
-                            },
-                            validator: (_) => context
+                        child: TextFormField(
+                          keyboardType: TextInputType.text,
+                          controller: _textViewController,
+                          autocorrect: false,
+                          obscureText: true,
+                          decoration: const InputDecoration()
+                              .copyWith(hintText: Constants.password),
+                          initialValue: context
+                              .watch<RegisterFormBloc>()
+                              .state
+                              .password
+                              .value
+                              .fold((l) => null, (r) => r),
+                          onChanged: (value) {
+                            _textViewController.text = value;
+                            _textViewController.selection =
+                                TextSelection.fromPosition(TextPosition(
+                                    offset: _textViewController.text.length));
+                            context
                                 .read<RegisterFormBloc>()
-                                .state
-                                .password
-                                .value
-                                .fold(
-                                  (leftFailure) => leftFailure.maybeMap(
-                                      authOrReg: (_) {
-                                        context.read<RegisterFormBloc>().add(
-                                            const RegisterFormEvent
-                                                .disableButton());
-                                        return Constants.invalidPassword;
-                                      },
-                                      orElse: () => null),
-                                  (rightSuccess) => null,
-                                ),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.deny(
-                                  RegExp(r"\s\b|\b\s"))
-                            ],
-                            onTap: () {
-                              bottomButtonEnabled = false;
-                              globals.isUnfocused = false;
-                            },
-                          ),
+                                .add(RegisterFormEvent.passwordChanged(value));
+                          },
+                          validator: (_) => context
+                              .read<RegisterFormBloc>()
+                              .state
+                              .password
+                              .value
+                              .fold(
+                                (leftFailure) => leftFailure.maybeMap(
+                                    authOrReg: (_) {
+                                      context.read<RegisterFormBloc>().add(
+                                          const RegisterFormEvent
+                                              .disableButton());
+                                      return Constants.invalidPassword;
+                                    },
+                                    orElse: () => null),
+                                (rightSuccess) => null,
+                              ),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.deny(
+                                RegExp(r"\s\b|\b\s"))
+                          ],
+                          onTap: () {
+                            bottomButtonEnabled = false;
+                            globals.isUnfocused = false;
+                          },
                         ),
                       ),
                       const SizedBox(height: UIHelper.spaceSmall),
                       FadeTransition(
                         opacity: fadeAnimationController5,
-                        child: SlideTransition(
-                          position: animation5,
-                          child: TextFormField(
-                            keyboardType: TextInputType.text,
-                            controller: _textViewController,
-                            autocorrect: false,
-                            decoration: const InputDecoration()
-                                .copyWith(hintText: Constants.username),
-                            initialValue: context
-                                .watch<RegisterFormBloc>()
-                                .state
-                                .username
-                                .value
-                                .fold((l) => null, (r) => r),
-                            onChanged: (value) {
-                              _textViewController.text = value;
-                              _textViewController.selection =
-                                  TextSelection.fromPosition(TextPosition(
-                                      offset: _textViewController.text.length));
-                              context.read<RegisterFormBloc>().add(
-                                  RegisterFormEvent.usernameChanged(value));
-                            },
-                            validator: (_) => context
+                        child: TextFormField(
+                          keyboardType: TextInputType.text,
+                          controller: _textViewController,
+                          autocorrect: false,
+                          decoration: const InputDecoration()
+                              .copyWith(hintText: Constants.username),
+                          initialValue: context
+                              .watch<RegisterFormBloc>()
+                              .state
+                              .username
+                              .value
+                              .fold((l) => null, (r) => r),
+                          onChanged: (value) {
+                            _textViewController.text = value;
+                            _textViewController.selection =
+                                TextSelection.fromPosition(TextPosition(
+                                    offset: _textViewController.text.length));
+                            context
                                 .read<RegisterFormBloc>()
-                                .state
-                                .username
-                                .value
-                                .fold(
-                                  (leftFailure) => leftFailure.maybeMap(
-                                      authOrReg: (_) {
-                                        context.read<RegisterFormBloc>().add(
-                                            const RegisterFormEvent
-                                                .disableButton());
-                                        return Constants.invalidUsername;
-                                      },
-                                      orElse: () => null),
-                                  (rightSuccess) => null,
-                                ),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.deny(
-                                  RegExp(r"\s\b|\b\s"))
-                            ],
-                            onTap: () {
-                              bottomButtonEnabled = false;
-                              globals.isUnfocused = false;
-                            },
-                          ),
+                                .add(RegisterFormEvent.usernameChanged(value));
+                          },
+                          validator: (_) => context
+                              .read<RegisterFormBloc>()
+                              .state
+                              .username
+                              .value
+                              .fold(
+                                (leftFailure) => leftFailure.maybeMap(
+                                    authOrReg: (_) {
+                                      context.read<RegisterFormBloc>().add(
+                                          const RegisterFormEvent
+                                              .disableButton());
+                                      return Constants.invalidUsername;
+                                    },
+                                    orElse: () => null),
+                                (rightSuccess) => null,
+                              ),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.deny(
+                                RegExp(r"\s\b|\b\s"))
+                          ],
+                          onTap: () {
+                            bottomButtonEnabled = false;
+                            globals.isUnfocused = false;
+                          },
                         ),
                       ),
                       Row(

@@ -319,6 +319,7 @@ class _EmailAlreadyInUseViewState extends State<EmailAlreadyInUseView>
                           },
                         ),
                       ),
+                      const SizedBox(height: UIHelper.spaceSmall),
                       Row(
                         children: [
                           const Spacer(),

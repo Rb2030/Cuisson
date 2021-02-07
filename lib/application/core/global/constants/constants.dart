@@ -32,7 +32,7 @@ class Constants extends InheritedWidget {
   static const String invalidUsername = 'Invalid Username';
 
   static const String cancelledByUser = 'Cancelled by user';
-  static const String emailAlreadyInUse = 'Email already registered. Please sign in by pressing back, or click "Forgotten sign in details?" if you wish to reset your password';
+  static const String emailAlreadyInUse = 'Email already registered. Please sign in by pressing back, or if you wish to reset your password press "Forgotten sign in details?".';
   static const String invalidUsernameAndPasswordCombo = 'Invalid username and password combination';
   static const String pleaseTryAgain = 'Please try again';
   static const String usernameTaken = 'This username has already been taken, please choose another unique one';

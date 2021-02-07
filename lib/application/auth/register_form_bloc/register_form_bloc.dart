@@ -18,6 +18,9 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
   final IAuthFacade _authFacade;
   int currentView = 0;
   bool showInfo = false;
+  String emailAddressForFailureScreen;
+  String passwordForFailureScreen;
+  String usernameForFailureScreen;
 
   RegisterFormBloc(this._authFacade) : super(RegisterFormState.initial());
 
@@ -32,23 +35,41 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
       switch (e.currentView) {
         case 0:
           if (showInfo) {
-            yield state.copyWith(initial: true, information: Constants.emailInformation, registerFailureOrSuccessOption: none());
+            yield state.copyWith(
+                initial: true,
+                information: Constants.emailInformation,
+                registerFailureOrSuccessOption: none());
           } else {
-            yield state.copyWith(initial: true, information: '', registerFailureOrSuccessOption: none());
+            yield state.copyWith(
+                initial: true,
+                information: '',
+                registerFailureOrSuccessOption: none());
           }
           break;
         case 1:
           if (showInfo) {
-            yield state.copyWith(initial: true, information: Constants.passwordInformation, registerFailureOrSuccessOption: none());
+            yield state.copyWith(
+                initial: true,
+                information: Constants.passwordInformation,
+                registerFailureOrSuccessOption: none());
           } else {
-            yield state.copyWith(initial: true, information: '', registerFailureOrSuccessOption: none());
+            yield state.copyWith(
+                initial: true,
+                information: '',
+                registerFailureOrSuccessOption: none());
           }
           break;
         case 2:
           if (showInfo) {
-            yield state.copyWith(initial: true, information: Constants.usernameInformation, registerFailureOrSuccessOption: none());
+            yield state.copyWith(
+                initial: true,
+                information: Constants.usernameInformation,
+                registerFailureOrSuccessOption: none());
           } else {
-            yield state.copyWith(initial: true, information: '', registerFailureOrSuccessOption: none());
+            yield state.copyWith(
+                initial: true,
+                information: '',
+                registerFailureOrSuccessOption: none());
           }
           break;
         default:
@@ -56,12 +77,14 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
     }, enableButton: (e) async* {
       yield state.copyWith(
         initial: true,
-        buttonEnabled: true,registerFailureOrSuccessOption: none(),
+        buttonEnabled: true,
+        registerFailureOrSuccessOption: none(),
       );
     }, disableButton: (e) async* {
       yield state.copyWith(
         initial: true,
-        buttonEnabled: false,registerFailureOrSuccessOption: none(),
+        buttonEnabled: false,
+        registerFailureOrSuccessOption: none(),
       );
     }, emailChanged: (e) async* {
       yield state.copyWith(
@@ -71,6 +94,7 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
         uniqueUsernameFailureOrSuccessOption: none(),
       );
       EmailAddress(e.emailString).value.fold((fail) => null, (success) {
+        emailAddressForFailureScreen = success;
         add(const RegisterFormEvent.enableButton());
       });
     }, emailButtonClicked: (e) async* {
@@ -78,10 +102,11 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
       showInfo = false;
       yield state.copyWith(
         initial: true,
-          stateChangerField:
-              'EMAIL', // Added this field to change the state, bit of a hack
-          information: '',
-          registerFailureOrSuccessOption: none(),);
+        stateChangerField:
+            'EMAIL', // Added this field to change the state, bit of a hack
+        information: '',
+        registerFailureOrSuccessOption: none(),
+      );
     }, passwordChanged: (e) async* {
       yield state.copyWith(
         initial: true,
@@ -90,6 +115,7 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
         uniqueUsernameFailureOrSuccessOption: none(),
       );
       Password(e.passwordString).value.fold((fail) => null, (success) {
+        passwordForFailureScreen = success;
         add(const RegisterFormEvent.enableButton());
       });
     }, passwordButtonClicked: (e) async* {
@@ -97,11 +123,12 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
       showInfo = false;
       yield state.copyWith(
         initial: true,
-          buttonText: Constants.submit,
-          stateChangerField:
-              'PASSWORD', // Added this field to change the state, bit of a hack
-          information: '',
-          registerFailureOrSuccessOption: none(),);
+        buttonText: Constants.submit,
+        stateChangerField:
+            'PASSWORD', // Added this field to change the state, bit of a hack
+        information: '',
+        registerFailureOrSuccessOption: none(),
+      );
     }, usernameChanged: (e) async* {
       yield state.copyWith(
         initial: true,
@@ -109,6 +136,7 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
         registerFailureOrSuccessOption: none(),
       );
       Username(e.usernameString).value.fold((fail) => null, (success) {
+        usernameForFailureScreen = success;
         add(const RegisterFormEvent.enableButton());
       });
     }, submitRegisterCredentials: (e) async* {
@@ -147,25 +175,26 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
           emailAddress: state.emailAddress, password: state.password);
 
       if (registrationFailureOrSuccess != null) {
-          yield state.copyWith(
-            initial: false,
-            showErrorMessages: true,
-            isSubmitting: false,
-            registerFailureOrSuccessOption: optionOf(registrationFailureOrSuccess),
-            uniqueUsernameFailureOrSuccessOption: none(),
-          );
+        yield state.copyWith(
+          initial: false,
+          showErrorMessages: true,
+          isSubmitting: false,
+          registerFailureOrSuccessOption:
+              optionOf(registrationFailureOrSuccess),
+          uniqueUsernameFailureOrSuccessOption: none(),
+        );
 
-          // uniqueUsernameCheck =
-          //     await uniqueUsernameCall(username: state.username);
+        // uniqueUsernameCheck =
+        //     await uniqueUsernameCall(username: state.username);
 
-          // if (uniqueUsernameCheck != null) {
-          //     yield state.copyWith(
-          //       isSubmitting: true,
-          //       showErrorMessages: true,
-          //       registerFailureOrSuccessOption: none(),
-          //       uniqueUsernameFailureOrSuccessOption: optionOf(uniqueUsernameCheck),
-          //     );
-          // }
+        // if (uniqueUsernameCheck != null) {
+        //     yield state.copyWith(
+        //       isSubmitting: true,
+        //       showErrorMessages: true,
+        //       registerFailureOrSuccessOption: none(),
+        //       uniqueUsernameFailureOrSuccessOption: optionOf(uniqueUsernameCheck),
+        //     );
+        // }
       }
     }
   }

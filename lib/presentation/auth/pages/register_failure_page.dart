@@ -8,8 +8,11 @@ import '../../../injection.dart';
 
 class RegisterFailurePage extends StatelessWidget {
   final String errorMessage;
+  final String passwordString;
+  final String emailString;
+  final String usernameString;
 
-  const RegisterFailurePage(this.errorMessage);
+  const RegisterFailurePage(this.errorMessage, this.emailString, this.passwordString, this.usernameString);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class RegisterFailurePage extends StatelessWidget {
         ),
         body: BlocProvider(
           create: (context) => getIt<RegisterFormBloc>(),
-          child: RegisterFailureFormView(errorMessage),
+          child: RegisterFailureFormView(errorMessage: errorMessage, emailString: emailString, passwordString: passwordString, usernameString: usernameString)
         ));
   }
 }

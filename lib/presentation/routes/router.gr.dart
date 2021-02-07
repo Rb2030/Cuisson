@@ -60,7 +60,12 @@ class Router extends RouterBase {
     RegisterFailurePage: (data) {
       final args = data.getArgs<RegisterFailurePageArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
-        builder: (context) => RegisterFailurePage(args.errorMessage),
+        builder: (context) => RegisterFailurePage(
+          args.errorMessage,
+          args.emailString,
+          args.passwordString,
+          args.usernameString,
+        ),
         settings: data,
       );
     },
@@ -80,10 +85,17 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushRegisterFailurePage({
     @required String errorMessage,
+    @required String emailString,
+    @required String passwordString,
+    @required String usernameString,
   }) =>
       push<dynamic>(
         Routes.registerFailurePage,
-        arguments: RegisterFailurePageArguments(errorMessage: errorMessage),
+        arguments: RegisterFailurePageArguments(
+            errorMessage: errorMessage,
+            emailString: emailString,
+            passwordString: passwordString,
+            usernameString: usernameString),
       );
 }
 
@@ -94,5 +106,12 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 /// RegisterFailurePage arguments holder class
 class RegisterFailurePageArguments {
   final String errorMessage;
-  RegisterFailurePageArguments({@required this.errorMessage});
+  final String emailString;
+  final String passwordString;
+  final String usernameString;
+  RegisterFailurePageArguments(
+      {@required this.errorMessage,
+      @required this.emailString,
+      @required this.passwordString,
+      @required this.usernameString});
 }

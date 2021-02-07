@@ -10,8 +10,16 @@ import 'package:Cuisson/application/core/global/globals/globals.dart'
 
 class RegisterFailureFormView extends StatefulWidget {
   final String errorMessage;
+  final String emailString;
+  final String passwordString;
+  final String usernameString;
 
-  const RegisterFailureFormView(this.errorMessage) : super();
+  const RegisterFailureFormView(
+      {this.errorMessage,
+      this.emailString,
+      this.passwordString,
+      this.usernameString})
+      : super();
 
   @override
   _RegisterFailureFormViewState createState() =>
@@ -20,8 +28,10 @@ class RegisterFailureFormView extends StatefulWidget {
 
 class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
     with TickerProviderStateMixin {
-  final _textViewController = TextEditingController(text: '');
   String _errorMessage;
+  TextEditingController _emailTextViewController;
+  TextEditingController _passwordTextViewController;
+  TextEditingController _usernameTextViewController;
 
   AnimationController fadeAnimationController;
   AnimationController fadeAnimationController2;
@@ -41,6 +51,11 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
   void initState() {
     super.initState();
     _errorMessage = widget.errorMessage;
+    _emailTextViewController = TextEditingController(text: widget.emailString);
+    _passwordTextViewController =
+        TextEditingController(text: widget.passwordString);
+    _usernameTextViewController =
+        TextEditingController(text: widget.usernameString);
 
     // Fade Animations
 
@@ -153,21 +168,16 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
                         opacity: fadeAnimationController3,
                         child: TextFormField(
                           keyboardType: TextInputType.emailAddress,
-                          controller: _textViewController,
+                          controller: _emailTextViewController,
                           autocorrect: false,
                           decoration: const InputDecoration()
                               .copyWith(hintText: Constants.email),
-                          initialValue: context
-                              .watch<RegisterFormBloc>()
-                              .state
-                              .emailAddress
-                              .value
-                              .fold((l) => null, (r) => r),
                           onChanged: (value) {
-                            _textViewController.text = value;
-                            _textViewController.selection =
+                            _emailTextViewController.text = value;
+                            _emailTextViewController.selection =
                                 TextSelection.fromPosition(TextPosition(
-                                    offset: _textViewController.text.length));
+                                    offset:
+                                        _emailTextViewController.text.length));
                             context
                                 .read<RegisterFormBloc>()
                                 .add(RegisterFormEvent.emailChanged(value));
@@ -203,22 +213,17 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
                         opacity: fadeAnimationController4,
                         child: TextFormField(
                           keyboardType: TextInputType.text,
-                          controller: _textViewController,
+                          controller: _passwordTextViewController,
                           autocorrect: false,
                           obscureText: true,
                           decoration: const InputDecoration()
                               .copyWith(hintText: Constants.password),
-                          initialValue: context
-                              .watch<RegisterFormBloc>()
-                              .state
-                              .password
-                              .value
-                              .fold((l) => null, (r) => r),
                           onChanged: (value) {
-                            _textViewController.text = value;
-                            _textViewController.selection =
+                            _passwordTextViewController.text = value;
+                            _passwordTextViewController.selection =
                                 TextSelection.fromPosition(TextPosition(
-                                    offset: _textViewController.text.length));
+                                    offset: _passwordTextViewController
+                                        .text.length));
                             context
                                 .read<RegisterFormBloc>()
                                 .add(RegisterFormEvent.passwordChanged(value));
@@ -254,21 +259,16 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
                         opacity: fadeAnimationController5,
                         child: TextFormField(
                           keyboardType: TextInputType.text,
-                          controller: _textViewController,
+                          controller: _usernameTextViewController,
                           autocorrect: false,
                           decoration: const InputDecoration()
                               .copyWith(hintText: Constants.username),
-                          initialValue: context
-                              .watch<RegisterFormBloc>()
-                              .state
-                              .username
-                              .value
-                              .fold((l) => null, (r) => r),
                           onChanged: (value) {
-                            _textViewController.text = value;
-                            _textViewController.selection =
+                            _usernameTextViewController.text = value;
+                            _usernameTextViewController.selection =
                                 TextSelection.fromPosition(TextPosition(
-                                    offset: _textViewController.text.length));
+                                    offset: _usernameTextViewController
+                                        .text.length));
                             context
                                 .read<RegisterFormBloc>()
                                 .add(RegisterFormEvent.usernameChanged(value));

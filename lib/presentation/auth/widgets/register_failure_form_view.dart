@@ -94,13 +94,13 @@ class _RegisterFailureFormViewState extends State<RegisterFailureFormView>
     Future<void>.delayed(const Duration(milliseconds: 400), () {
       fadeAnimationController4.forward();
     });
-    Future<void>.delayed(const Duration(milliseconds: 800), () {
+    Future<void>.delayed(const Duration(milliseconds: 600), () {
       fadeAnimationController3.forward();
     });
-    Future<void>.delayed(const Duration(milliseconds: 1200), () {
+    Future<void>.delayed(const Duration(milliseconds: 800), () {
       fadeAnimationController2.forward();
     });
-    Future<void>.delayed(const Duration(milliseconds: 1600), () {
+    Future<void>.delayed(const Duration(milliseconds: 1000), () {
       fadeAnimationController.forward();
     });
   }

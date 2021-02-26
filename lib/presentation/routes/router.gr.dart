@@ -9,7 +9,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../auth/pages/register_failure_page.dart';
+import '../auth/pages/email_already_in_use_page.dart';
 import '../auth/pages/register_page.dart';
 import '../auth/pages/sign_in_page.dart';
 import '../splash/splash_page.dart';

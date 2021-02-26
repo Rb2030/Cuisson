@@ -1,7 +1,6 @@
 import 'package:Cuisson/application/core/global/globals/globals.dart'
     as globals;
 import 'package:Cuisson/application/core/global/shared_preferences/shared_preferences_helper.dart';
-import 'package:Cuisson/presentation/auth/pages/sign_in_page.dart';
 import 'package:Cuisson/presentation/core/global/theme/app_themes.dart';
 import 'package:Cuisson/presentation/core/global/theme/bloc/theme_bloc.dart';
 import 'package:Cuisson/presentation/core/global/widgets/keyboard_dismisser.dart';
@@ -13,7 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'application/auth/auth_bloc/auth_bloc.dart';
 import 'application/core/global/constants/constants.dart';
 import 'injection.dart';
-import 'presentation/routes/router.gr.dart';
 
 class AppWidget extends StatefulWidget {
   @override

@@ -1,4 +1,4 @@
-import 'package:Cuisson/presentation/auth/pages/register_failure_page.dart';
+import 'package:Cuisson/presentation/auth/pages/email_already_in_use_page.dart';
 import 'package:Cuisson/presentation/splash/splash_page.dart';
 import 'package:Cuisson/presentation/auth/pages/sign_in_page.dart';
 import 'package:Cuisson/presentation/auth/pages/register_page.dart';

@@ -122,6 +122,16 @@ class _EmailAlreadyInUseViewState extends State<EmailAlreadyInUseView>
   }
 
   @override
+  void dispose() {
+    fadeAnimationController.dispose();
+    fadeAnimationController2.dispose();
+    fadeAnimationController3.dispose();
+    fadeAnimationController4.dispose();
+    fadeAnimationController5.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterFormBloc, RegisterFormState>(
         listener: (context, state) {

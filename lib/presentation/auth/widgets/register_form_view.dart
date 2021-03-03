@@ -303,6 +303,7 @@ class _RegisterFormViewState extends State<RegisterFormView>
                                                 .informationPressed(
                                                     currentView));
                                       },
+                                      child: Container(width: 10, height: 10, color: Colors.pinkAccent)
                                       // child: SvgPicture.asset(
                                       //     Constants.informationIcon,
                                       //     color: Colors.black,

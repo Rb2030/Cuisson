@@ -44,9 +44,7 @@ dependencies:
   import_sorter: ^4.4.0
   carousel_slider: ^2.3.1
   dots_indicator: ^1.2.0
-  flutter_svg: ^0.19.2+1
   profanity_filter: ^1.0.4
-  responsive_screen: ^1.0.0
 
 dev_dependencies:
     build_runner: ^1.10.4

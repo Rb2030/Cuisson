@@ -4,7 +4,7 @@ import 'package:Cuisson/presentation/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart' as dartz;
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter_svg/svg.dart';
+//import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -303,11 +303,11 @@ class _RegisterFormViewState extends State<RegisterFormView>
                                                 .informationPressed(
                                                     currentView));
                                       },
-                                      child: SvgPicture.asset(
-                                          Constants.informationIcon,
-                                          color: Colors.black,
-                                          width: UIHelper.iconSize * 0.8,
-                                          height: UIHelper.iconSize * 0.8),
+                                      // child: SvgPicture.asset(
+                                      //     Constants.informationIcon,
+                                      //     color: Colors.black,
+                                      //     width: UIHelper.iconSize * 0.8,
+                                      //     height: UIHelper.iconSize * 0.8),
                                     ),
                                     const Spacer(),
                                   ],

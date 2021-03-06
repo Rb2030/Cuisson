@@ -26,7 +26,7 @@ abstract class IAuthFacade {
     @required Password password,
   });
 
-  Future<Either<AuthFailure, Unit>>
-      signInWithGoogle(); // Won't have google sign in as I want my own set of users with data
+  Future<Either<AuthFailure, Unit>> signInWithGoogle(); // Won't have google sign in as I want my own set of users with data
+  
   Future<void> signOut();
 }

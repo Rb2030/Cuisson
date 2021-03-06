@@ -11,6 +11,8 @@ final appThemeData = {
       brightness: Brightness.light,
       primaryColor: Colors.white,
       accentColor: Colors.black,
+      scaffoldBackgroundColor: Colors.white,
+      appBarTheme: const AppBarTheme(color: Colors.white),
       backgroundColor: Colors.white,
       canvasColor: Colors.white,
       buttonColor: Colors.black,

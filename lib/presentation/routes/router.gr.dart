@@ -13,14 +13,17 @@ import '../auth/pages/email_already_in_use_page.dart';
 import '../auth/pages/register_page.dart';
 import '../auth/pages/sign_in_page.dart';
 import '../splash/splash_page.dart';
+import '../splash/temp_animation_page.dart';
 
 class Routes {
   static const String splashPage = '/';
+  static const String tempAnimationPage = '/temp-animation-page';
   static const String signInPage = '/sign-in-page';
   static const String registerPage = '/register-page';
   static const String emailAlreadyInUsePage = '/email-already-in-use-page';
   static const all = <String>{
     splashPage,
+    tempAnimationPage,
     signInPage,
     registerPage,
     emailAlreadyInUsePage,
@@ -32,6 +35,7 @@ class Router extends RouterBase {
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
     RouteDef(Routes.splashPage, page: SplashPage),
+    RouteDef(Routes.tempAnimationPage, page: TempAnimationPage),
     RouteDef(Routes.signInPage, page: SignInPage),
     RouteDef(Routes.registerPage, page: RegisterPage),
     RouteDef(Routes.emailAlreadyInUsePage, page: EmailAlreadyInUsePage),
@@ -42,6 +46,12 @@ class Router extends RouterBase {
     SplashPage: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => SplashPage(),
+        settings: data,
+      );
+    },
+    TempAnimationPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => TempAnimationPage(),
         settings: data,
       );
     },
@@ -78,6 +88,9 @@ class Router extends RouterBase {
 
 extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushSplashPage() => push<dynamic>(Routes.splashPage);
+
+  Future<dynamic> pushTempAnimationPage() =>
+      push<dynamic>(Routes.tempAnimationPage);
 
   Future<dynamic> pushSignInPage() => push<dynamic>(Routes.signInPage);
 

@@ -22,8 +22,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       authCheckRequested: (e) async* {
         final userOption = await _authFacade.getSignedInUser();
     //    final userOption2 = await _authFacade.oiDeleteUserBruv(); //Used this to delete user after signing in
-        yield userOption.fold(() => const AuthState.unauthenticated(),
-            (_) => const AuthState.authenticated());
+        yield userOption.fold(
+            () => const AuthState.unauthenticated(),
+            (_) => const AuthState.authenticated(),
+        );
       },
       signedOut: (e) async* {
         await _authFacade.signOut();

@@ -14,7 +14,6 @@ class _TempAnimationPageState extends State<TempAnimationPage>
   AnimationController spinAnimationController1;
   AnimationController spinAnimationController2;
   AnimationController fadeAnimationController;
-  AnimationController shrinkingAnimationController;
   double responsiveBoxSize = 6;
   Color bgColor = Colors.white;
 
@@ -50,10 +49,7 @@ class _TempAnimationPageState extends State<TempAnimationPage>
       parent: fadeAnimationController,
       curve: Curves.easeIn,
     );
-    shrinkingAnimationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1000),
-    );
+
     // Starting the animations
     bouncingAnimationController.forward().then((value) {
       responsiveBoxSize = 5.5;
@@ -70,12 +66,10 @@ class _TempAnimationPageState extends State<TempAnimationPage>
                 animationFinished = true;
               });
               Future<void>.delayed(const Duration(milliseconds: 200), () {
-                shrinkingAnimationController.forward().then((value) {
-                  responsiveBoxSize = 2.6;
-                  bgColor = Colors.yellow[500];
-                  setState(() {});
-                  fadeAnimationController.forward();
-                });
+                responsiveBoxSize = 2.6;
+                bgColor = Colors.yellow[500];
+                setState(() {});
+                fadeAnimationController.forward();
               });
             });
           });
@@ -105,12 +99,15 @@ class _TempAnimationPageState extends State<TempAnimationPage>
                       const Spacer(),
                       FadeTransition(
                         opacity: fadeAnimationController,
-                        child: Text(
-                          'CR',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline5
-                              .copyWith(fontFamily: 'CarinoSans'),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 1, 0, 0),
+                          child: Text(
+                            'CR',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline5
+                                .copyWith(fontFamily: 'CarinoSans'),
+                          ),
                         ),
                       ),
                       const SizedBox(width: 1),
@@ -147,12 +144,15 @@ class _TempAnimationPageState extends State<TempAnimationPage>
                       const SizedBox(width: 1),
                       FadeTransition(
                         opacity: fadeAnimationController,
-                        child: Text(
-                          'KETT',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline5
-                              .copyWith(fontFamily: 'CarinoSans'),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 1, 0, 0),
+                          child: Text(
+                            'KETT',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline5
+                                .copyWith(fontFamily: 'CarinoSans'),
+                          ),
                         ),
                       ),
                       const Spacer()

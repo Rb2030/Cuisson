@@ -45,6 +45,7 @@ dependencies:
   carousel_slider: ^2.3.1
   dots_indicator: ^1.2.0
   profanity_filter: ^1.0.4
+  audioplayers: ^0.17.4
 
 dev_dependencies:
     build_runner: ^1.10.4
@@ -69,6 +70,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/click_click_click.mp3
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

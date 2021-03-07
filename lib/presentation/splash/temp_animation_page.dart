@@ -1,6 +1,7 @@
-import 'dart:math' as math;
-
+import 'dart:async';
+import 'package:audioplayers/audio_cache.dart';
 import 'package:Cuisson/presentation/core/global/helpers/responsive_screen_config.dart';
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 
 class TempAnimationPage extends StatefulWidget {
@@ -10,6 +11,7 @@ class TempAnimationPage extends StatefulWidget {
 
 class _TempAnimationPageState extends State<TempAnimationPage>
     with TickerProviderStateMixin {
+  final player = AudioCache();
   AnimationController bouncingAnimationController;
   AnimationController spinAnimationController1;
   AnimationController spinAnimationController2;
@@ -54,6 +56,7 @@ class _TempAnimationPageState extends State<TempAnimationPage>
     bouncingAnimationController.forward().then((value) {
       responsiveBoxSize = 5.5;
       setState(() {});
+      player.play('click_click_click.mp3');
       Future<void>.delayed(const Duration(milliseconds: 600), () {
         spinAnimationController1.forward(from: 0).then((value) {
           setState(() {
@@ -114,7 +117,7 @@ class _TempAnimationPageState extends State<TempAnimationPage>
                       Stack(
                         children: [
                           AnimatedContainer(
-                            duration: const Duration(seconds: 1),
+                            duration: const Duration(milliseconds: 700),
                             height: rsc.rH(responsiveBoxSize),
                             width: rsc.rH(responsiveBoxSize),
                             child: Visibility(

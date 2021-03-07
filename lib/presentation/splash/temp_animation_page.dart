@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:Cuisson/application/core/global/colors/custom_colours.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:Cuisson/presentation/core/global/helpers/responsive_screen_config.dart';
 import 'package:audioplayers/audio_cache.dart';
@@ -70,7 +71,7 @@ class _TempAnimationPageState extends State<TempAnimationPage>
               });
               Future<void>.delayed(const Duration(milliseconds: 200), () {
                 responsiveBoxSize = 2.6;
-                bgColor = Colors.yellow[500];
+                bgColor = CustomColours.crokettYellow;
                 setState(() {});
                 fadeAnimationController.forward();
               });
@@ -169,4 +170,7 @@ class _TempAnimationPageState extends State<TempAnimationPage>
       ),
     );
   }
+}
+
+class CustomColors {
 }
